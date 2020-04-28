@@ -37,11 +37,13 @@ extension Student {
         self.deadlines = deadlines
     }
     
-    @discardableResult convenience init?(studentRepresentation: StudentRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(representation: StudentRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         guard let deadlines = deadlines else { return nil }
         
         self.init(context: context)
-        self.id
+        self.id = representation.id
+        self.firstName = representation.firstName
+        
         
     }
     
