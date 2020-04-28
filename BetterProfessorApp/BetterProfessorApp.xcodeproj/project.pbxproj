@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E5ADF9B24587AC200B558BF /* ProfessorRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5ADF9A24587AC100B558BF /* ProfessorRepresentation.swift */; };
+		5E5ADF9D24587B8200B558BF /* StudentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5ADF9C24587B8200B558BF /* StudentRepresentation.swift */; };
+		5E5ADF9F24587C2E00B558BF /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5ADF9E24587C2E00B558BF /* CoreDataStack.swift */; };
 		E3E9AC8E2457A3CA004EDC9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */; };
 		E3E9AC902457A3CA004EDC9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */; };
 		E3E9AC922457A3CA004EDC9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC912457A3CA004EDC9C /* ViewController.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E5ADF9A24587AC100B558BF /* ProfessorRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorRepresentation.swift; sourceTree = "<group>"; };
+		5E5ADF9C24587B8200B558BF /* StudentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRepresentation.swift; sourceTree = "<group>"; };
+		5E5ADF9E24587C2E00B558BF /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E3E9AC8A2457A3CA004EDC9C /* BetterProfessorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterProfessorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +121,8 @@
 		5E5ADF952457A94300B558BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E5ADF9A24587AC100B558BF /* ProfessorRepresentation.swift */,
+				5E5ADF9C24587B8200B558BF /* StudentRepresentation.swift */,
 				5E5ADF962457A95300B558BF /* Core Data */,
 			);
 			path = Models;
@@ -124,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				E3E9AC962457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld */,
+				5E5ADF9E24587C2E00B558BF /* CoreDataStack.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -334,10 +343,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E5ADF9F24587C2E00B558BF /* CoreDataStack.swift in Sources */,
 				E3E9AC922457A3CA004EDC9C /* ViewController.swift in Sources */,
 				E3E9AC982457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld in Sources */,
 				E3E9AC8E2457A3CA004EDC9C /* AppDelegate.swift in Sources */,
 				E3E9AC902457A3CA004EDC9C /* SceneDelegate.swift in Sources */,
+				5E5ADF9D24587B8200B558BF /* StudentRepresentation.swift in Sources */,
+				5E5ADF9B24587AC200B558BF /* ProfessorRepresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
