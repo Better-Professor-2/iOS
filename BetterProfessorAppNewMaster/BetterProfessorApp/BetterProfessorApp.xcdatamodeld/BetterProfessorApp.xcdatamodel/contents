@@ -4,7 +4,7 @@
         <attribute name="dueDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
-        <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notification" inverseName="deadline" inverseEntity="Notification"/>
+        <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Notification" inverseName="deadline" inverseEntity="Notification"/>
         <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="deadlines" inverseEntity="Student"/>
     </entity>
     <entity name="Notification" representedClassName="Notification" syncable="YES" codeGenerationType="class">
@@ -19,7 +19,7 @@
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastName" attributeType="String"/>
         <attribute name="password" attributeType="String"/>
-        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="professor" inverseEntity="Student"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Student" inverseName="professor" inverseEntity="Student"/>
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="class">
         <attribute name="email" attributeType="String"/>
@@ -27,13 +27,13 @@
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastName" attributeType="String"/>
         <attribute name="phoneNumber" attributeType="String"/>
-        <relationship name="deadlines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Deadline" inverseName="student" inverseEntity="Deadline"/>
+        <relationship name="deadlines" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Deadline" inverseName="student" inverseEntity="Deadline"/>
         <relationship name="professor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Professor" inverseName="students" inverseEntity="Professor"/>
     </entity>
     <elements>
-        <element name="Deadline" positionX="-9" positionY="36" width="128" height="118"/>
-        <element name="Notification" positionX="-9" positionY="36" width="128" height="103"/>
-        <element name="Professor" positionX="0" positionY="45" width="128" height="133"/>
-        <element name="Student" positionX="18" positionY="63" width="128" height="148"/>
+        <element name="Deadline" positionX="321.046875" positionY="270.22265625" width="128" height="118"/>
+        <element name="Notification" positionX="487.20703125" positionY="423.42578125" width="128" height="103"/>
+        <element name="Professor" positionX="-41.73828125" positionY="-24.63671875" width="128" height="133"/>
+        <element name="Student" positionX="139.63671875" positionY="133.28515625" width="128" height="148"/>
     </elements>
 </model>

@@ -13,7 +13,22 @@ extension Student {
 
     //MARK: - Extended Properties -
     var studentRepresentation: StudentRepresentation = {
-
+        guard let id = id else { return nil }
+        if let phoneNumber = phoneNumber,
+            let deadlines = deadlines
+        var deadlineRepsArray: [DeadlineRepresentation]
+        
+        for deadline in deadlines {
+            append.deadlineRepsArray(deadline.DeadlineRepresentation)
+        }
+        
+        return StudentRepresentation(id: id,
+                                     firstName: firstName,
+                                     lastName: lastName,
+                                     email: email,
+                                     phoneNumber: phoneNumber,
+                                     professor: professor,
+                                     deadlines: deadlineRepsArray)
     }
 
 
@@ -22,9 +37,9 @@ extension Student {
                                         firstName: String,
                                         lastName: String,
                                         email: String,
-                                        phoneNumber: String? = nil,
-                                        professor: Professor = ,
-                                        deadlines: NSSet = ,
+                                        phoneNumber: String?,
+                                        professor: Professor,
+                                        deadlines: [Deadline] = [] ,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 
         self.init(context: context)
@@ -34,17 +49,22 @@ extension Student {
         self.email = email
         self.phoneNumber = phoneNumber
         self.professor = professor
-        self.deadlines = deadlines
+        self.deadlines = NSSet(array: deadlines)
     }
 
     @discardableResult convenience init?(representation: StudentRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let deadlines = deadlines else { return nil }
-
+        guard let id = representation.id else { return nil }
+        if let deadlines = representation.deadlines, phoneNumber = representation.phoneNumber
+        
+        
         self.init(context: context)
-        self.id = representation.id
+        self.id = id
         self.firstName = representation.firstName
-
-
+        self.lastName = representation.lastName
+        self.email = representation.email
+        self.phoneNumber = phoneNumber
+        self.professor = representation.professor
+        self.deadlines = NSSet(array: deadlines)
     }
 
 }

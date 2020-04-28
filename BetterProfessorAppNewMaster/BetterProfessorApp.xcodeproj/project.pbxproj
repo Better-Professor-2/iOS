@@ -175,8 +175,8 @@
 				E3E9AC962457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld */,
 				E3C76E82245883F100CF3944 /* CoreDataStack.swift */,
 				E3C76E842458843300CF3944 /* Professor+Convenience.swift */,
-				E3C76E862458846300CF3944 /* ProfessorRepresentation.swift */,
 				E3C76E882458849400CF3944 /* Student+Convenience.swift */,
+				E3C76E862458846300CF3944 /* ProfessorRepresentation.swift */,
 				E3C76E8A245884C300CF3944 /* StudentRepresentation.swift */,
 			);
 			path = BetterProfessorApp;
