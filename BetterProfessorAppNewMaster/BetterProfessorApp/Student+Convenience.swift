@@ -15,18 +15,18 @@ extension Student {
     var studentRepresentation: StudentRepresentation = {
         var deadlineRepsArray: [DeadlineRepresentation]
         if let phoneNumber = phoneNumber {
-        
-        for deadline in deadlines {
-            append.deadlineRepsArray(deadline.DeadlineRepresentation)
-        }
-        
-        return StudentRepresentation(id: id,
-                                     firstName: firstName,
-                                     lastName: lastName,
-                                     email: email,
-                                     phoneNumber: phoneNumber,
-                                     professor: professor,
-                                     deadlines: deadlineRepsArray)
+            
+            for deadline in deadlines {
+                append.deadlineRepsArray(deadline.DeadlineRepresentation)
+            }
+            
+            return StudentRepresentation(id: id,
+                                         firstName: firstName,
+                                         lastName: lastName,
+                                         email: email,
+                                         phoneNumber: phoneNumber,
+                                         professor: professor,
+                                         deadlines: deadlineRepsArray)
         }
     }
 
