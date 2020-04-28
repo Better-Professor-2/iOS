@@ -17,7 +17,7 @@
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="lastName"/>
+        <attribute name="lastName" attributeType="String"/>
         <attribute name="password" attributeType="String"/>
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="professor" inverseEntity="Student"/>
     </entity>
