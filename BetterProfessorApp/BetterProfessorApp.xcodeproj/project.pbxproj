@@ -15,7 +15,6 @@
 		E3E9AC8E2457A3CA004EDC9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */; };
 		E3E9AC902457A3CA004EDC9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */; };
 		E3E9AC922457A3CA004EDC9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC912457A3CA004EDC9C /* ViewController.swift */; };
-		E3E9AC952457A3CA004EDC9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E9AC932457A3CA004EDC9C /* Main.storyboard */; };
 		E3E9AC982457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC962457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld */; };
 		E3E9AC9A2457A3D0004EDC9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E9AC992457A3D0004EDC9C /* Assets.xcassets */; };
 		E3E9AC9D2457A3D0004EDC9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E9AC9B2457A3D0004EDC9C /* LaunchScreen.storyboard */; };
@@ -50,7 +49,6 @@
 		E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E3E9AC912457A3CA004EDC9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E3E9AC942457A3CA004EDC9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3E9AC972457A3CA004EDC9C /* BetterProfessorApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BetterProfessorApp.xcdatamodel; sourceTree = "<group>"; };
 		E3E9AC992457A3D0004EDC9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3E9AC9C2457A3D0004EDC9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 		5E5ADF932457A92500B558BF /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				E3E9AC932457A3CA004EDC9C /* Main.storyboard */,
 				E3E9AC9B2457A3D0004EDC9C /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -324,7 +321,6 @@
 			files = (
 				E3E9AC9D2457A3D0004EDC9C /* LaunchScreen.storyboard in Resources */,
 				E3E9AC9A2457A3D0004EDC9C /* Assets.xcassets in Resources */,
-				E3E9AC952457A3CA004EDC9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,14 +389,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E3E9AC932457A3CA004EDC9C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3E9AC942457A3CA004EDC9C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E3E9AC9B2457A3D0004EDC9C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
