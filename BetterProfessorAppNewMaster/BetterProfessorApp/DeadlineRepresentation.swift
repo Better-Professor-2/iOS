@@ -11,7 +11,7 @@ import Foundation
 class DeadlineRepresentation: Codable {
     //MARK: - Enums and Type Aliases -
     enum CodingKeys: String, CodingKey {
-        case name, id, studentID
+        case name, id, studentID, notifications
         case notes = "description"
         case dueDate = "due_date"
     }
@@ -21,7 +21,8 @@ class DeadlineRepresentation: Codable {
     let id: Int64
     let name: String
     var dueDate: Date
-    var notes: String
+    var notes: String?
     let studentID: Int64
+    var notifications: [NotificationRepresentation]
     
 }

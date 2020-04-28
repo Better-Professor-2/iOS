@@ -13,7 +13,6 @@ extension Professor {
     
     //MARK: - Extended Properties -
     var professorRepresentation: ProfessorRepresentation? = {
-        guard let id = id else { return nil }
         var studentRepsArray: [StudentRepresentation] = []
 
         for student in students {
@@ -47,9 +46,8 @@ extension Professor {
         self.students = NSSet(array: students)
     }
 
-    @discardableResult convenience init?(representation: ProfessorRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let id = representation.id, let students = representation.students else { return nil }
-
+    @discardableResult convenience init?(representation: ProfessorRepresentation,
+                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 
         self.init(context: context)
         self.id = representation.id
@@ -57,6 +55,6 @@ extension Professor {
         self.password = representation.password
         self.firstName = representation.firstName
         self.lastName = representation.lastName
-        self.students = NSSet(array: [students])
+        self.students = NSSet(array: [representation.students])
     }
 }

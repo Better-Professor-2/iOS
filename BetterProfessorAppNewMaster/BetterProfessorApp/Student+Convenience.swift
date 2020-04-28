@@ -13,9 +13,8 @@ extension Student {
 
     //MARK: - Extended Properties -
     var studentRepresentation: StudentRepresentation = {
-        guard let id = id, let phoneNumber = phoneNumber else { return nil }
-        
         var deadlineRepsArray: [DeadlineRepresentation]
+        if let phoneNumber = phoneNumber {
         
         for deadline in deadlines {
             append.deadlineRepsArray(deadline.DeadlineRepresentation)
@@ -28,6 +27,7 @@ extension Student {
                                      phoneNumber: phoneNumber,
                                      professor: professor,
                                      deadlines: deadlineRepsArray)
+        }
     }
 
 
@@ -36,7 +36,7 @@ extension Student {
                                         firstName: String,
                                         lastName: String,
                                         email: String,
-                                        phoneNumber: String?,
+                                        phoneNumber: String? = "",
                                         professor: Professor,
                                         deadlines: [Deadline] = [] ,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
@@ -53,19 +53,18 @@ extension Student {
     }
 
     @discardableResult convenience init?(representation: StudentRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        
-        guard let id = representation.id, let deadlines = representation.deadlines else { return }
             
-        
+        if let phoneNumber = phoneNumber {
         self.init(context: context)
-        self.id = id
+        self.id = representation.id
         self.firstName = representation.firstName
         self.lastName = representation.lastName
         self.email = representation.email
-        self.phoneNumber = representation.phoneNumber?
+        self.phoneNumber = representation.phoneNumber
         self.professor = representation.professor
         self.professorID = representation.professor.id
-        self.deadlines = NSSet(array: deadlines)
+        self.deadlines = NSSet(array: representation.deadlines)
+        }
     }
 
 }
