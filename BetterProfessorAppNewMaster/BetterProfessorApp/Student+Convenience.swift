@@ -13,9 +13,8 @@ extension Student {
 
     //MARK: - Extended Properties -
     var studentRepresentation: StudentRepresentation = {
-        guard let id = id else { return nil }
-        if let phoneNumber = phoneNumber,
-            let deadlines = deadlines
+        guard let id = id, let phoneNumber = phoneNumber else { return nil }
+        
         var deadlineRepsArray: [DeadlineRepresentation]
         
         for deadline in deadlines {
@@ -49,21 +48,23 @@ extension Student {
         self.email = email
         self.phoneNumber = phoneNumber
         self.professor = professor
+        self.professorID = professor.id
         self.deadlines = NSSet(array: deadlines)
     }
 
     @discardableResult convenience init?(representation: StudentRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let id = representation.id else { return nil }
-        if let deadlines = representation.deadlines, phoneNumber = representation.phoneNumber
         
+        guard let id = representation.id, let deadlines = representation.deadlines else { return }
+            
         
         self.init(context: context)
         self.id = id
         self.firstName = representation.firstName
         self.lastName = representation.lastName
         self.email = representation.email
-        self.phoneNumber = phoneNumber
+        self.phoneNumber = representation.phoneNumber?
         self.professor = representation.professor
+        self.professorID = representation.professor.id
         self.deadlines = NSSet(array: deadlines)
     }
 

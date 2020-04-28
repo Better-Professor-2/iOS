@@ -15,6 +15,7 @@ class StudentRepresentation: Codable {
     //MARK: - Enums and Type Aliases -
     enum CodingKeys: String, CodingKey {
         case id, professorID
+        case deadlines
         case professor
         case email
         case firstName = "first_name"
@@ -30,4 +31,5 @@ class StudentRepresentation: Codable {
     let phoneNumber: String?
     let professor: ProfessorRepresentation
     let professorID: Int64
+    let deadlines: [DeadlineRepresentation]
 }

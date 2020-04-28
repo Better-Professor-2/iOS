@@ -8,17 +8,20 @@
 
 import Foundation
 
-class DeadlineRepresentation {
+class DeadlineRepresentation: Codable {
     //MARK: - Enums and Type Aliases -
     enum CodingKeys: String, CodingKey {
-        case name
+        case name, id, studentID
         case notes = "description"
         case dueDate = "due_date"
     }
     
     
     //MARK: - Properties -
-    var name: String
+    let id: Int64
+    let name: String
     var dueDate: Date
     var notes: String
+    let studentID: Int64
+    
 }
