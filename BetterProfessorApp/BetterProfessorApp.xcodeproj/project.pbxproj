@@ -78,6 +78,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E5ADF912457A8EE00B558BF /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */,
+				E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		5E5ADF922457A90D00B558BF /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E3E9AC912457A3CA004EDC9C /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5E5ADF932457A92500B558BF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E3E9AC932457A3CA004EDC9C /* Main.storyboard */,
+				E3E9AC9B2457A3D0004EDC9C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5E5ADF942457A93100B558BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ADF932457A92500B558BF /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5E5ADF952457A94300B558BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ADF962457A95300B558BF /* Core Data */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5E5ADF962457A95300B558BF /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				E3E9AC962457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		5E5ADF972457A99000B558BF /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		5E5ADF982457A99C00B558BF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5E5ADF992457A9CA00B558BF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E3E9AC992457A3D0004EDC9C /* Assets.xcassets */,
+				E3E9AC9E2457A3D0004EDC9C /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		E3E9AC812457A3C9004EDC9C = {
 			isa = PBXGroup;
 			children = (
@@ -101,14 +174,13 @@
 		E3E9AC8C2457A3CA004EDC9C /* BetterProfessorApp */ = {
 			isa = PBXGroup;
 			children = (
-				E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */,
-				E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */,
-				E3E9AC912457A3CA004EDC9C /* ViewController.swift */,
-				E3E9AC932457A3CA004EDC9C /* Main.storyboard */,
-				E3E9AC992457A3D0004EDC9C /* Assets.xcassets */,
-				E3E9AC9B2457A3D0004EDC9C /* LaunchScreen.storyboard */,
-				E3E9AC9E2457A3D0004EDC9C /* Info.plist */,
-				E3E9AC962457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld */,
+				5E5ADF952457A94300B558BF /* Models */,
+				5E5ADF972457A99000B558BF /* Model Controllers */,
+				5E5ADF982457A99C00B558BF /* Services */,
+				5E5ADF942457A93100B558BF /* Views */,
+				5E5ADF922457A90D00B558BF /* View Controllers */,
+				5E5ADF912457A8EE00B558BF /* Delegates */,
+				5E5ADF992457A9CA00B558BF /* Resources */,
 			);
 			path = BetterProfessorApp;
 			sourceTree = "<group>";
