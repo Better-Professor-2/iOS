@@ -12,7 +12,7 @@ import CoreData
 extension Professor {
     
     //MARK: - Extended Properties -
-    var professorRepresentation: ProfessorRepresentation? = {
+    var professorRepresentation: ProfessorRepresentation? {
         var studentRepsArray: [StudentRepresentation] = []
 
         for student in students {

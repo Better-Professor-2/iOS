@@ -12,7 +12,7 @@ import CoreData
 extension Deadline {
     
     //MARK: - Extended Properties -
-    var deadlineRepresentation: DeadlineRepresentation = {
+    var deadlineRepresentation: DeadlineRepresentation? {
         var notificationsRepsArray: [NotificationRepresentation]
         if let notes = notes {
             for notification in notifications {

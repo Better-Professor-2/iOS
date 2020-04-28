@@ -12,7 +12,7 @@ import CoreData
 extension Student {
 
     //MARK: - Extended Properties -
-    var studentRepresentation: StudentRepresentation = {
+    var studentRepresentation: StudentRepresentation? {
         var deadlineRepsArray: [DeadlineRepresentation]
         if let phoneNumber = phoneNumber {
             
