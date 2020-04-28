@@ -8,4 +8,17 @@
 
 import Foundation
 
-class 
+class DeadlineRepresentation {
+    //MARK: - Enums and Type Aliases -
+    enum CodingKeys: String, CodingKey {
+        case name
+        case notes = "description"
+        case dueDate = "due_date"
+    }
+    
+    
+    //MARK: - Properties -
+    var name: String
+    var dueDate: Date
+    var notes: String
+}
