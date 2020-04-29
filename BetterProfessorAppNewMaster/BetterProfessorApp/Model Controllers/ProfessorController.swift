@@ -24,16 +24,19 @@ class ProfessorController {
                 return fetchedProfessors.first
             }
         } catch {
-            NSLog("Error - Failed to fetch professor objects from core data: \(error) \(error.localizedDescription).")
+            NSLog("Error - Failed to fetch professor objects from core data: \(error) \(error.localizedDescription)")
         }
     }
     
     func updateProfessor(professor: Professor, representation: ProfessorRepresentation) {
         ///call this function to change user info or update students from a new server-side representation.
+        guard let professor.id == representation.id else { return }
         
         professor.email = representation.email
         professor.password = representation.password
         professor.students = NSSet(array: representation.students)
+        
+        CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
         
     }
     
@@ -42,7 +45,7 @@ class ProfessorController {
         let moc = CoreDataStack.shared.mainContext
         
         do {
-            try moc.delete(professor)
+            try moc.delete(fetchProfessor(id: professor.id)!)
         } catch {
             NSLog("Error - Could not delete professor, \(professor): \(error) \(error.localizedDescription)")
         }

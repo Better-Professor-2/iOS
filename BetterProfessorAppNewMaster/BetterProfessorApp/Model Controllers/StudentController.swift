@@ -12,21 +12,46 @@ import CoreData
 class StudentController {
     //MARK: - Core Data Functions -
     // Use these functions in the app to handle background logic on the Student model object
-    
-    func createStudent() {
+    func createStudent(for professor: Professor, firstName: String, lastName: String, email: String, phoneNumber: String?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
+        professor.addToStudents(Student(id: Int64.random(in: 256...512), firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, professor: professor, deadlines: [], context: context))
     }
     
-    func fetchStudent() {
+    func fetchStudent(context: NSManagedObjectContext = CoreDataStack.shared.mainContext, id: Int64) -> Student? {
         
+        let currentContext = context
+        let studentFetch: NSFetchRequest<NSFetchRequestResult> = Student.fetchRequest()
+        studentFetch.predicate = NSPredicate(format: "id == %d", id)
+        do{
+            let fetchedStudents = try currentContext.fetch(studentFetch) as? [Student]
+            if let fetchedStudents = fetchedStudents {
+                return fetchedStudents.first
+            }
+        } catch {
+            NSLog("Error - Failed to fetch student objects from core data: \(error) \(error.localizedDescription)")
+        }
     }
     
-    func updateStudent() {
+    
+    func updateStudent(student: Student, representation: StudentRepresentation) {
+        guard case let student.id == representation.id else { return }
         
+        student.email = representation.email
+        student.phoneNumber = representation.phoneNumber
+        student.deadlines = NSSet(array: representation.deadlines)
+        
+        CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
     }
     
-    func deleteStudent() {
-        
+    func deleteStudent(student: Student) {
+        let moc = CoreDataStack.shared.mainContext
+            
+            do {
+                try moc.delete(fetchStudent(id: student.id)!)
+            } catch {
+                NSLog("Error - Could not delete student, \(student): \(error) \(error.localizedDescription)")
+            }
+        }
     }
 }
 
