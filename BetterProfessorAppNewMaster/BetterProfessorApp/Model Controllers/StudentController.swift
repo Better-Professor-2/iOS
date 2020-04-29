@@ -34,24 +34,27 @@ class StudentController {
     
     
     func updateStudent(student: Student, representation: StudentRepresentation) {
-        guard case let student.id == representation.id else { return }
+        if student.id == representation.id  {
         
         student.email = representation.email
         student.phoneNumber = representation.phoneNumber
         student.deadlines = NSSet(array: representation.deadlines)
-        
+        }
         CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
     }
     
     func deleteStudent(student: Student) {
         let moc = CoreDataStack.shared.mainContext
-            
-            do {
-                try moc.delete(fetchStudent(id: student.id)!)
-            } catch {
-                NSLog("Error - Could not delete student, \(student): \(error) \(error.localizedDescription)")
-            }
+        
+        guard let studentToDelete = fetchStudent(id: student.id) else { return }
+        
+        do {
+            moc.delete(studentToDelete)
+            try moc.save()
+        } catch {
+            NSLog("Error - Could not delete student, " + String(describing: student.firstName) + " " + String(describing: student.lastName) + " \(error) \(error.localizedDescription)")
         }
     }
 }
+
 

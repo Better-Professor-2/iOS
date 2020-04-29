@@ -30,22 +30,24 @@ class ProfessorController {
     
     func updateProfessor(professor: Professor, representation: ProfessorRepresentation) {
         ///call this function to change user info or update students from a new server-side representation.
-        guard let professor.id == representation.id else { return }
-        
-        professor.email = representation.email
-        professor.password = representation.password
-        professor.students = NSSet(array: representation.students)
-        
+        if professor.id == representation.id {
+            
+            professor.email = representation.email
+            professor.password = representation.password
+            professor.students = NSSet(array: representation.students)
+        }
         CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
-        
     }
     
     func deleteProfessor(professor: Professor) {
         /// call this function at log out to clear core data for a different professor user.
         let moc = CoreDataStack.shared.mainContext
         
+        guard let professorToDelete = fetchProfessor(id: professor.id) else { return }
+        
         do {
-            try moc.delete(fetchProfessor(id: professor.id)!)
+            moc.delete(professorToDelete)
+            try moc.save()
         } catch {
             NSLog("Error - Could not delete professor, \(professor): \(error) \(error.localizedDescription)")
         }
