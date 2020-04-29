@@ -10,20 +10,18 @@ import Foundation
 import CoreData
 
 extension Professor {
-    //MARK: - Extended Properties -
-    var professorRepresentation: ProfessorRepresentation? = {
+    // MARK: - Extended Properties -
+    var professorRepresentation: ProfessorRepresentation?  {
         guard let students = students else {return nil}
         var studentRepsArray: [StudentRepresentation] = []
 
-        for student in students {
-            append.studentRepsArray(student.studentRepresentation)
-        }
+        
 
         return ProfessorRepresentation(id: id,
-                                       email: email,
-                                       password: password,
-                                       firstName: firstName,
-                                       lastName: lastName,
+                                       email: email ?? "",
+                                       password: password ?? "",
+                                       firstName: firstName ?? "",
+                                       lastName: lastName ?? "",
                                        students: studentRepsArray)
 
     }
@@ -47,10 +45,11 @@ extension Professor {
     }
 
     @discardableResult convenience init?(representation: ProfessorRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let students = students else { return nil }
-
+       
 
         self.init(context: context)
+        guard let students = students else { return nil }
+
         self.id = representation.id
         self.email = representation.email
         self.password = representation.password

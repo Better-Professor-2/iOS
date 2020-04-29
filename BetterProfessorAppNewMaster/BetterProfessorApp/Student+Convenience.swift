@@ -11,20 +11,17 @@ import CoreData
 
 extension Student {
 
-    //MARK: - Extended Properties -
-    var studentRepresentation: StudentRepresentation = {
-
-    }
-
+   
 
     //MARK: - Initializers -
-    @discardableResult convenience init(id: Int64,
+        @discardableResult convenience init(
+        id: Int64,
                                         firstName: String,
                                         lastName: String,
                                         email: String,
-                                        phoneNumber: String? = nil,
-                                        professor: Professor = ,
-                                        deadlines: NSSet = ,
+                                        phoneNumber: String?,
+                                        professor: Professor?,
+                                        deadlines: NSSet?,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 
         self.init(context: context)
@@ -37,8 +34,8 @@ extension Student {
         self.deadlines = deadlines
     }
 
-    @discardableResult convenience init?(representation: StudentRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let deadlines = deadlines else { return nil }
+    @discardableResult convenience init? (representation: StudentRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+       
 
         self.init(context: context)
         self.id = representation.id
@@ -48,3 +45,4 @@ extension Student {
     }
 
 }
+

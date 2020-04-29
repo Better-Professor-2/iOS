@@ -167,24 +167,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gYQ-cC-4dj">
-                                <rect key="frame" x="16" y="20" width="343" height="531"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gYQ-cC-4dj">
+                                <rect key="frame" x="0.0" y="20" width="375" height="531"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="F2O-Rh-GvK">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F2O-Rh-GvK" id="Lpp-ZC-gJ3">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veX-EZ-XRc">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veX-EZ-XRc">
                                 <rect key="frame" x="99" y="559" width="176" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Add Reminder">
@@ -196,13 +194,19 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gYQ-cC-4dj" firstAttribute="leading" secondItem="KFf-eD-wqX" secondAttribute="leading" id="I5c-6o-N1p"/>
+                            <constraint firstItem="veX-EZ-XRc" firstAttribute="top" secondItem="gYQ-cC-4dj" secondAttribute="bottom" constant="10" id="akS-HZ-XPt"/>
+                            <constraint firstItem="KFf-eD-wqX" firstAttribute="trailing" secondItem="gYQ-cC-4dj" secondAttribute="trailing" id="sb3-Ab-1Ua"/>
+                            <constraint firstItem="gYQ-cC-4dj" firstAttribute="top" secondItem="KFf-eD-wqX" secondAttribute="top" id="swg-eH-LF7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KFf-eD-wqX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Reminders" image="calendar" catalog="system" id="D4I-6w-RIV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gH3-l9-z9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="2839"/>
+            <point key="canvasLocation" x="1529" y="2636"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="RmM-Zb-OyG">
@@ -218,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWz-OC-ugB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3073" y="2839"/>
+            <point key="canvasLocation" x="2361" y="2635"/>
         </scene>
         <!--My Students-->
         <scene sceneID="H5H-xP-uGh">
@@ -274,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYw-R0-kM1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2176.8000000000002" y="2002.8485757121441"/>
+            <point key="canvasLocation" x="1529" y="1919"/>
         </scene>
         <!--My Projects-->
         <scene sceneID="Gg1-Gg-VWa">
@@ -290,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6x-OY-Apd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="1299"/>
+            <point key="canvasLocation" x="1529" y="1208"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SyP-0N-bXO">
