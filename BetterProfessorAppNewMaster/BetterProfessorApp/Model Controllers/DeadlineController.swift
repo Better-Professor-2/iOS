@@ -13,8 +13,9 @@ class DeadlineController {
     //MARK: - Core Data Functions -
     // Use these functions in the app to handle background logic on the Deadline model object
     
-    func createDeadline() {
+    func createDeadline(for student: Student, name: String, dueDate: Date, notes: String?, notifications: [Notification] = [], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
+        student.addToDeadlines(Deadline(id: Int64.random(in: 1024...2048), name: name, dueDate: dueDate, notes: notes ?? "", studentID: student.id, student: student, notifications: notifications, context: context))
     }
     
     func fetchDeadline() {
