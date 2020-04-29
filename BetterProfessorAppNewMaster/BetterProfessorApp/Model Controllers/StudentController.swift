@@ -8,26 +8,25 @@
 
 import Foundation
 import CoreData
-//MARK: - Core Data Functions -
-// Use these functions in the app to handle background logic on the Student Model object
 
-func createStudent() {
+class StudentController {
+    //MARK: - Core Data Functions -
+    // Use these functions in the app to handle background logic on the Student model object
     
-}
-
-func fetchStudent() {
+    func createStudent() {
+        
+    }
     
-}
-
-func updateStudent() {
+    func fetchStudent() {
+        
+    }
     
-}
-
-func saveStudent() {
+    func updateStudent() {
+        
+    }
     
-}
-
-func deleteStudent() {
-    
+    func deleteStudent() {
+        
+    }
 }
 

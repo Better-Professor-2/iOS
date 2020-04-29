@@ -8,25 +8,24 @@
 
 import Foundation
 import CoreData
-//MARK: - Core Data Functions -
-// Use these functions in the app to handle background logic on the Notification Model object
 
-func createNotification() {
+class NotificationController {
+    //MARK: - Core Data Functions -
+    // Use these functions in the app to handle background logic on the Notification model object
     
-}
-
-func fetchNotification() {
+    func createNotification() {
+        
+    }
     
-}
-
-func updateNotification() {
+    func fetchNotification() {
+        
+    }
     
-}
-
-func saveNotification() {
+    func updateNotification() {
+        
+    }
     
-}
-
-func deleteNotification() {
-    
+    func deleteNotification() {
+        
+    }
 }

@@ -10,21 +10,37 @@ import Foundation
 import CoreData
 
 class ProfessorController {
-    //MARK: - Properties -
-    // Fetched Results Controller - This will handle core data fetches for Professor model objects.
+    //MARK: - Type Aliases and Enums -
+    enum HTTPMethod: String {
+        case get = "GET"
+        case post = "POST"
+        case put = "PUT"
+        case delete = "DELETE"
+    }
     
+    enum NetworkError: Error {
+        case noProfessor
+        case otherError
+        case noData
+        case noDecode
+        case noEncode
+    }
     
+    typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
     
     
     //MARK: - Core Data Functions -
-    // Use these functions in the app to handle background logic on the Professor Model object
+    /// Use these functions in the app to handle background logic on the Professor Model object
     
-    func createProfessor() {
-        
-    }
-    
-    func fetchProfessor() {
-        
+    func fetchProfessor(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        /// this function will fetch a Professor model object from core data using it's professorID
+        let currentContext = context
+        let professorFetch: NSFetchRequest<NSFetchRequestResult> = Professor.fetchRequest()
+        do {
+            let fetchedProfessors = try currentContext.fetch(professorFetch) as? [Professor]
+        } catch {
+            NSLog("Error - Failed to fetch professor objects from core data: \(error) \(error.localizedDescription).")
+        }
     }
     
     func updateProfessor(professor: Professor, representation: ProfessorRepresentation) {
@@ -36,11 +52,14 @@ class ProfessorController {
         
     }
     
-    func saveProfessor() {
+    func deleteProfessor(professor: Professor) {
+        /// call this function at log out to clear core data for a different professor user.
+        let moc = CoreDataStack.shared.mainContext
         
-    }
-    
-    func deleteProfessor() {
-        
+        do {
+            try moc.delete(professor)
+        } catch {
+            NSLog("Error - Could not delete professor, \(professor): \(error) \(error.localizedDescription)")
+        }
     }
 }

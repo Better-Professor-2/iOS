@@ -8,25 +8,24 @@
 
 import Foundation
 import CoreData
-//MARK: - Core Data Functions -
-// Use these functions in the app to handle background logic on the Deadline Model object
 
-func createDeadline() {
+class DeadlineController {
+    //MARK: - Core Data Functions -
+    // Use these functions in the app to handle background logic on the Deadline model object
     
-}
-
-func fetchDeadline() {
+    func createDeadline() {
+        
+    }
     
-}
-
-func updateDeadline() {
+    func fetchDeadline() {
+        
+    }
     
-}
-
-func saveDeadline() {
+    func updateDeadline() {
+        
+    }
     
-}
-
-func deleteDeadline() {
-    
+    func deleteDeadline() {
+        
+    }
 }
