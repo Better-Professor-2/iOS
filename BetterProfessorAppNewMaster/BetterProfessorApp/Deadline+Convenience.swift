@@ -13,19 +13,22 @@ extension Deadline {
     
     //MARK: - Extended Properties -
     var deadlineRepresentation: DeadlineRepresentation? {
+        guard let name = name, let notes = notes, let dueDate = dueDate, let notifications = notifications else { return nil }
         var notificationsRepsArray: [NotificationRepresentation]
-        if let notes = notes {
-            for notification in notifications {
-                notificationsRepsArray.append(notification.notificationRepresentation)
+        
+        
+        for case let notification as Notification in notifications {
+            
+            notificationsRepsArray.append(notification.notificationRepresentation)
             }
             return DeadlineRepresentation(id: id,
                                           name: name,
                                           dueDate: dueDate,
                                           notes: notes,
-                                          student: student,
+                                          studentID: studentID,
                                           notifications: notificationsRepsArray)
             
-        }
+        
     }
     
     //MARK: - Initializers -
@@ -55,7 +58,7 @@ extension Deadline {
             self.name = representation.name
             self.notes = notes
             self.studentID = representation.studentID
-            self.student = representation.student
+            self.student = //fetch deadlines for studentID from coredata
             self.notifications = NSSet(array: representation.notifications)
             
         }

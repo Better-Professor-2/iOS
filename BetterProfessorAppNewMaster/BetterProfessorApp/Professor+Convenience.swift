@@ -13,10 +13,12 @@ extension Professor {
     
     //MARK: - Extended Properties -
     var professorRepresentation: ProfessorRepresentation? {
+        guard let password = password, let firstName = firstName, let lastName = lastName, let email = email, let students = students else { return nil }
         var studentRepsArray: [StudentRepresentation] = []
-
-        for student in students {
-            append.studentRepsArray(student.studentRepresentation)
+        
+        for case let student as Student in students {
+            guard let studentRep = student.studentRepresentation else { return nil }
+            studentRepsArray.append(studentRep)
         }
 
         return ProfessorRepresentation(id: id,
@@ -35,7 +37,7 @@ extension Professor {
                                         password: String,
                                         firstName: String,
                                         lastName: String,
-                                        students: [Student] = [],
+                                        students: [Student],
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.id = id

@@ -9,4 +9,14 @@
 import Foundation
 import CoreData
 
+func createProfessor() {
+    
+}
 
+func updateProfessor() {
+    
+}
+
+func deleteProfessor() {
+    
+}

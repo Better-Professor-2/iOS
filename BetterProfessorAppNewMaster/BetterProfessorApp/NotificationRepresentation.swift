@@ -8,10 +8,10 @@
 
 import Foundation
 
-class NotificationRepresentation: Codable {
+struct NotificationRepresentation: Codable {
     //MARK: - Enums and Type Aliases -
     enum CodingKeys: String, CodingKey {
-        case id, message
+        case id, message, deadlineID
         case notifyTime = "notify_time"
     }
     

@@ -13,7 +13,7 @@ extension Notification {
     
     //MARK: - Extended Properties -
     
-    var notificationRepresentation: NotificationRepresentation = {
+    var notificationRepresentation: NotificationRepresentation {
         
         return NotificationRepresentation(id: id,
                                           message: message,

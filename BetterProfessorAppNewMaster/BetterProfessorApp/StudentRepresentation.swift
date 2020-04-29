@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class StudentRepresentation: Codable {
+struct StudentRepresentation: Codable {
 
     //MARK: - Enums and Type Aliases -
     enum CodingKeys: String, CodingKey {

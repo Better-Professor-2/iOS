@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DeadlineRepresentation: Codable {
+struct DeadlineRepresentation: Codable {
     //MARK: - Enums and Type Aliases -
     enum CodingKeys: String, CodingKey {
         case name, id, studentID, notifications
