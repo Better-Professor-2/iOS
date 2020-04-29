@@ -16,7 +16,6 @@ struct DeadlineRepresentation: Codable {
         case dueDate = "due_date"
     }
     
-    
     //MARK: - Properties -
     let id: Int64
     let name: String
@@ -24,5 +23,4 @@ struct DeadlineRepresentation: Codable {
     var notes: String?
     let studentID: Int64
     var notifications: [NotificationRepresentation]
-    
 }

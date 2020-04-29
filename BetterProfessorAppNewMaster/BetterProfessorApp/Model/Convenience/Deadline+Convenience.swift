@@ -12,26 +12,30 @@ import CoreData
 extension Deadline {
     
     //MARK: - Extended Properties -
+    /// Use dot syntax to call a codable representation of a model object
     var deadlineRepresentation: DeadlineRepresentation? {
-        guard let name = name, let notes = notes, let dueDate = dueDate, let notifications = notifications else { return nil }
-        var notificationsRepsArray: [NotificationRepresentation]
+        guard let name = name,
+            let notes = notes,
+            let dueDate = dueDate,
+            let notifications = notifications else { return nil }
         
+        var notificationsRepsArray: [NotificationRepresentation]
         
         for case let notification as Notification in notifications {
             
             notificationsRepsArray.append(notification.notificationRepresentation)
-            }
-            return DeadlineRepresentation(id: id,
-                                          name: name,
-                                          dueDate: dueDate,
-                                          notes: notes,
-                                          studentID: studentID,
-                                          notifications: notificationsRepsArray)
-            
-        
+        }
+        return DeadlineRepresentation(id: id,
+                                      name: name,
+                                      dueDate: dueDate,
+                                      notes: notes,
+                                      studentID: studentID,
+                                      notifications: notificationsRepsArray
     }
     
+    
     //MARK: - Initializers -
+    /// Use these convenience initializers to move Model objects between CoreData and the network API
     @discardableResult convenience init(id: Int64,
                                         name: String,
                                         dueDate: Date,
@@ -62,6 +66,5 @@ extension Deadline {
             self.notifications = NSSet(array: representation.notifications)
             
         }
-        
     }
 }

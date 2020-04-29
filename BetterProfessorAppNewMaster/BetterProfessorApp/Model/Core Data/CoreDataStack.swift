@@ -2,7 +2,7 @@
 //  CoreDataStack.swift
 //  BetterProfessorApp
 //
-//  Created by Lambda_School_Loaner_268 on 4/28/20.
+//  Created by Cody Morley on 4/28/20.
 //  Copyright © 2020 Lambda. All rights reserved.
 //
 
@@ -25,5 +25,4 @@ class CoreDataStack {
         return container.viewContext
     }
 }
-
 

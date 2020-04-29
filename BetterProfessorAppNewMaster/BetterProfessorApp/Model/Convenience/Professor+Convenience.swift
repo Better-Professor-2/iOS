@@ -2,7 +2,7 @@
 //  Professor+Convenience.swift
 //  BetterProfessorApp
 //
-//  Created by Lambda_School_Loaner_268 on 4/28/20.
+//  Created by Cody Morley on 4/28/20.
 //  Copyright © 2020 Lambda. All rights reserved.
 //
 
@@ -12,8 +12,14 @@ import CoreData
 extension Professor {
     
     //MARK: - Extended Properties -
+    /// Use dot syntax to call a codable representation of a model object
     var professorRepresentation: ProfessorRepresentation? {
-        guard let password = password, let firstName = firstName, let lastName = lastName, let email = email, let students = students else { return nil }
+        guard let password = password,
+            let firstName = firstName,
+            let lastName = lastName,
+            let email = email,
+            let students = students else { return nil }
+        
         var studentRepsArray: [StudentRepresentation] = []
         
         for case let student as Student in students {
@@ -32,6 +38,7 @@ extension Professor {
 
 
     //MARK: - Initializers -
+    /// Use these convenience initializers to move Model objects between CoreData and the network API
     @discardableResult convenience init(id: Int64,
                                         email: String,
                                         password: String,

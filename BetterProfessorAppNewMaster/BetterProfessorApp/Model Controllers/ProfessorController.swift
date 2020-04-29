@@ -8,12 +8,22 @@
 
 import Foundation
 import CoreData
+//MARK: - Core Data Functions -
+// Use these functions in the app to handle background logic on the Professor Model object
 
 func createProfessor() {
     
 }
 
+func fetchProfessor() {
+    
+}
+
 func updateProfessor() {
+    
+}
+
+func saveProfessor() {
     
 }
 

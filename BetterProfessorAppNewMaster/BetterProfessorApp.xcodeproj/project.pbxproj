@@ -12,6 +12,9 @@
 		5E5ADFA92458C51800B558BF /* Deadline+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5ADFA82458C51800B558BF /* Deadline+Convenience.swift */; };
 		5E5ADFAB2458D25800B558BF /* Notification+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5ADFAA2458D25800B558BF /* Notification+Convenience.swift */; };
 		5E5ADFAD2458F10B00B558BF /* ProfessorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5ADFAC2458F10A00B558BF /* ProfessorController.swift */; };
+		5E7FF5962459377200731F03 /* StudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7FF5952459377200731F03 /* StudentController.swift */; };
+		5E7FF5982459384700731F03 /* DeadlineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7FF5972459384700731F03 /* DeadlineController.swift */; };
+		5E7FF59A245938A800731F03 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7FF599245938A800731F03 /* NotificationController.swift */; };
 		B501B42825B7C8B066957961 /* Pods_BetterProfessorApp_BetterProfessorAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55A5048C2DCE2A0F6D4A4C6 /* Pods_BetterProfessorApp_BetterProfessorAppUITests.framework */; };
 		DE7E4E2FC3E8874804A18A6F /* Pods_BetterProfessorAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AE48BFB44DB87F21DC3BA1 /* Pods_BetterProfessorAppTests.framework */; };
 		E3C76E7E2457D35D00CF3944 /* LogInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E7D2457D35D00CF3944 /* LogInSignUpViewController.swift */; };
@@ -59,6 +62,9 @@
 		5E5ADFA82458C51800B558BF /* Deadline+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deadline+Convenience.swift"; sourceTree = "<group>"; };
 		5E5ADFAA2458D25800B558BF /* Notification+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Convenience.swift"; sourceTree = "<group>"; };
 		5E5ADFAC2458F10A00B558BF /* ProfessorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorController.swift; sourceTree = "<group>"; };
+		5E7FF5952459377200731F03 /* StudentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentController.swift; sourceTree = "<group>"; };
+		5E7FF5972459384700731F03 /* DeadlineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineController.swift; sourceTree = "<group>"; };
+		5E7FF599245938A800731F03 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C3BEC36396EB9226D1606040 /* Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-BetterProfessorApp-BetterProfessorAppUITests/Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB917A45DEDCF4AA677308C4 /* Pods-BetterProfessorAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterProfessorAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BetterProfessorAppTests/Pods-BetterProfessorAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E3C76E7D2457D35D00CF3944 /* LogInSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInSignUpViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +144,58 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5E7FF59B24593DC700731F03 /* Representations */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76E862458846300CF3944 /* ProfessorRepresentation.swift */,
+				E3C76E8A245884C300CF3944 /* StudentRepresentation.swift */,
+				5E5ADFA42458A72C00B558BF /* DeadlineRepresentation.swift */,
+				5E5ADFA62458ABC200B558BF /* NotificationRepresentation.swift */,
+			);
+			path = Representations;
+			sourceTree = "<group>";
+		};
+		5E7FF59C24593DFD00731F03 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5E5ADFAC2458F10A00B558BF /* ProfessorController.swift */,
+				5E7FF5952459377200731F03 /* StudentController.swift */,
+				5E7FF5972459384700731F03 /* DeadlineController.swift */,
+				5E7FF599245938A800731F03 /* NotificationController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		5E7FF59D24593E1200731F03 /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76E842458843300CF3944 /* Professor+Convenience.swift */,
+				E3C76E882458849400CF3944 /* Student+Convenience.swift */,
+				5E5ADFA82458C51800B558BF /* Deadline+Convenience.swift */,
+				5E5ADFAA2458D25800B558BF /* Notification+Convenience.swift */,
+			);
+			path = Convenience;
+			sourceTree = "<group>";
+		};
+		5E7FF59E24593E3C00731F03 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				E3E9AC962457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld */,
+				E3C76E82245883F100CF3944 /* CoreDataStack.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		5E7FF59F24593E5C00731F03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5E7FF59B24593DC700731F03 /* Representations */,
+				5E7FF59D24593E1200731F03 /* Convenience */,
+				5E7FF59E24593E3C00731F03 /* Core Data */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E3C76E7F2457D41600CF3944 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,17 +237,8 @@
 				E3E9AC992457A3D0004EDC9C /* Assets.xcassets */,
 				E3E9AC9B2457A3D0004EDC9C /* LaunchScreen.storyboard */,
 				E3E9AC9E2457A3D0004EDC9C /* Info.plist */,
-				E3E9AC962457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld */,
-				E3C76E82245883F100CF3944 /* CoreDataStack.swift */,
-				E3C76E842458843300CF3944 /* Professor+Convenience.swift */,
-				E3C76E882458849400CF3944 /* Student+Convenience.swift */,
-				5E5ADFA82458C51800B558BF /* Deadline+Convenience.swift */,
-				5E5ADFAA2458D25800B558BF /* Notification+Convenience.swift */,
-				E3C76E862458846300CF3944 /* ProfessorRepresentation.swift */,
-				E3C76E8A245884C300CF3944 /* StudentRepresentation.swift */,
-				5E5ADFAC2458F10A00B558BF /* ProfessorController.swift */,
-				5E5ADFA42458A72C00B558BF /* DeadlineRepresentation.swift */,
-				5E5ADFA62458ABC200B558BF /* NotificationRepresentation.swift */,
+				5E7FF59F24593E5C00731F03 /* Model */,
+				5E7FF59C24593DFD00731F03 /* Model Controllers */,
 			);
 			path = BetterProfessorApp;
 			sourceTree = "<group>";
@@ -439,13 +488,16 @@
 				5E5ADFA72458ABC300B558BF /* NotificationRepresentation.swift in Sources */,
 				E3C76E892458849400CF3944 /* Student+Convenience.swift in Sources */,
 				5E5ADFA92458C51800B558BF /* Deadline+Convenience.swift in Sources */,
+				5E7FF59A245938A800731F03 /* NotificationController.swift in Sources */,
 				5E5ADFA52458A72D00B558BF /* DeadlineRepresentation.swift in Sources */,
 				E3E9AC982457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld in Sources */,
 				E3C76E872458846300CF3944 /* ProfessorRepresentation.swift in Sources */,
+				5E7FF5982459384700731F03 /* DeadlineController.swift in Sources */,
 				E3C76E8B245884C300CF3944 /* StudentRepresentation.swift in Sources */,
 				E3E9AC8E2457A3CA004EDC9C /* AppDelegate.swift in Sources */,
 				5E5ADFAD2458F10B00B558BF /* ProfessorController.swift in Sources */,
 				5E5ADFAB2458D25800B558BF /* Notification+Convenience.swift in Sources */,
+				5E7FF5962459377200731F03 /* StudentController.swift in Sources */,
 				E3C76E7E2457D35D00CF3944 /* LogInSignUpViewController.swift in Sources */,
 				E3E9AC902457A3CA004EDC9C /* SceneDelegate.swift in Sources */,
 			);

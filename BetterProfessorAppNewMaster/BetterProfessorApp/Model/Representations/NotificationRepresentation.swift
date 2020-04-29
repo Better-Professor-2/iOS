@@ -15,8 +15,9 @@ struct NotificationRepresentation: Codable {
         case notifyTime = "notify_time"
     }
     
+    //MARK: - Properties -
     let id: Int64
-    let message: String
+    var message: String
     let notifyTime: Date
     let deadlineID: Int64
 }

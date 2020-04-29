@@ -12,8 +12,10 @@ import CoreData
 extension Notification {
     
     //MARK: - Extended Properties -
-    
+    /// Use dot syntax to call a codable representation of a model object
     var notificationRepresentation: NotificationRepresentation {
+        guard let message = message,
+            let notifyTime = notifyTime else { return nil }
         
         return NotificationRepresentation(id: id,
                                           message: message,
@@ -23,7 +25,7 @@ extension Notification {
     
     
     //MARK: - Initializers -
-    
+    /// Use these convenience initializers to move Model objects between CoreData and the network API
     @discardableResult convenience init(id: Int64,
                                         message: String,
                                         notifyTime: Date,
@@ -46,6 +48,4 @@ extension Notification {
         self.deadlineID = representation.deadlineID
         
     }
-    
-    
 }

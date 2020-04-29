@@ -2,7 +2,7 @@
 //  Student+Convenience.swift
 //  BetterProfessorApp
 //
-//  Created by Lambda_School_Loaner_268 on 4/28/20.
+//  Created by Cody Morley on 4/28/20.
 //  Copyright © 2020 Lambda. All rights reserved.
 //
 
@@ -12,28 +12,36 @@ import CoreData
 extension Student {
 
     //MARK: - Extended Properties -
+    /// Use dot syntax to call a codable representation of a model object
     var studentRepresentation: StudentRepresentation? {
+        guard let firstName = firstName,
+            let lastName = lastName,
+            let email = email,
+            let phoneNumber = phoneNumber,
+            let professor = professor,
+            let deadlines = deadlines else { return nil }
+        
         var deadlineRepsArray: [DeadlineRepresentation]
-        guard let firstName = firstName, let lastName = lastName, let email = email, let phoneNumber = phoneNumber, let professor = professor, let deadlines = deadlines else { return nil }
-            
-            for case let deadline as Deadline in deadlines {
-                guard let deadlineRep = deadline.deadlineRepresentation else { return nil }
-                deadlineRepsArray.append(deadlineRep)
-            }
-            
-            return StudentRepresentation(id: id,
-                                         firstName: firstName,
-                                         lastName: lastName,
-                                         email: email,
-                                         phoneNumber: phoneNumber,
-                                         professor: professor.professorRepresentation!,
-                                         professorID: professorID,
-                                         deadlines: deadlineRepsArray)
-    
+        
+        for case let deadline as Deadline in deadlines {
+            guard let deadlineRep = deadline.deadlineRepresentation else { return nil }
+            deadlineRepsArray.append(deadlineRep)
+        }
+        
+        return StudentRepresentation(id: id,
+                                     firstName: firstName,
+                                     lastName: lastName,
+                                     email: email,
+                                     phoneNumber: phoneNumber,
+                                     professor: professor.professorRepresentation!,
+                                     professorID: professorID,
+                                     deadlines: deadlineRepsArray)
+        
     }
 
 
     //MARK: - Initializers -
+    /// Use these convenience initializers to move Model objects between CoreData and the network API
     @discardableResult convenience init(id: Int64,
                                         firstName: String,
                                         lastName: String,
@@ -68,5 +76,4 @@ extension Student {
         self.deadlines = NSSet(array: representation.deadlines)
         }
     }
-
 }
