@@ -24,6 +24,7 @@ class AuthenticationController {
         case noData
         case noEncode
         case noDecode
+        case badResponse
         
     }
     
@@ -60,8 +61,8 @@ class AuthenticationController {
                 
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 201 else {
-                        NSLog("Error - Bad Response: Registration Unsucessful: \(error) \(error?.localizedDescription)")
-                        return completion(.failure(.failedRegister))
+                        NSLog("Error - Bad Response. Registration Unsucessful: \(error) \(error?.localizedDescription)")
+                        return completion(.failure(.badResponse))
                 }
                 
                 guard let data = data else {
