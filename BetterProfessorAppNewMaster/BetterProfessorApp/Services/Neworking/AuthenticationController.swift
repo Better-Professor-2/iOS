@@ -38,6 +38,8 @@ struct AuthenticationController {
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
     
+    private var id: Int?
+    
     
     //MARK: - Network Functions -
     func register(with credentials: UserCredentials, completion: @escaping CompletionHandler) {
@@ -66,10 +68,11 @@ struct AuthenticationController {
                 }
                 
                 do {
-                    let
+                    let self.id = try self.jsonDecoder.decode(id.self, from: data)
+                    completion(.success(true))
                 } catch {
                     NSLog("Error - Error decoding data from source: \(error) \(error.localizedDescription)")
-                    completion(.failure(.noDecode))
+                    return completion(.failure(.noDecode))
                 }
             } catch {
                 NSLog("Error - Error encoding user credentials. \(error) \(error.localizedDescription)")
