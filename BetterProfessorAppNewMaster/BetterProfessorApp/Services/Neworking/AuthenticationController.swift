@@ -20,6 +20,7 @@ class AuthenticationController {
     
     enum NetworkError: Error {
         case failedRegister
+        case failedLogIn
         case noData
         case noEncode
         case noDecode
@@ -38,7 +39,9 @@ class AuthenticationController {
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
     
-    private var id: Int?
+    var id: Int?
+    var authToken: Token?
+    
     
     
     //MARK: - Network Functions -
@@ -80,6 +83,49 @@ class AuthenticationController {
             NSLog("Error - Error encoding user credentials. \(error) \(error.localizedDescription)")
             return completion(.failure(.noEncode))
         }
+        
+    }
+    
+    func login(login: Login, completion: @escaping CompletionHandler) {
+        var request = postRequest(for: loginURL)
+        
+        do {
+            let jsonData = try jsonEncoder.encode(login)
+            request.httpBody = jsonData
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    NSLog("Error - Not logged in: \(error) \(error.localizedDescription)")
+                    return completion(.failure(.failedLogIn))
+                }
+                
+                guard let response = response as? HTTPURLResponse,
+                    response.statusCode == 200
+                    else {
+                        NSLog("Error - Sign in was unsuccessful, bad response. \(error)")
+                        return completion(.failure(.failedLogIn))
+                }
+                
+                guard let data = data else {
+                    NSLog("Error - Sign in unsuccessful, no data recieved. \(error)")
+                    return completion(.failure(.noData))
+                }
+                
+                do {
+                    self.authToken = try self.jsonDecoder.decode(Token.self, from: data)
+                    completion(.success(true))
+                } catch {
+                    NSLog("Error - Sign in unsuccessful. Error Decoding token. \(error)")
+                    return completion(.failure(.noDecode))
+                }
+            }
+        .resume()
+        } catch {
+            NSLog("Error - Sign in unsuccessful. Error encoding user info to database. \(error)")
+            return completion(.failure(.noEncode))
+        }
+        
+        
         
     }
     
