@@ -1,14 +1,14 @@
 //
-//  MyReminderTableViewCell.swift
+//  StudentRemindersTableViewCell.swift
 //  BetterProfessorApp
 //
-//  Created by Lambda_School_Loaner_268 on 4/29/20.
+//  Created by Lambda_School_Loaner_268 on 4/30/20.
 //  Copyright © 2020 Lambda. All rights reserved.
 //
 
 import UIKit
 
-class MyReminderTableViewCell: UITableViewCell {
+class StudentRemindersTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +20,5 @@ class MyReminderTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
+
 }

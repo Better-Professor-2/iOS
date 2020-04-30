@@ -26,14 +26,12 @@
 		E3C76E892458849400CF3944 /* Student+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E882458849400CF3944 /* Student+Convenience.swift */; };
 		E3C76E8B245884C300CF3944 /* StudentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E8A245884C300CF3944 /* StudentRepresentation.swift */; };
 		E3C76E8F245A5F9000CF3944 /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E8E245A5F8F00CF3944 /* AddReminderViewController.swift */; };
-		E3C76E91245A5FED00CF3944 /* ReminderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E90245A5FED00CF3944 /* ReminderDetailViewController.swift */; };
 		E3C76E98245A617000CF3944 /* MyRemindersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E97245A617000CF3944 /* MyRemindersNavigationController.swift */; };
 		E3C76E9A245A61D900CF3944 /* MyStudentsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E99245A61D900CF3944 /* MyStudentsNavigationController.swift */; };
 		E3C76E9C245A620700CF3944 /* MyProjectsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E9B245A620700CF3944 /* MyProjectsNavigationController.swift */; };
 		E3C76E9E245A623B00CF3944 /* LogInSignUpNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E9D245A623B00CF3944 /* LogInSignUpNavigationController.swift */; };
 		E3C76EA0245A62D800CF3944 /* MainAppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E9F245A62D800CF3944 /* MainAppTabBarController.swift */; };
-		E3C76EA2245A659400CF3944 /* MyReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EA1245A659400CF3944 /* MyReminderTableViewCell.swift */; };
-		E3C76EA6245A7B8B00CF3944 /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EA5245A7B8B00CF3944 /* StudentDetailViewController.swift */; };
+		E3C76EA2245A659400CF3944 /* AllRemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EA1245A659400CF3944 /* AllRemindersTableViewCell.swift */; };
 		E3C76EA8245A7BD400CF3944 /* AddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EA7245A7BD400CF3944 /* AddStudentViewController.swift */; };
 		E3C76EAA245A7C4800CF3944 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EA9245A7C4800CF3944 /* AddProjectViewController.swift */; };
 		E3C76EAC245A7C8B00CF3944 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EAB245A7C8B00CF3944 /* ProjectDetailViewController.swift */; };
@@ -42,6 +40,10 @@
 		E3C76EB8245ABA6B00CF3944 /* StudentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EB7245ABA6B00CF3944 /* StudentsTableViewCell.swift */; };
 		E3C76EBB245ABB4500CF3944 /* ProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EBA245ABB4500CF3944 /* ProjectsTableViewController.swift */; };
 		E3C76EBD245ABB6200CF3944 /* ProjectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EBC245ABB6200CF3944 /* ProjectsTableViewCell.swift */; };
+		E3C76EC4245AC83400CF3944 /* StudentDetailsProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EC3245AC83400CF3944 /* StudentDetailsProjectTableViewCell.swift */; };
+		E3C76EC6245AC91B00CF3944 /* StudentsDetailsProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76EC5245AC91B00CF3944 /* StudentsDetailsProjectsTableViewController.swift */; };
+		E3C76ED1245B099000CF3944 /* StudentRemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76ED0245B099000CF3944 /* StudentRemindersTableViewCell.swift */; };
+		E3C76ED4245B0A1F00CF3944 /* StudentRemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76ED3245B0A1F00CF3944 /* StudentRemindersTableViewController.swift */; };
 		E3E9AC8E2457A3CA004EDC9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */; };
 		E3E9AC902457A3CA004EDC9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */; };
 		E3E9AC952457A3CA004EDC9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E9AC932457A3CA004EDC9C /* Main.storyboard */; };
@@ -94,14 +96,12 @@
 		E3C76E882458849400CF3944 /* Student+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+Convenience.swift"; sourceTree = "<group>"; };
 		E3C76E8A245884C300CF3944 /* StudentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRepresentation.swift; sourceTree = "<group>"; };
 		E3C76E8E245A5F8F00CF3944 /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
-		E3C76E90245A5FED00CF3944 /* ReminderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailViewController.swift; sourceTree = "<group>"; };
 		E3C76E97245A617000CF3944 /* MyRemindersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemindersNavigationController.swift; sourceTree = "<group>"; };
 		E3C76E99245A61D900CF3944 /* MyStudentsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudentsNavigationController.swift; sourceTree = "<group>"; };
 		E3C76E9B245A620700CF3944 /* MyProjectsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProjectsNavigationController.swift; sourceTree = "<group>"; };
 		E3C76E9D245A623B00CF3944 /* LogInSignUpNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInSignUpNavigationController.swift; sourceTree = "<group>"; };
 		E3C76E9F245A62D800CF3944 /* MainAppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarController.swift; sourceTree = "<group>"; };
-		E3C76EA1245A659400CF3944 /* MyReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReminderTableViewCell.swift; sourceTree = "<group>"; };
-		E3C76EA5245A7B8B00CF3944 /* StudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
+		E3C76EA1245A659400CF3944 /* AllRemindersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRemindersTableViewCell.swift; sourceTree = "<group>"; };
 		E3C76EA7245A7BD400CF3944 /* AddStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentViewController.swift; sourceTree = "<group>"; };
 		E3C76EA9245A7C4800CF3944 /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		E3C76EAB245A7C8B00CF3944 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +110,10 @@
 		E3C76EB7245ABA6B00CF3944 /* StudentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsTableViewCell.swift; sourceTree = "<group>"; };
 		E3C76EBA245ABB4500CF3944 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		E3C76EBC245ABB6200CF3944 /* ProjectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewCell.swift; sourceTree = "<group>"; };
+		E3C76EC3245AC83400CF3944 /* StudentDetailsProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsProjectTableViewCell.swift; sourceTree = "<group>"; };
+		E3C76EC5245AC91B00CF3944 /* StudentsDetailsProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsDetailsProjectsTableViewController.swift; sourceTree = "<group>"; };
+		E3C76ED0245B099000CF3944 /* StudentRemindersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRemindersTableViewCell.swift; sourceTree = "<group>"; };
+		E3C76ED3245B0A1F00CF3944 /* StudentRemindersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRemindersTableViewController.swift; sourceTree = "<group>"; };
 		E3E9AC8A2457A3CA004EDC9C /* BetterProfessorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterProfessorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -252,7 +256,7 @@
 		E3C76E7F2457D41600CF3944 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E3C76E7D2457D35D00CF3944 /* LogInSignUpViewController.swift */,
+				E3C76ECC245AEF1700CF3944 /* Log In Sign Up */,
 				E3C76EAD245AAD6500CF3944 /* Main Tabs */,
 			);
 			path = ViewControllers;
@@ -281,8 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				E3C76E8E245A5F8F00CF3944 /* AddReminderViewController.swift */,
-				E3C76E90245A5FED00CF3944 /* ReminderDetailViewController.swift */,
-				E3C76EB3245AB5E900CF3944 /* Reminders TableView */,
+				E3C76ED2245B09BE00CF3944 /* Student Reminders TableView */,
+				E3C76EB3245AB5E900CF3944 /* All Reminders TableView */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -290,8 +294,8 @@
 		E3C76EAF245AAE0200CF3944 /* Students */ = {
 			isa = PBXGroup;
 			children = (
+				E3C76EC7245AD48F00CF3944 /* Student Details TableView */,
 				E3C76EB4245ABA3200CF3944 /* Students TableView */,
-				E3C76EA5245A7B8B00CF3944 /* StudentDetailViewController.swift */,
 				E3C76EA7245A7BD400CF3944 /* AddStudentViewController.swift */,
 			);
 			path = Students;
@@ -308,13 +312,13 @@
 			path = Students;
 			sourceTree = "<group>";
 		};
-		E3C76EB3245AB5E900CF3944 /* Reminders TableView */ = {
+		E3C76EB3245AB5E900CF3944 /* All Reminders TableView */ = {
 			isa = PBXGroup;
 			children = (
 				E3C76EB1245AB5C900CF3944 /* RemindersTableViewController.swift */,
-				E3C76EA1245A659400CF3944 /* MyReminderTableViewCell.swift */,
+				E3C76EA1245A659400CF3944 /* AllRemindersTableViewCell.swift */,
 			);
-			path = "Reminders TableView";
+			path = "All Reminders TableView";
 			sourceTree = "<group>";
 		};
 		E3C76EB4245ABA3200CF3944 /* Students TableView */ = {
@@ -352,6 +356,32 @@
 				E3C76E9D245A623B00CF3944 /* LogInSignUpNavigationController.swift */,
 			);
 			path = LogIn;
+			sourceTree = "<group>";
+		};
+		E3C76EC7245AD48F00CF3944 /* Student Details TableView */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76EC5245AC91B00CF3944 /* StudentsDetailsProjectsTableViewController.swift */,
+				E3C76EC3245AC83400CF3944 /* StudentDetailsProjectTableViewCell.swift */,
+			);
+			path = "Student Details TableView";
+			sourceTree = "<group>";
+		};
+		E3C76ECC245AEF1700CF3944 /* Log In Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76E7D2457D35D00CF3944 /* LogInSignUpViewController.swift */,
+			);
+			path = "Log In Sign Up";
+			sourceTree = "<group>";
+		};
+		E3C76ED2245B09BE00CF3944 /* Student Reminders TableView */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76ED0245B099000CF3944 /* StudentRemindersTableViewCell.swift */,
+				E3C76ED3245B0A1F00CF3944 /* StudentRemindersTableViewController.swift */,
+			);
+			path = "Student Reminders TableView";
 			sourceTree = "<group>";
 		};
 		E3E9AC812457A3C9004EDC9C = {
@@ -633,12 +663,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3C76E91245A5FED00CF3944 /* ReminderDetailViewController.swift in Sources */,
 				E3C76EAC245A7C8B00CF3944 /* ProjectDetailViewController.swift in Sources */,
 				E3C76E8F245A5F9000CF3944 /* AddReminderViewController.swift in Sources */,
 				E3C76E83245883F100CF3944 /* CoreDataStack.swift in Sources */,
 				E3C76E852458843300CF3944 /* Professor+Convenience.swift in Sources */,
 				5E7FF5A3245A87E300731F03 /* AuthenticationController.swift in Sources */,
+				E3C76ED1245B099000CF3944 /* StudentRemindersTableViewCell.swift in Sources */,
 				5E5ADFA72458ABC300B558BF /* NotificationRepresentation.swift in Sources */,
 				E3C76E9E245A623B00CF3944 /* LogInSignUpNavigationController.swift in Sources */,
 				E3C76E892458849400CF3944 /* Student+Convenience.swift in Sources */,
@@ -653,16 +683,18 @@
 				5E7FF5982459384700731F03 /* DeadlineController.swift in Sources */,
 				E3C76E8B245884C300CF3944 /* StudentRepresentation.swift in Sources */,
 				E3C76EBD245ABB6200CF3944 /* ProjectsTableViewCell.swift in Sources */,
+				E3C76EC6245AC91B00CF3944 /* StudentsDetailsProjectsTableViewController.swift in Sources */,
 				E3C76EB2245AB5C900CF3944 /* RemindersTableViewController.swift in Sources */,
 				E3E9AC8E2457A3CA004EDC9C /* AppDelegate.swift in Sources */,
 				5E7FF5A5245A98D200731F03 /* UserCredentials.swift in Sources */,
-				E3C76EA2245A659400CF3944 /* MyReminderTableViewCell.swift in Sources */,
-				E3C76EA6245A7B8B00CF3944 /* StudentDetailViewController.swift in Sources */,
+				E3C76EA2245A659400CF3944 /* AllRemindersTableViewCell.swift in Sources */,
 				5E5ADFAD2458F10B00B558BF /* ProfessorController.swift in Sources */,
 				5E5ADFAB2458D25800B558BF /* Notification+Convenience.swift in Sources */,
 				5E7FF5962459377200731F03 /* StudentController.swift in Sources */,
 				E3C76EBB245ABB4500CF3944 /* ProjectsTableViewController.swift in Sources */,
 				E3C76E7E2457D35D00CF3944 /* LogInSignUpViewController.swift in Sources */,
+				E3C76EC4245AC83400CF3944 /* StudentDetailsProjectTableViewCell.swift in Sources */,
+				E3C76ED4245B0A1F00CF3944 /* StudentRemindersTableViewController.swift in Sources */,
 				E3C76EAA245A7C4800CF3944 /* AddProjectViewController.swift in Sources */,
 				E3C76E9A245A61D900CF3944 /* MyStudentsNavigationController.swift in Sources */,
 				E3C76EA0245A62D800CF3944 /* MainAppTabBarController.swift in Sources */,
