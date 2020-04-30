@@ -21,6 +21,8 @@ struct AuthenticationController {
     enum NetworkError {
         case failedRegister
         case noData
+        case noEncode
+        case noDecode
         
     }
     
@@ -60,13 +62,19 @@ struct AuthenticationController {
                 
                 guard let data = data else {
                     NSLog("Error - No data recieved")
-                    completion(.failure(.noData))
+                    return completion(.failure(.noData))
                 }
                 
                 do {
-                    let 
+                    let
+                } catch {
+                    NSLog("Error - Error decoding data from source: \(error) \(error.localizedDescription)")
+                    completion(.failure(.noDecode))
                 }
-        }
+            } catch {
+                NSLog("Error - Error encoding user credentials. \(error) \(error.localizedDescription)")
+                return completion(.failure(.noEncode))
+            }
         
     }
     
