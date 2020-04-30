@@ -15,7 +15,7 @@ class LogInSignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    @IBOutlet weak var logoIV: UIImageView!
+    
     
     @IBAction func signUpButton(_ sender: Any) {
     }

@@ -15,60 +15,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k5L-bg-kgT">
-                                <rect key="frame" x="20" y="88" width="374" height="372"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgS-iA-E4R">
-                                <rect key="frame" x="20" y="531" width="374" height="70"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="1Gp-Kt-hHn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="signUpButton:" destination="Mbq-hf-vVe" eventType="touchUpInside" id="Ams-V0-TAV"/>
-                                    <segue destination="Jnf-rE-isf" kind="show" id="hy8-nT-lAn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kB-Md-XdY">
-                                <rect key="frame" x="20" y="671" width="374" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="6Bb-vp-5Qr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Log In"/>
-                                <connections>
-                                    <action selector="logInButton:" destination="Mbq-hf-vVe" eventType="touchUpInside" id="wpj-B1-1E3"/>
-                                    <segue destination="azm-ho-JgU" kind="show" id="Ztk-6g-f6u"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="139" translatesAutoresizingMaskIntoConstraints="NO" id="fdW-3G-rpr">
+                                <rect key="frame" x="156" y="451" width="103" height="279"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgS-iA-E4R">
+                                        <rect key="frame" x="0.0" y="0.0" width="103" height="70"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="1Gp-Kt-hHn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Sign Up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signUpButton:" destination="Mbq-hf-vVe" eventType="touchUpInside" id="Ams-V0-TAV"/>
+                                            <segue destination="Jnf-rE-isf" kind="show" id="hy8-nT-lAn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kB-Md-XdY">
+                                        <rect key="frame" x="0.0" y="209" width="103" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="6Bb-vp-5Qr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <action selector="logInButton:" destination="Mbq-hf-vVe" eventType="touchUpInside" id="wpj-B1-1E3"/>
+                                            <segue destination="azm-ho-JgU" kind="show" id="Ztk-6g-f6u"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="cgS-iA-E4R" firstAttribute="leading" secondItem="4kB-Md-XdY" secondAttribute="leading" id="1JC-ga-A3t"/>
-                            <constraint firstItem="k5L-bg-kgT" firstAttribute="top" secondItem="s78-q6-5mW" secondAttribute="top" id="3QW-FQ-Fg7"/>
-                            <constraint firstItem="k5L-bg-kgT" firstAttribute="leading" secondItem="cgS-iA-E4R" secondAttribute="leading" id="54A-2h-XCR"/>
-                            <constraint firstItem="4kB-Md-XdY" firstAttribute="top" secondItem="cgS-iA-E4R" secondAttribute="bottom" constant="70" id="Gdb-3W-lg2"/>
-                            <constraint firstItem="k5L-bg-kgT" firstAttribute="leading" secondItem="htU-xs-GNS" secondAttribute="leadingMargin" id="JaZ-kM-aqX"/>
-                            <constraint firstItem="cgS-iA-E4R" firstAttribute="trailing" secondItem="4kB-Md-XdY" secondAttribute="trailing" id="LMp-gM-aLe"/>
-                            <constraint firstItem="cgS-iA-E4R" firstAttribute="top" secondItem="k5L-bg-kgT" secondAttribute="bottom" constant="71" id="MSv-cD-dAu"/>
-                            <constraint firstItem="k5L-bg-kgT" firstAttribute="trailing" secondItem="cgS-iA-E4R" secondAttribute="trailing" id="UOP-Ie-flH"/>
-                            <constraint firstItem="s78-q6-5mW" firstAttribute="bottom" secondItem="4kB-Md-XdY" secondAttribute="bottom" constant="121" id="osA-AM-uWm"/>
-                            <constraint firstItem="k5L-bg-kgT" firstAttribute="trailing" secondItem="htU-xs-GNS" secondAttribute="trailingMargin" id="qxm-4P-THk"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="s78-q6-5mW"/>
                     </view>
                     <navigationItem key="navigationItem" id="swO-Mh-wSw"/>
-                    <connections>
-                        <outlet property="logoIV" destination="k5L-bg-kgT" id="Bc9-FO-IyX"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGa-Hy-FBS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1109" y="-326"/>
+            <point key="canvasLocation" x="1108.6956521739132" y="-326.11607142857139"/>
         </scene>
         <!--Log In-->
         <scene sceneID="aRn-Do-L5b">
