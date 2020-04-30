@@ -1529,6 +1529,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="submitEmailPressed:" destination="TX0-bT-pGb" eventType="touchUpInside" id="VoV-SP-cbc"/>
                                                     <segue destination="Kmc-hp-ezZ" kind="unwind" unwindAction="myUnwindActionWithUnwindSegue:" id="orr-C9-6gK"/>
                                                 </connections>
                                             </button>
@@ -1547,6 +1548,10 @@
                         <viewLayoutGuide key="safeArea" id="54U-FX-iZc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reset Password" id="Wn1-Ce-j39"/>
+                    <connections>
+                        <outlet property="passwordResetEmail" destination="nUR-j9-Sf9" id="Kcy-s0-LHe"/>
+                        <outlet property="resetPasswordSubmitButton" destination="Eep-H6-yEL" id="u3w-Bh-J8x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPB-bE-O3R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Kmc-hp-ezZ" userLabel="Exit" sceneMemberID="exit"/>
