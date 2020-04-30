@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+/*
 struct AuthenticationController {
     //MARK: - Enums & Type Aliases -
     enum HTTPMethod: String {
@@ -85,3 +85,5 @@ struct AuthenticationController {
     
     
 }
+}
+*/

@@ -251,17 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				E3C76E7D2457D35D00CF3944 /* LogInSignUpViewController.swift */,
-				E3C76E8C245A5F3B00CF3944 /* MyRemindersViewController.swift */,
-				E3C76E8E245A5F8F00CF3944 /* AddReminderViewController.swift */,
-				E3C76E90245A5FED00CF3944 /* ReminderDetailViewController.swift */,
-				E3C76E92245A604300CF3944 /* MyStudentsViewController.swift */,
-				E3C76E94245A609200CF3944 /* MyProjectsViewController.swift */,
-				E3C76EA1245A659400CF3944 /* MyReminderTableViewCell.swift */,
-				E3C76EA3245A6EC300CF3944 /* StudentsTableViewCell.swift */,
-				E3C76EA5245A7B8B00CF3944 /* StudentDetailViewController.swift */,
-				E3C76EA7245A7BD400CF3944 /* AddStudentViewController.swift */,
-				E3C76EA9245A7C4800CF3944 /* AddProjectViewController.swift */,
-				E3C76EAB245A7C8B00CF3944 /* ProjectDetailViewController.swift */,
+				E3C76EAD245AAD6500CF3944 /* Tabs */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -276,6 +266,49 @@
 				E3C76E9F245A62D800CF3944 /* MainAppTabBarController.swift */,
 			);
 			path = NavigationControllers;
+			sourceTree = "<group>";
+		};
+		E3C76EAD245AAD6500CF3944 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76EB0245AAE2300CF3944 /* Projects */,
+				E3C76EAE245AADD400CF3944 /* Reminders */,
+				E3C76EAF245AAE0200CF3944 /* Students */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		E3C76EAE245AADD400CF3944 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76E8C245A5F3B00CF3944 /* MyRemindersViewController.swift */,
+				E3C76E8E245A5F8F00CF3944 /* AddReminderViewController.swift */,
+				E3C76E90245A5FED00CF3944 /* ReminderDetailViewController.swift */,
+				E3C76EA1245A659400CF3944 /* MyReminderTableViewCell.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		E3C76EAF245AAE0200CF3944 /* Students */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76E92245A604300CF3944 /* MyStudentsViewController.swift */,
+				E3C76EA5245A7B8B00CF3944 /* StudentDetailViewController.swift */,
+				E3C76EA7245A7BD400CF3944 /* AddStudentViewController.swift */,
+				E3C76EA3245A6EC300CF3944 /* StudentsTableViewCell.swift */,
+			);
+			path = Students;
+			sourceTree = "<group>";
+		};
+		E3C76EB0245AAE2300CF3944 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				E3C76E94245A609200CF3944 /* MyProjectsViewController.swift */,
+				E3C76EA9245A7C4800CF3944 /* AddProjectViewController.swift */,
+				E3C76EAB245A7C8B00CF3944 /* ProjectDetailViewController.swift */,
+			);
+			name = Projects;
+			path = Students;
 			sourceTree = "<group>";
 		};
 		E3E9AC812457A3C9004EDC9C = {
