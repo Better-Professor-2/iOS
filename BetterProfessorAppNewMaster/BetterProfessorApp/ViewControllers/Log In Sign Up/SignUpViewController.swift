@@ -9,29 +9,18 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    
     // MARK: - Professor Controller
     let professorController = ProfessorController()
-    
     // MARK: - IBOutlets
-    
     @IBOutlet weak var fullNameTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
-    
     // MARK: - IBActions
-    
     @IBAction func createProfessorAccountButtonPressed(_ sender: Any) {
-        
         let firstName: String
         let lastName: String
         let professor: Professor
-        
-        
         guard (fullNameTextField.text != nil),
             (passwordTextField.text != nil),
             (emailTextField.text != nil),
@@ -54,7 +43,6 @@ class SignUpViewController: UIViewController {
             return
         }
         let names: [String]! = fullNameTextField.text?.components(separatedBy: " ")
-        
         if names.count == 1 {
             firstName = names.first!
             lastName = ""
@@ -85,18 +73,16 @@ class SignUpViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
             return
         }
-        self.professorController.updateProfessor(professor: professor, representation: professor.professorRepresentation!)
-        self.dismiss(animated: true, completion: nil)
-        
+        self.professorController.updateProfessor(professor: professor,
+                                                 representation: professor.professorRepresentation!)
+        self.dismiss(animated: true,
+                     completion: nil)
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
     /*
     // MARK: - Navigation
 
