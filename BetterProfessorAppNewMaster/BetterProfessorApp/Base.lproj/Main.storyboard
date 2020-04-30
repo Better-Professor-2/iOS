@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bgO-IL-P8y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WWJ-yi-7K0">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -146,6 +146,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logInButton:" destination="azm-ho-JgU" eventType="touchUpInside" id="vuC-S5-TD0"/>
+                                    <segue destination="57Y-86-I5y" kind="unwind" unwindAction="myRemindersUnwindSeque:" id="OdZ-Zu-jzg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -160,6 +161,7 @@
                     <navigationItem key="navigationItem" title="Log In" id="doA-A8-oc5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAB-gU-sJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="57Y-86-I5y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1128.985507246377" y="498.88392857142856"/>
         </scene>
@@ -176,7 +178,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="109" id="F2O-Rh-GvK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="109" id="F2O-Rh-GvK" customClass="MyReminderTableViewCell" customModule="BetterProfessorApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="109"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F2O-Rh-GvK" id="Lpp-ZC-gJ3">
@@ -200,6 +202,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="hkb-6y-YGX" kind="showDetail" id="JGJ-v9-VqY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -309,10 +314,15 @@
                         <viewLayoutGuide key="safeArea" id="9m6-ol-WBg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Reminder" id="ZnT-to-Yz3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iAG-qh-FB3"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iAG-qh-FB3">
+                            <connections>
+                                <segue destination="sDa-Qo-asq" kind="unwind" unwindAction="myRemindersUnwindSeque:" id="JK8-FS-hNs"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWz-OC-ugB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="sDa-Qo-asq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="221.73913043478262" y="4176.5625"/>
         </scene>
@@ -321,7 +331,7 @@
             <objects>
                 <viewController id="hkb-6y-YGX" customClass="ReminderDetailViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8YF-Y9-a0Y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="WgC-D3-iMF"/>
@@ -340,7 +350,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mDO-DQ-BtW">
-                                <rect key="frame" x="0.0" y="44" width="414" height="702"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search for Student" id="ude-Gp-UfR">
@@ -369,29 +379,60 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HWu-bk-bgn" kind="showDetail" id="o3M-UO-liV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajM-s8-5El">
-                                <rect key="frame" x="36" y="747" width="343" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Add Student">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="m0n-3E-KIa"/>
                     </view>
                     <navigationItem key="navigationItem" id="ORr-IQ-Fq0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EDU-op-VUs"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EDU-op-VUs">
+                            <connections>
+                                <segue destination="Cv5-9Y-dNt" kind="show" id="9mm-za-yKW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYw-R0-kM1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1857" y="3406"/>
+            <point key="canvasLocation" x="-1857.9710144927537" y="3405.8035714285711"/>
+        </scene>
+        <!--Add Student-->
+        <scene sceneID="AdM-2a-Nm5">
+            <objects>
+                <viewController id="Cv5-9Y-dNt" customClass="AddStudentViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XB9-1Q-GKt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Zss-X0-XPh"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Student" id="VOh-rc-nA4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="a0N-BJ-tcu"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qyd-Jt-6IO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1863" y="4183"/>
+        </scene>
+        <!--Student Detail View Controller-->
+        <scene sceneID="doA-ul-sNd">
+            <objects>
+                <viewController id="HWu-bk-bgn" customClass="StudentDetailViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b5g-1C-ocJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="9rO-Le-C0M"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6oO-of-Z42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1054" y="3406"/>
         </scene>
         <!--My Projects View Controller-->
         <scene sceneID="Gg1-Gg-VWa">
@@ -400,19 +441,76 @@
                     <view key="view" contentMode="scaleToFill" id="v5o-13-XuI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QFh-D1-P0U">
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="92" id="rck-d1-2gN">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rck-d1-2gN" id="de6-r4-glt">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="92"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Wdc-8M-Dhy" kind="showDetail" id="QWU-s5-aM2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="JDQ-za-ouJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="e23-JM-QD3"/>
+                    <navigationItem key="navigationItem" id="e23-JM-QD3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FTr-Ak-v0z">
+                            <connections>
+                                <segue destination="Ucq-4f-NoD" kind="show" id="Lvk-sB-wtl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6x-OY-Apd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2033" y="3406"/>
+            <point key="canvasLocation" x="2031.8840579710147" y="3405.8035714285711"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Add Project View Controller-->
+        <scene sceneID="96z-98-6sh">
+            <objects>
+                <viewController id="Ucq-4f-NoD" customClass="AddProjectViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wy2-J2-NDF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="JSz-k1-lHX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0gS-ic-0dw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Uv-Lt-BhK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2033" y="4126"/>
+        </scene>
+        <!--Project Detail View Controller-->
+        <scene sceneID="tZi-ER-tvT">
+            <objects>
+                <viewController id="Wdc-8M-Dhy" customClass="ProjectDetailViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IaU-gP-F40">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6pf-Qk-rR1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XSb-29-z8V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2855" y="3406"/>
+        </scene>
+        <!--Main App Tab Bar Controller-->
         <scene sceneID="SyP-0N-bXO">
             <objects>
-                <tabBarController id="bgO-IL-P8y" sceneMemberID="viewController">
+                <tabBarController id="bgO-IL-P8y" customClass="MainAppTabBarController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="84F-Iu-L46"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lhc-Xw-gcx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -585,10 +683,10 @@
             </objects>
             <point key="canvasLocation" x="2107.2463768115945" y="-327.45535714285711"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Log In Sign Up Navigation Controller-->
         <scene sceneID="YAs-SY-9g2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WWJ-yi-7K0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WWJ-yi-7K0" customClass="LogInSignUpNavigationController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="05N-J7-Pua">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
