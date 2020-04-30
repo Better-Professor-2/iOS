@@ -35,7 +35,6 @@ class ProfessorController {
     func updateProfessor(professor: Professor, representation: ProfessorRepresentation) {
         ///call this function to change user info or update students from a new server-side representation.
         if professor.id == representation.id {
-            
             professor.email = representation.email
             professor.password = representation.password
             professor.students = NSSet(array: representation.students)

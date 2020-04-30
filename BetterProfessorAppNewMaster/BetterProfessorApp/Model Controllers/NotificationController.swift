@@ -41,7 +41,6 @@ class NotificationController {
         let notificationFetch: NSFetchRequest<NSFetchRequestResult> = Notification.fetchRequest()
         notificationFetch.predicate = NSPredicate(format:"id == %d", id)
         
-        
         let fetchedNotifications = try? currentContext.fetch(notificationFetch) as? [Notification]
         returnedNotification = fetchedNotifications?.first
     
