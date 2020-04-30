@@ -19,18 +19,18 @@ extension Deadline {
             let dueDate = dueDate,
             let notifications = notifications else { return nil }
         
-        var notificationsRepsArray: [NotificationRepresentation]
+        var notificationsRepsArray: [NotificationRepresentation] = []
         
         for case let notification as Notification in notifications {
-            
-            notificationsRepsArray.append(notification.notificationRepresentation)
+            guard let notificationRep = notification.notificationRepresentation else { return nil }
+            notificationsRepsArray.append(notificationRep)
         }
         return DeadlineRepresentation(id: id,
                                       name: name,
                                       dueDate: dueDate,
                                       notes: notes,
                                       studentID: studentID,
-                                      notifications: notificationsRepsArray
+                                      notifications: notificationsRepsArray)
     }
     
     
@@ -56,15 +56,14 @@ extension Deadline {
     @discardableResult convenience init?(representation: DeadlineRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
-        if let notes = representation.notes {
-            self.init(context: context)
-            self.id = representation.id
-            self.name = representation.name
-            self.notes = notes
-            self.studentID = representation.studentID
-            self.student = //fetch deadlines for studentID from coredata
-            self.notifications = NSSet(array: representation.notifications)
-            
-        }
+        self.init(context: context)
+        self.id = representation.id
+        self.name = representation.name
+        self.notes = notes
+        self.studentID = representation.studentID
+        self.student = StudentController.shared.fetchStudent(id: representation.studentID)
+        self.notifications = NSSet(array: representation.notifications)
+        
+        
     }
 }

@@ -21,7 +21,7 @@ extension Student {
             let professor = professor,
             let deadlines = deadlines else { return nil }
         
-        var deadlineRepsArray: [DeadlineRepresentation]
+        var deadlineRepsArray: [DeadlineRepresentation] = []
         
         for case let deadline as Deadline in deadlines {
             guard let deadlineRep = deadline.deadlineRepresentation else { return nil }
@@ -62,18 +62,17 @@ extension Student {
         self.deadlines = NSSet(array: deadlines)
     }
 
-    @discardableResult convenience init?(representation: StudentRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-            
-        if let phoneNumber = phoneNumber {
+    @discardableResult convenience init?(representation: StudentRepresentation,
+                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        
         self.init(context: context)
         self.id = representation.id
         self.firstName = representation.firstName
         self.lastName = representation.lastName
         self.email = representation.email
         self.phoneNumber = representation.phoneNumber
-        self.professor = //fetch from coredata using professorID
+        self.professor = ProfessorController.shared.fetchProfessor(id: representation.professor.id)
         self.professorID = representation.professor.id
         self.deadlines = NSSet(array: representation.deadlines)
-        }
     }
 }
