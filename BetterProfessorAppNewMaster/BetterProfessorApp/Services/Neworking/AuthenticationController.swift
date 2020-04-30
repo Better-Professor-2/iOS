@@ -41,8 +41,7 @@ class AuthenticationController {
     
     var id: Int?
     var authToken: Token?
-    
-    
+    static let shared = AuthenticationController()
     
     //MARK: - Network Functions -
     func register(with credentials: UserCredentials, completion: @escaping CompletionHandler) {

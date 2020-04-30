@@ -17,6 +17,7 @@
 		5E7FF59A245938A800731F03 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7FF599245938A800731F03 /* NotificationController.swift */; };
 		5E7FF5A3245A87E300731F03 /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7FF5A2245A87E300731F03 /* AuthenticationController.swift */; };
 		5E7FF5A5245A98D200731F03 /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7FF5A4245A98D200731F03 /* UserCredentials.swift */; };
+		5E7FF5A7245B676400731F03 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7FF5A6245B676400731F03 /* NetworkController.swift */; };
 		B501B42825B7C8B066957961 /* Pods_BetterProfessorApp_BetterProfessorAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55A5048C2DCE2A0F6D4A4C6 /* Pods_BetterProfessorApp_BetterProfessorAppUITests.framework */; };
 		DE7E4E2FC3E8874804A18A6F /* Pods_BetterProfessorAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AE48BFB44DB87F21DC3BA1 /* Pods_BetterProfessorAppTests.framework */; };
 		E3C76E7E2457D35D00CF3944 /* LogInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C76E7D2457D35D00CF3944 /* LogInSignUpViewController.swift */; };
@@ -87,6 +88,7 @@
 		5E7FF599245938A800731F03 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		5E7FF5A2245A87E300731F03 /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		5E7FF5A4245A98D200731F03 /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
+		5E7FF5A6245B676400731F03 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		C3BEC36396EB9226D1606040 /* Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-BetterProfessorApp-BetterProfessorAppUITests/Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB917A45DEDCF4AA677308C4 /* Pods-BetterProfessorAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterProfessorAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BetterProfessorAppTests/Pods-BetterProfessorAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E3C76E7D2457D35D00CF3944 /* LogInSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInSignUpViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				5E7FF5A2245A87E300731F03 /* AuthenticationController.swift */,
+				5E7FF5A6245B676400731F03 /* NetworkController.swift */,
 			);
 			path = Neworking;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				E3C76E98245A617000CF3944 /* MyRemindersNavigationController.swift in Sources */,
 				E3C76E9C245A620700CF3944 /* MyProjectsNavigationController.swift in Sources */,
 				E3E9AC902457A3CA004EDC9C /* SceneDelegate.swift in Sources */,
+				5E7FF5A7245B676400731F03 /* NetworkController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
