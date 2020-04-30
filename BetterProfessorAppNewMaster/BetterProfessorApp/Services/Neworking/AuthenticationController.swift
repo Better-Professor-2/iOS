@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
-/*
-struct AuthenticationController {
+
+class AuthenticationController {
     //MARK: - Enums & Type Aliases -
     enum HTTPMethod: String {
         case get = "GET"
@@ -18,7 +18,7 @@ struct AuthenticationController {
         case delete = "DELETE"
     }
     
-    enum NetworkError {
+    enum NetworkError: Error {
         case failedRegister
         case noData
         case noEncode
@@ -30,7 +30,7 @@ struct AuthenticationController {
     
     
     //MARK: - Properties -
-    private let baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")!
+    private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")!
     
     private lazy var registerURL = baseURL.appendingPathComponent("/register/")
     private lazy var loginURL = baseURL.appendingPathComponent("/login/")
@@ -56,9 +56,9 @@ struct AuthenticationController {
                     return
                 }
                 
-                guard let response = response as? HTTPPURLResponse,
+                guard let response = response as? HTTPURLResponse,
                     response.statusCode == 201 else {
-                        NSLog("Error - Bad Response: Registration Unsucessful: "  + String(describing: response.statusCode))
+                        NSLog("Error - Bad Response: Registration Unsucessful: \(error) \(error?.localizedDescription)")
                         return completion(.failure(.failedRegister))
                 }
                 
@@ -68,22 +68,31 @@ struct AuthenticationController {
                 }
                 
                 do {
-                    let self.id = try self.jsonDecoder.decode(id.self, from: data)
+                    self.id = try self.jsonDecoder.decode(ProfessorID.self, from: data).id
                     completion(.success(true))
+                    print(data)
                 } catch {
                     NSLog("Error - Error decoding data from source: \(error) \(error.localizedDescription)")
                     return completion(.failure(.noDecode))
                 }
-            } catch {
-                NSLog("Error - Error encoding user credentials. \(error) \(error.localizedDescription)")
-                return completion(.failure(.noEncode))
-            }
+            }.resume()
+        } catch {
+            NSLog("Error - Error encoding user credentials. \(error) \(error.localizedDescription)")
+            return completion(.failure(.noEncode))
+        }
         
     }
     
     
+    //MARK: - Helper Functions -
+    private func postRequest(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
     
     
 }
-}
-*/
+
+
