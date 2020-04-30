@@ -13,7 +13,7 @@ extension Notification {
     
     //MARK: - Extended Properties -
     /// Use dot syntax to call a codable representation of a model object
-    var notificationRepresentation: NotificationRepresentation {
+    var notificationRepresentation: NotificationRepresentation? {
         guard let message = message,
             let notifyTime = notifyTime else { return nil }
         
@@ -39,7 +39,8 @@ extension Notification {
         self.deadlineID = deadlineID
     }
     
-    @discardableResult convenience init?(representation: NotificationRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(representation: NotificationRepresentation,
+                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
         self.id = representation.id

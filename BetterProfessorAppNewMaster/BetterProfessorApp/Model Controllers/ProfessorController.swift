@@ -10,22 +10,25 @@ import Foundation
 import CoreData
 
 class ProfessorController {
+    //Mark: - Singleton Accessor
+    static let shared = ProfessorController()
+    
     //MARK: - Core Data Functions -
     /// Use these functions in the app to handle background logic on the Professor Model object
     func fetchProfessor(context: NSManagedObjectContext = CoreDataStack.shared.mainContext, id: Int64) -> Professor? {
-        /// this function will fetch a Professor model object from core data using it's professorID
+        /// this function will fetch a Professor model object from core data using it's id
+        var returnedProfessor: Professor? = nil
         let currentContext = context
         let professorFetch: NSFetchRequest<NSFetchRequestResult> = Professor.fetchRequest()
         professorFetch.predicate = NSPredicate(format: "id == %d", id)
         
-        do {
-            let fetchedProfessors = try currentContext.fetch(professorFetch) as? [Professor]
-            if let fetchedProfessors = fetchedProfessors {
-                return fetchedProfessors.first
-            }
-        } catch {
-            NSLog("Error - Failed to fetch professor objects from core data: \(error) \(error.localizedDescription)")
+        let fetchedProfessors = try? currentContext.fetch(professorFetch) as? [Professor]
+        returnedProfessor = fetchedProfessors?.first
+        
+        if returnedProfessor == nil {
+            NSLog("Error - Failed to fetch professor objects from core data.")
         }
+        return returnedProfessor
     }
     
     

@@ -10,6 +10,9 @@ import Foundation
 import CoreData
 
 class NotificationController {
+    //Mark: - Singleton Accessor
+    static let shared = NotificationController()
+    
     //MARK: - Core Data Functions -
     // Use these functions in the app to handle background logic on the Notification model object
     
@@ -32,18 +35,20 @@ class NotificationController {
     
     
     func fetchNotification(context: NSManagedObjectContext = CoreDataStack.shared.mainContext, id: Int64) -> Notification? {
+        /// this function will fetch a Deadlinemodel object from core data using it's id
+        var returnedNotification: Notification? = nil
         let currentContext = context
         let notificationFetch: NSFetchRequest<NSFetchRequestResult> = Notification.fetchRequest()
         notificationFetch.predicate = NSPredicate(format:"id == %d", id)
         
-        do {
-            let fetchedNotifications = try currentContext.fetch(notificationFetch) as? [Notification]
-            if let fetchedNotifications = fetchedNotifications {
-                return fetchedNotifications.first
-            }
-        } catch {
-            NSLog("Error - failed to fetch notification objects from core data: \(error) \(error.localizedDescription)")
+        
+        let fetchedNotifications = try? currentContext.fetch(notificationFetch) as? [Notification]
+        returnedNotification = fetchedNotifications?.first
+    
+        if returnedNotification == nil {
+            NSLog("Error - failed to fetch notification objects from core data.")
         }
+        return returnedNotification
     }
     
     

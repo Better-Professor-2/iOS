@@ -10,6 +10,9 @@ import Foundation
 import CoreData
 
 class DeadlineController {
+    //Mark: - Singleton Accessor
+    static let shared = DeadlineController()
+    
     //MARK: - Core Data Functions -
     // Use these functions in the app to handle background logic on the Deadline model object
     func createDeadline(for student: Student,
@@ -37,18 +40,20 @@ class DeadlineController {
     
     
     func fetchDeadline(context: NSManagedObjectContext = CoreDataStack.shared.mainContext, id: Int64) -> Deadline? {
+        /// this function will fetch a Deadlinemodel object from core data using it's id
+        var returnedDeadline: Deadline? = nil
         let currentContext = context
         let deadlineFetch: NSFetchRequest<NSFetchRequestResult> = Deadline.fetchRequest()
         deadlineFetch.predicate = NSPredicate(format: "id == %d", id)
         
-        do {
-            let fetchedDeadlines = try currentContext.fetch(deadlineFetch) as? [Deadline]
-            if let fetchedDeadlines = fetchedDeadlines {
-                return fetchedDeadlines.first
-            }
-        } catch {
-            NSLog("Error - Failed to fetch deadline objects from core data: \(error) \(error.localizedDescription)")
+        
+        let fetchedDeadlines = try? currentContext.fetch(deadlineFetch) as? [Deadline]
+        returnedDeadline = fetchedDeadlines?.first
+        
+        if returnedDeadline == nil {
+            NSLog("Error - Failed to fetch deadline objects from core data.")
         }
+        return returnedDeadline
     }
     
     
