@@ -12,12 +12,12 @@ import CoreData
 class ProfessorController {
     //MARK: - Core Data Functions -
     /// Use these functions in the app to handle background logic on the Professor Model object
-    
     func fetchProfessor(context: NSManagedObjectContext = CoreDataStack.shared.mainContext, id: Int64) -> Professor? {
         /// this function will fetch a Professor model object from core data using it's professorID
         let currentContext = context
         let professorFetch: NSFetchRequest<NSFetchRequestResult> = Professor.fetchRequest()
         professorFetch.predicate = NSPredicate(format: "id == %d", id)
+        
         do {
             let fetchedProfessors = try currentContext.fetch(professorFetch) as? [Professor]
             if let fetchedProfessors = fetchedProfessors {
@@ -27,6 +27,7 @@ class ProfessorController {
             NSLog("Error - Failed to fetch professor objects from core data: \(error) \(error.localizedDescription)")
         }
     }
+    
     
     func updateProfessor(professor: Professor, representation: ProfessorRepresentation) {
         ///call this function to change user info or update students from a new server-side representation.
@@ -39,10 +40,10 @@ class ProfessorController {
         CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
     }
     
+    
     func deleteProfessor(professor: Professor) {
         /// call this function at log out to clear core data for a different professor user.
         let moc = CoreDataStack.shared.mainContext
-        
         guard let professorToDelete = fetchProfessor(id: professor.id) else { return }
         
         do {

@@ -12,16 +12,35 @@ import CoreData
 class StudentController {
     //MARK: - Core Data Functions -
     // Use these functions in the app to handle background logic on the Student model object
-    func createStudent(for professor: Professor, firstName: String, lastName: String, email: String, phoneNumber: String?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    func createStudent(for professor: Professor,
+                       firstName: String,
+                       lastName: String,
+                       email: String,
+                       phoneNumber: String?,
+                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
-        professor.addToStudents(Student(id: Int64.random(in: 256...512), firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, professor: professor, deadlines: [], context: context))
+        professor.addToStudents(Student(id: Int64.random(in: 256...512),
+                                        firstName: firstName,
+                                        lastName: lastName,
+                                        email: email,
+                                        phoneNumber: phoneNumber,
+                                        professor: professor,
+                                        deadlines: [],
+                                        context: context))
+        
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            NSLog("Error - Error saving new core data entity: \(error) \(error.localizedDescription)")
+        }
     }
     
+    
     func fetchStudent(context: NSManagedObjectContext = CoreDataStack.shared.mainContext, id: Int64) -> Student? {
-        
         let currentContext = context
         let studentFetch: NSFetchRequest<NSFetchRequestResult> = Student.fetchRequest()
         studentFetch.predicate = NSPredicate(format: "id == %d", id)
+        
         do{
             let fetchedStudents = try currentContext.fetch(studentFetch) as? [Student]
             if let fetchedStudents = fetchedStudents {
@@ -35,17 +54,16 @@ class StudentController {
     
     func updateStudent(student: Student, representation: StudentRepresentation) {
         if student.id == representation.id  {
-        
-        student.email = representation.email
-        student.phoneNumber = representation.phoneNumber
-        student.deadlines = NSSet(array: representation.deadlines)
+            student.email = representation.email
+            student.phoneNumber = representation.phoneNumber
+            student.deadlines = NSSet(array: representation.deadlines)
         }
         CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
     }
     
+    
     func deleteStudent(student: Student) {
         let moc = CoreDataStack.shared.mainContext
-        
         guard let studentToDelete = fetchStudent(id: student.id) else { return }
         
         do {
