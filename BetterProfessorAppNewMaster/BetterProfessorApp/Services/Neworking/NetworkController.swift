@@ -77,6 +77,7 @@ class NetworkController {
                 for student in studentReps {
                     Student(representation: student)
                 }
+                
                 do {
                     try CoreDataStack.shared.mainContext.save()
                     return completion(.success(true))
@@ -84,6 +85,7 @@ class NetworkController {
                     NSLog("Error - Error saving students to core data. \(error)")
                     return completion(.failure(.coreDataFail))
                 }
+                
             } catch {
                 NSLog("Error - Error decoding student representations. \(error)")
                 return completion(.failure(.noDecode))
@@ -91,6 +93,7 @@ class NetworkController {
         }.resume()
     }
     
+   func getUserData()
     
     
     
