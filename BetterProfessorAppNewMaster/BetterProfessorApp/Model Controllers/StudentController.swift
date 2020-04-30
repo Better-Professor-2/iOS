@@ -8,26 +8,76 @@
 
 import Foundation
 import CoreData
-//MARK: - Core Data Functions -
-// Use these functions in the app to handle background logic on the Student Model object
 
-func createStudent() {
+class StudentController {
+    //Mark: Singleton Accessor
+    static let shared = StudentController()
     
+    //MARK: - Core Data Functions -
+    // Use these functions in the app to handle background logic on the Student model object
+    func createStudent(for professor: Professor,
+                       firstName: String,
+                       lastName: String,
+                       email: String,
+                       phoneNumber: String?,
+                       context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        
+        professor.addToStudents(Student(id: Int64.random(in: 256...512),
+                                        firstName: firstName,
+                                        lastName: lastName,
+                                        email: email,
+                                        phoneNumber: phoneNumber,
+                                        professor: professor,
+                                        deadlines: [],
+                                        context: context))
+        
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            NSLog("Error - Error saving new core data entity: \(error) \(error.localizedDescription)")
+        }
+    }
+    
+    
+    func fetchStudent(context: NSManagedObjectContext = CoreDataStack.shared.mainContext, id: Int64) -> Student? {
+        /// this function will fetch a Student model object from core data using it's id
+        var returnedStudent: Student? = nil
+        let currentContext = context
+        let studentFetch: NSFetchRequest<NSFetchRequestResult> = Student.fetchRequest()
+        studentFetch.predicate = NSPredicate(format: "id == %d", id)
+        
+        
+        let fetchedStudents = try? currentContext.fetch(studentFetch) as? [Student]
+        returnedStudent = fetchedStudents?.first
+        
+        if returnedStudent == nil {
+            NSLog("Error - Failed to fetch student objects from core data.")
+        }
+        return returnedStudent
+    }
+    
+    
+    func updateStudent(student: Student, representation: StudentRepresentation) {
+        if student.id == representation.id  {
+            student.email = representation.email
+            student.phoneNumber = representation.phoneNumber
+            student.deadlines = NSSet(array: representation.deadlines)
+        }
+        CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
+    }
+    
+    
+    func deleteStudent(student: Student) {
+        let moc = CoreDataStack.shared.mainContext
+        guard let studentToDelete = fetchStudent(id: student.id) else { return }
+        
+        do {
+            moc.delete(studentToDelete)
+            try moc.save()
+        } catch {
+            NSLog("Error - Could not delete student, " + String(describing: student.firstName) + " " + String(describing: student.lastName) + " \(error) \(error.localizedDescription)")
+        }
+    }
 }
 
-func fetchStudent() {
-    
-}
-
-func updateStudent() {
-    
-}
-
-func saveStudent() {
-    
-}
-
-func deleteStudent() {
-    
-}
 

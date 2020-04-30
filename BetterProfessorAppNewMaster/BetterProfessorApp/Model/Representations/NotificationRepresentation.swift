@@ -18,7 +18,7 @@ struct NotificationRepresentation: Codable {
     //MARK: - Properties -
     let id: Int64
     var message: String
-    let notifyTime: Date
+    var notifyTime: Date
     let deadlineID: Int64
 }
 
