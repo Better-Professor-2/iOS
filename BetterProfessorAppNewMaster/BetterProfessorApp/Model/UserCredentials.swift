@@ -24,3 +24,17 @@ struct UserCredentials: Codable {
     let email: String
     let password: String
 }
+
+struct ProfessorID: Codable {
+    var id: Int
+}
+
+struct Login: Codable {
+    var email: String
+    var password: String
+}
+
+struct Token: Codable {
+    var token: String
+}
+
