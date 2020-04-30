@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class ProfessorController {
-    //Mark: - Singleton Accessor
+    // MARK: - Singleton Accessor
     static let shared = ProfessorController()
     
     //MARK: - Core Data Functions -
