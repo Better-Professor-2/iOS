@@ -11,7 +11,7 @@ import CoreData
 
 struct ProfessorRepresentation: Codable {
 
-    //MARK: - Enums and Type Aliases -
+    // MARK: - Enums and Type Aliases
     enum CodingKeys: String, CodingKey {
         case id, email, password, students
         case firstName = "first_name"
