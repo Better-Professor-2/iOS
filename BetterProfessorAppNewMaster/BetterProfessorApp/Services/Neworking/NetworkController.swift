@@ -10,6 +10,9 @@ import Foundation
 import CoreData
 import UIKit
 
+//MARK: - NOTES
+/// Keep in mind: The prefix 'get' is used for server tasks while 'fetch' is used for core data tasks to avoid overlap in syntax.
+
 class NetworkController {
     //MARK: - Enums and Type Aliases -
     enum HTTPMethod: String {
@@ -139,7 +142,53 @@ class NetworkController {
         }.resume()
     }
     
-    
+    func getDeadlines(token: Token?, studentID: Int, completion: @escaping CompletionHandler) {
+        
+        guard let tokenString = token?.token else {
+            NSLog("Error - No Token.")
+            return completion(.failure(.notLoggedIn))
+        }
+        
+        var request = getRequest(for: makeDeadlineURL(studentID: studentID))
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error - Error fetching deadlines: \(error) \(error.localizedDescription)")
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error - Bad response fetching deadlines: \(error) \(error?.localizedDescription)")
+                    return completion(.failure(.badResponse))
+            }
+            
+            guard let data = data else {
+                NSLog("Error - No data returned from deadline fetch. \(error) \(error?.localizedDescription)")
+                return completion(.failure(.noData))
+            }
+            
+            do {
+                let deadlineReps = try self.jsonDecoder.decode([DeadlineRepresentation].self, from: data)
+                for deadline in deadlineReps {
+                    Deadline(representation: deadline)
+                }
+                
+                do {
+                    try CoreDataStack.shared.mainContext.save()
+                    return completion(.success(true))
+                } catch {
+                    NSLog("Error - Error saving deadlines to core data. \(error)")
+                    return completion(.failure(.coreDataFail))
+                }
+                
+            } catch {
+                NSLog("Error - Error decoding deadline representation. \(error) \(error.localizedDescription)")
+                return completion(.failure(.noDecode))
+            }
+        }.resume()
+    }
     
     
     
@@ -161,5 +210,11 @@ class NetworkController {
         return request
     }
     
+    private func makeDeadlineURL(studentID: Int) -> URL {
+        let studentsURL = self.studentsURL
+        let stringID = String(describing: studentID)
+        let deadlineURL = studentsURL.appendingPathComponent("/\(stringID)/deadlines")
+        return deadlineURL
+    }
     
 }
