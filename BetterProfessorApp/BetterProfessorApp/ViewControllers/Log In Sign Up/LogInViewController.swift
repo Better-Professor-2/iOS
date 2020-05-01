@@ -31,9 +31,9 @@ class LogInViewController: UIViewController {
         let password = enterPasswordTextField.text!
         let login: Login = Login(email: email,
                                  password: password)
-        authController.login(login: <#T##Login#>, completion: <#T##AuthenticationController.CompletionHandler##AuthenticationController.CompletionHandler##(Result<Bool, AuthenticationController.NetworkError>) -> Void#>)
-        
-        
+        authController.login(login: login) { ( _ ) in
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
