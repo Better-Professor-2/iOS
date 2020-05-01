@@ -22,6 +22,7 @@ class NetworkController {
         case put = "PUT"
         case delete = "DELETE"
     }
+    
     enum NetworkError: Error {
         case notLoggedIn
         case otherError
@@ -31,7 +32,10 @@ class NetworkController {
         case noEncode
         case noDecode
     }
+    
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
+    
+    
     // MARK: - Properties
     static let shared = NetworkController()
     private let token: Token? = AuthenticationController.shared.authToken
@@ -40,6 +44,8 @@ class NetworkController {
     private lazy var professorURL = baseURL.appendingPathComponent("/profile")
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
+    
+    
     // MARK: - Network Methods
     func getStudents(token: Token?, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
@@ -85,6 +91,7 @@ class NetworkController {
             }
         }.resume()
     }
+    
     func getUserData(token: Token?, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
             NSLog("Error - No token")
@@ -127,6 +134,7 @@ class NetworkController {
             }
         }.resume()
     }
+    
     func getDeadlines(token: Token?, studentID: Int, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
             NSLog("Error - No Token.")
@@ -168,6 +176,7 @@ class NetworkController {
             }
         }.resume()
     }
+    
     func getNotifications(token: Token?, studentID: Int, deadlineID: Int, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
             NSLog("Error - No Token.")
@@ -210,6 +219,8 @@ class NetworkController {
             }
         }.resume()
     }
+    
+    
     func postStudent(token: Token?, representation: StudentRepresentation, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
                    NSLog("Error - No token")
@@ -246,7 +257,6 @@ class NetworkController {
         }.resume()
     }
 
-    
     func postDeadline(token: Token?, representation: DeadlineRepresentation, studentID: Int, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
                    NSLog("Error - No token")
@@ -327,7 +337,7 @@ class NetworkController {
             
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200 else {
-                    NSLog("Error - Bad response when deleting student from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    NSLog("Error - Bad response when deleting student from remote host: " + String(describing: error) + " " + String(describing: error?.localizedDescription))
                     return completion(.failure(.badResponse))
             }
             
@@ -355,7 +365,7 @@ class NetworkController {
             
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200 else {
-                    NSLog("Error - Bad response when deleting deadline from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    NSLog("Error - Bad response when deleting deadline from remote host: " + String(describing: error) + " " + String(describing: error?.localizedDescription))
                     return completion(.failure(.badResponse))
             }
             return completion(.success(true))
@@ -383,12 +393,14 @@ class NetworkController {
             
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200 else {
-                    NSLog("Error - Bad response when deleting notification from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    NSLog("Error - Bad response when deleting notification from remote host: " + String(describing: error) + " " + String(describing: error?.localizedDescription))
                     return completion(.failure(.badResponse))
             }
             return completion(.success(true))
         }.resume()
     }
+    
+    
     // MARK: - Helper Methods
     private func getRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)
@@ -396,6 +408,7 @@ class NetworkController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }
+    
     private func postRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
@@ -403,7 +416,6 @@ class NetworkController {
         return request
     }
 
-    
     private func deleteRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
@@ -411,13 +423,13 @@ class NetworkController {
         return request
     }
     
-
     private func makeDeadlineURL(studentID: Int) -> URL {
         let studentsURL = self.studentsURL
         let stringID = String(describing: studentID)
         let deadlineURL = studentsURL.appendingPathComponent("/\(stringID)/deadlines")
         return deadlineURL
     }
+    
     private func makeNotificationURL(studentID: Int, deadlineID: Int) -> URL {
         let deadlineURL = makeDeadlineURL(studentID: studentID)
 
