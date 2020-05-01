@@ -10,6 +10,8 @@ import UIKit
 
 class LogInSignUpNavigationController: UINavigationController {
     
+    let netController = NetworkController()
+    let authControlller = AuthenticationController()
     
 
     override func viewDidLoad() {

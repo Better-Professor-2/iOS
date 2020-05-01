@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WWJ-yi-7K0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -177,7 +177,6 @@
                     <connections>
                         <outlet property="enterEmailTextField" destination="C8K-y3-PEM" id="bKE-Z8-cs2"/>
                         <outlet property="enterPasswordTextField" destination="2Mr-nK-BKj" id="AZb-yJ-LZP"/>
-                        <segue destination="bgO-IL-P8y" kind="show" id="f4J-Aw-FtT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAB-gU-sJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1506,7 +1505,7 @@
         <!--Main App Tab Bar Controller-->
         <scene sceneID="SyP-0N-bXO">
             <objects>
-                <tabBarController id="bgO-IL-P8y" customClass="MainAppTabBarController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="bgO-IL-P8y" customClass="MainAppTabBarController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="84F-Iu-L46"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lhc-Xw-gcx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -1787,9 +1786,6 @@
             <point key="canvasLocation" x="2033" y="2705"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="VWT-0y-nI3"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.horizontal.fill" catalog="system" width="128" height="65"/>
         <image name="calendar" catalog="system" width="128" height="106"/>

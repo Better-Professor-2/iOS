@@ -34,14 +34,12 @@ class LogInViewController: UIViewController {
                                  password: password)
         authController.login(login: login) { ( _ ) in
         }
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+        let vC = self.storyboard!.instantiateViewController(identifier: "TabBarController")
+        self.navigationController?.present(vC, animated: true, completion: nil)
+        return
+        
     }
-<<<<<<< HEAD
-       
-=======
-    
-    
->>>>>>> fixed some styling and re-edited the login to state it was in an hour ago :-\ still wasn't sure about a segue there.
     override func viewDidLoad() {
         super.viewDidLoad()
 

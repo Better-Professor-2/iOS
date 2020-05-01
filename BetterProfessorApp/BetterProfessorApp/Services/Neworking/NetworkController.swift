@@ -96,11 +96,6 @@ class NetworkController {
             }
         }.resume()
     }
-    
-<<<<<<< HEAD
-=======
-    
->>>>>>> fixed some styling and re-edited the login to state it was in an hour ago :-\ still wasn't sure about a segue there.
     func getUserData(token: Token?, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
             NSLog("Error - No token")
@@ -149,10 +144,7 @@ class NetworkController {
         }.resume()
     }
     
-<<<<<<< HEAD
-=======
-    
->>>>>>> fixed some styling and re-edited the login to state it was in an hour ago :-\ still wasn't sure about a segue there.
+
     func getDeadlines(token: Token?, studentID: Int, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
             NSLog("Error - No Token.")
@@ -201,10 +193,7 @@ class NetworkController {
         }.resume()
     }
     
-<<<<<<< HEAD
-=======
     
->>>>>>> fixed some styling and re-edited the login to state it was in an hour ago :-\ still wasn't sure about a segue there.
     func getNotifications(token: Token?, studentID: Int, deadlineID: Int, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
             NSLog("Error - No Token.")
