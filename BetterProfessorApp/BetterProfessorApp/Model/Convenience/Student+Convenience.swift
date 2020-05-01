@@ -11,7 +11,7 @@ import CoreData
 
 extension Student {
 
-    //MARK: - Extended Properties -
+    //MARK: - Extended Properties 
     /// Use dot syntax to call a codable representation of a model object
     var studentRepresentation: StudentRepresentation? {
         guard let firstName = firstName,
@@ -20,14 +20,11 @@ extension Student {
             let phoneNumber = phoneNumber,
             let professor = professor,
             let deadlines = deadlines else { return nil }
-        
         var deadlineRepsArray: [DeadlineRepresentation] = []
-        
         for case let deadline as Deadline in deadlines {
             guard let deadlineRep = deadline.deadlineRepresentation else { return nil }
             deadlineRepsArray.append(deadlineRep)
         }
-        
         return StudentRepresentation(id: id,
                                      firstName: firstName,
                                      lastName: lastName,
@@ -36,11 +33,8 @@ extension Student {
                                      professor: professor.professorRepresentation!,
                                      professorID: professorID,
                                      deadlines: deadlineRepsArray)
-        
     }
-
-
-    //MARK: - Initializers -
+    // MARK: - Initializers
     /// Use these convenience initializers to move Model objects between CoreData and the network API
     @discardableResult convenience init(id: Int64,
                                         firstName: String,
@@ -64,7 +58,6 @@ extension Student {
 
     @discardableResult convenience init?(representation: StudentRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        
         self.init(context: context)
         self.id = representation.id
         self.firstName = representation.firstName

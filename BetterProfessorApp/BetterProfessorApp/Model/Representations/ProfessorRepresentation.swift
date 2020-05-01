@@ -18,7 +18,7 @@ struct ProfessorRepresentation: Codable {
         case lastName = "last_name"
     }
 
-    //MARK: - Properties -
+    // MARK: - Properties
     var id: Int64
     var email: String
     var password: String

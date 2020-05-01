@@ -9,7 +9,31 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-
+    
+    let authController = AuthenticationController()
+    let netController = NetworkController()
+    
+    
+    
+    @IBOutlet weak var enterEmailTextField: UITextField!
+    
+    @IBOutlet weak var enterPasswordTextField: UITextField!
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        guard enterEmailTextField.text != nil, enterEmailTextField.text != nil else {
+            NSLog("Nil Authentication")
+            let alert = UIAlertController(title: "Error!", message: "Enter your email and password!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            return
+            
+        }
+        let email = enterPasswordTextField.text!
+        let password = enterPasswordTextField.text!
+        let login: Login = Login(email: email,
+                                 password: password)
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +41,7 @@ class LogInViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -25,6 +49,6 @@ class LogInViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

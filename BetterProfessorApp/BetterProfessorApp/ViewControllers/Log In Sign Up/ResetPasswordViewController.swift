@@ -52,7 +52,8 @@ class ResetPasswordViewController: UIViewController, MFMailComposeViewController
         let mail = MFMailComposeViewController()
         mail.mailComposeDelegate = self
         mail.setToRecipients([email])
-        mail.setMessageBody("<p>Here is a hypothetical email that would allow you to reset your Better Professor password.</p>",
+        mail.setMessageBody("<p>Here is a hypothetical email " +
+            "that would allow you to reset your Better Professor password.</p>",
                             isHTML: true)
         if MFMailComposeViewController.canSendMail() {
                 present(mail, animated: true)

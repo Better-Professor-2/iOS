@@ -32,17 +32,15 @@ class NetworkController {
         case noDecode
     }
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    
     // MARK: - Properties
     static let shared = NetworkController()
     private let token: Token? = AuthenticationController.shared.authToken
-    private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")
+    private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")!
     private lazy var studentsURL = baseURL.appendingPathComponent("/students/")
     private lazy var professorURL = baseURL.appendingPathComponent("/profile")
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
     // MARK: - Network Methods
-    
     func getStudents(token: Token?, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
             NSLog("Error - No token")
@@ -56,14 +54,19 @@ class NetworkController {
             }
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200 else {
-                    NSLog("Error - Bad Response. Unable to fetch students. \(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                    NSLog("Error - Bad Response. Unable to fetch students." +
+                        " " +
+                        "\(String(describing: error))" +
+                        " " +
+                        "\(String(describing: error?.localizedDescription))")
                     return completion(.failure(.badResponse))
             }
             guard let data = data else {
-                NSLog("Error - No data recieved. Unable to fetch students \(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                NSLog("Error - No data recieved. Unable to fetch students" +
+                    " " +
+                    "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                 return completion(.failure(.noData))
             }
-            
             do {
                 let studentReps = try self.jsonDecoder.decode([StudentRepresentation].self, from: data)
                 for student in studentReps {
@@ -76,7 +79,6 @@ class NetworkController {
                     NSLog("Error - Error saving students to core data. \(error)")
                     return completion(.failure(.coreDataFail))
                 }
-                
             } catch {
                 NSLog("Error - Error decoding student representations. \(error)")
                 return completion(.failure(.noDecode))
@@ -92,17 +94,21 @@ class NetworkController {
         request.addValue(tokenString, forHTTPHeaderField: "Authoriztation")
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                NSLog("Error - Something went wrong fetching your profile information. \(error) \(error.localizedDescription)")
+                NSLog("Error - Something went wrong fetching your profile information." +
+                    " " +
+                    "\(error) \(error.localizedDescription)")
                 return completion(.failure(.otherError))
             }
-            
             guard let response = response as? HTTPURLResponse,
             response.statusCode == 200 else {
-                NSLog("Error - Bad Response while fetching profile information. \(String(describing: error)) \(String(describing: error?.localizedDescription))")
-                    return completion(.failure(.badResponse))
+                NSLog("Error: Bad Response while fetching profile information." +
+                    " " +
+                    "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                return completion(.failure(.badResponse))
             }
             guard let data = data else {
-                NSLog("Error - No professor object returned. \(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                NSLog("Error - No professor object returned." +
+                    " " + "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                 return completion(.failure(.noData))
             }
             do {
@@ -115,7 +121,6 @@ class NetworkController {
                     NSLog("Error - Error saving professor to core data. \(error)")
                     return completion(.failure(.coreDataFail))
                 }
-                
             } catch {
                 NSLog("Error - Error decoding professor representation. \(error)")
                 return completion(.failure(.noDecode))
@@ -136,11 +141,13 @@ class NetworkController {
             }
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200 else {
-                    NSLog("Error - Bad response fetching deadlines: \(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                    NSLog("Error - Bad response fetching deadlines:" +
+                        "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                     return completion(.failure(.badResponse))
             }
             guard let data = data else {
-                NSLog("Error - No data returned from deadline fetch. \(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                NSLog("Error - No data returned from deadline fetch." +
+                    "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                 return completion(.failure(.noData))
             }
             do {
@@ -175,11 +182,16 @@ class NetworkController {
             }
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200 else {
-                    NSLog("Error - Bad Response fetching notifications: \(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                    NSLog("Error - Bad Response fetching notifications: " +
+                        "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                     return completion(.failure(.badResponse))
             }
             guard let data = data else {
-                NSLog("Error - No data returnedfrom notification fetch. \(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                NSLog("Error - No data returnedfrom notification fetch." +
+                    " " +
+                    "\(String(describing: error))" +
+                    " " +
+                    "\(String(describing: error?.localizedDescription))")
                 return completion(.failure(.noData))
             }
             do {
@@ -206,9 +218,12 @@ class NetworkController {
         var request = postRequest(for: studentsURL)
         request.addValue(tokenString, forHTTPHeaderField: "Authorization")
         do {
-            request.httpBody = try self.jsonEncoder.encode(representation) throws -> .
+            request.httpBody = try self.jsonEncoder.encode(representation)
         } catch {
-            NSLog("Error - Error encoding student representation " + String(describing: error) + " " + String(describing: error.localizedDescription))
+            NSLog("Error - Error encoding student representation " +
+                String(describing: error) +
+                " " +
+                String(describing: error.localizedDescription))
             return completion(.failure(.noEncode))
         }
         URLSession.shared.dataTask(with: request) { _, response, error in
@@ -219,7 +234,10 @@ class NetworkController {
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 201 else {
                     let errorDescriberString = String(describing: error)
-                    NSLog("Error - Bad response when posting student: " + errorDescriberString + " " + String(describing: error?.localizedDescription))
+                    NSLog("Error - Bad response when posting student: " +
+                        errorDescriberString +
+                        " " +
+                        String(describing: error?.localizedDescription))
                     return completion(.failure(.badResponse))
             }
             return completion(.success(true))
@@ -251,12 +269,11 @@ class NetworkController {
     private func makeDeadlineURL(studentID: Int) -> URL {
         let studentsURL = self.studentsURL
         let stringID = String(describing: studentID)
-        let deadlineURL = studentsURL?.appendingPathComponent("/\(stringID)/deadlines")
+        let deadlineURL = studentsURL.appendingPathComponent("/\(stringID)/deadlines")
         return deadlineURL
     }
     private func makeNotificationURL(studentID: Int, deadlineID: Int) -> URL {
         let deadlineURL = makeDeadlineURL(studentID: studentID)
-        let stringDeadlineID = String(describing: deadlineID)
         let notificationURL = deadlineURL.appendingPathComponent("/\(deadlineID)/notifications")
         return notificationURL
     }
