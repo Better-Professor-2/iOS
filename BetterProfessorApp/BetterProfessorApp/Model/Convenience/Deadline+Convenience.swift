@@ -18,9 +18,7 @@ extension Deadline {
             let notes = notes,
             let dueDate = dueDate,
             let notifications = notifications else { return nil }
-        
         var notificationsRepsArray: [NotificationRepresentation] = []
-        
         for case let notification as Notification in notifications {
             guard let notificationRep = notification.notificationRepresentation else { return nil }
             notificationsRepsArray.append(notificationRep)
@@ -32,9 +30,7 @@ extension Deadline {
                                       studentID: studentID,
                                       notifications: notificationsRepsArray)
     }
-    
-    
-    //MARK: - Initializers -
+    // MARK: - Initializers
     /// Use these convenience initializers to move Model objects between CoreData and the network API
     @discardableResult convenience init(id: Int64,
                                         name: String,
@@ -52,10 +48,8 @@ extension Deadline {
         self.student = student
         self.notifications = NSSet(array: notifications)
     }
-    
     @discardableResult convenience init?(representation: DeadlineRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        
         self.init(context: context)
         self.id = representation.id
         self.name = representation.name
@@ -63,7 +57,5 @@ extension Deadline {
         self.studentID = representation.studentID
         self.student = StudentController.shared.fetchStudent(id: representation.studentID)
         self.notifications = NSSet(array: representation.notifications)
-        
-        
     }
 }

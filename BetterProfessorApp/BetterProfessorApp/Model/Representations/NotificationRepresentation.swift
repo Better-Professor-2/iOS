@@ -9,17 +9,14 @@
 import Foundation
 
 struct NotificationRepresentation: Codable {
-    //MARK: - Enums and Type Aliases -
+    // MARK: - Enums and Type Aliases
     enum CodingKeys: String, CodingKey {
         case id, message, deadlineID
         case notifyTime = "notify_time"
     }
-    
-    //MARK: - Properties -
+    // MARK: - Properties -
     var id: Int64
     var message: String
     var notifyTime: Date
     let deadlineID: Int64
 }
-
-

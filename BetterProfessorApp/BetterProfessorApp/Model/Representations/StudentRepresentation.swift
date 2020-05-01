@@ -9,10 +9,9 @@
 import Foundation
 import CoreData
 
-
 struct StudentRepresentation: Codable {
 
-    //MARK: - Enums and Type Aliases -
+    // MARK: - Enums and Type Aliases
     enum CodingKeys: String, CodingKey {
         case id, professorID
         case deadlines
@@ -22,8 +21,7 @@ struct StudentRepresentation: Codable {
         case lastName = "last_name"
         case phoneNumber = "phone_number"
     }
-
-    //MARK: - Properties -
+    // MARK: - Properties
     var id: Int64
     let firstName: String
     let lastName: String

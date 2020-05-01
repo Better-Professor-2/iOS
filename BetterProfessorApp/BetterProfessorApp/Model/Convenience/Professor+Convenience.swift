@@ -10,8 +10,7 @@ import Foundation
 import CoreData
 
 extension Professor {
-    
-    //MARK: - Extended Properties -
+    // MARK: - Extended Properties 
     /// Use dot syntax to call a codable representation of a model object
     var professorRepresentation: ProfessorRepresentation? {
         guard let password = password,
@@ -35,9 +34,7 @@ extension Professor {
                                        students: studentRepsArray)
 
     }
-
-
-    //MARK: - Initializers -
+    // MARK: - Initializers
     /// Use these convenience initializers to move Model objects between CoreData and the network API
     @discardableResult convenience init(id: Int64,
                                         email: String,

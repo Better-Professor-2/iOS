@@ -9,14 +9,13 @@
 import Foundation
 
 struct DeadlineRepresentation: Codable {
-    //MARK: - Enums and Type Aliases -
+    // MARK: - Enums and Type Aliases
     enum CodingKeys: String, CodingKey {
         case name, id, studentID, notifications
         case notes = "description"
         case dueDate = "due_date"
     }
-    
-    //MARK: - Properties -
+    // MARK: - Properties
     var id: Int64
     let name: String
     var dueDate: Date

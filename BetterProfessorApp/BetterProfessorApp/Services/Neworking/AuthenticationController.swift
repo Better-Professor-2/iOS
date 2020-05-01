@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class AuthenticationController {
-    //MARK: - Enums & Type Aliases -
+    // MARK: - Enums & Type Aliases 
     enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"
@@ -49,7 +49,8 @@ class AuthenticationController {
                 }
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 201 else {
-                        NSLog("Error - Bad Response. Registration Unsucessful: \(String(describing: error)) \(String(describing: error?.localizedDescription))")
+                        NSLog("Error - Bad Response. Registration Unsucessful: " +
+                            "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                         return completion(.failure(.badResponse))
                 }
                 guard let data = data else {
