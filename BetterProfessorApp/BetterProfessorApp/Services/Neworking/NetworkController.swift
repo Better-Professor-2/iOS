@@ -233,25 +233,161 @@ class NetworkController {
             }
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 201 else {
+
                     let errorDescriberString = String(describing: error)
                     NSLog("Error - Bad response when posting student: " +
                         errorDescriberString +
                         " " +
                         String(describing: error?.localizedDescription))
+
                     return completion(.failure(.badResponse))
             }
             return completion(.success(true))
         }.resume()
     }
-    func postDeadline() {
+
+    
+    func postDeadline(token: Token?, representation: DeadlineRepresentation, studentID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+                   NSLog("Error - No token")
+                   return completion(.failure(.notLoggedIn))
+        }
+        
+        var request = postRequest(for: makeDeadlineURL(studentID: studentID))
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        do {
+            request.httpBody = try self.jsonEncoder.encode(representation)
+        } catch {
+            NSLog("Error - Error encoding deadline representation " + String(describing: error) + " " + String(describing: error.localizedDescription))
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error posting deadline: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 201 else {
+                    NSLog("Error - Bad response when posting deadline")
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
     }
-    func postNotification() {
+    
+    func postNotification(token: Token?, representation: NotificationRepresentation, studentID: Int, deadlineID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+                   NSLog("Error - No token")
+                   return completion(.failure(.notLoggedIn))
+        }
+        
+        var request = postRequest(for: makeNotificationURL(studentID: studentID, deadlineID: deadlineID))
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        do {
+            request.httpBody = try self.jsonEncoder.encode(representation)
+        } catch {
+            NSLog("Error - Error encoding notification representation " + String(describing: error) + " " + String(describing: error.localizedDescription))
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error posting notification: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 201 else {
+                    NSLog("Error - Bad response when posting notification")
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
     }
-    func deleteStudent() {
+    
+    
+    func deleteStudent(token: Token?, studentID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+                   NSLog("Error - No token")
+                   return completion(.failure(.notLoggedIn))
+        }
+        
+        let idString = String(studentID)
+        let deleteStudentURL = studentsURL.appendingPathComponent("/\(idString)/")
+        var request = deleteRequest(for: deleteStudentURL)
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error deleting student from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error - Bad response when deleting student from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    return completion(.failure(.badResponse))
+            }
+            
+            return completion(.success(true))
+        }.resume()
     }
-    func deleteDeadline() {
+    
+    func deleteDeadline(token: Token?, studentID: Int, deadlineID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+            NSLog("Error - No token")
+            return completion(.failure(.notLoggedIn))
+        }
+        
+        let studentString = String(studentID)
+        let deadlineString = String(deadlineID)
+        let deleteDeadlineURL = studentsURL.appendingPathComponent("/\(studentString)/deadlines/\(deadlineString)/")
+        var request = deleteRequest(for: deleteDeadlineURL)
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error deleting deadline from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error - Bad response when deleting deadline from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
     }
-    func deleteNotification() {
+        
+    func deleteNotification(token: Token?, studentID: Int, deadlineID: Int, notificationID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+            NSLog("Error - No token")
+            return completion(.failure(.notLoggedIn))
+        }
+        
+        let studentString = String(studentID)
+        let deadlineString = String(deadlineID)
+        let notificationString = String(notificationID)
+        let deleteNotificationURL = studentsURL.appendingPathComponent("/\(studentString)/deadlines/\(deadlineString)/notifications/\(notificationString)/")
+        var request = deleteRequest(for: deleteNotificationURL)
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error deleting notification from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error - Bad response when deleting notification from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
     }
     // MARK: - Helper Methods
     private func getRequest(for url: URL) -> URLRequest {
@@ -266,6 +402,16 @@ class NetworkController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }
+
+    
+    private func deleteRequest(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+    
+
     private func makeDeadlineURL(studentID: Int) -> URL {
         let studentsURL = self.studentsURL
         let stringID = String(describing: studentID)
@@ -274,7 +420,10 @@ class NetworkController {
     }
     private func makeNotificationURL(studentID: Int, deadlineID: Int) -> URL {
         let deadlineURL = makeDeadlineURL(studentID: studentID)
-        let notificationURL = deadlineURL.appendingPathComponent("/\(deadlineID)/notifications")
+
+        let stringDeadlineID = String(describing: deadlineID)
+        let notificationURL = deadlineURL.appendingPathComponent("/\(stringDeadlineID)/notifications")
+
         return notificationURL
     }
 }
