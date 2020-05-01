@@ -52,7 +52,6 @@
 		E3E9AC902457A3CA004EDC9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */; };
 		E3E9AC952457A3CA004EDC9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E9AC932457A3CA004EDC9C /* Main.storyboard */; };
 		E3E9AC982457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3E9AC962457A3CA004EDC9C /* BetterProfessorApp.xcdatamodeld */; };
-		E3E9AC9A2457A3D0004EDC9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E9AC992457A3D0004EDC9C /* Assets.xcassets */; };
 		E3E9AC9D2457A3D0004EDC9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E9AC9B2457A3D0004EDC9C /* LaunchScreen.storyboard */; };
 		E3E9ACA82457A3D1004EDC9C /* BetterProfessorAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9ACA72457A3D1004EDC9C /* BetterProfessorAppTests.swift */; };
 		E3E9ACB32457A3D1004EDC9C /* BetterProfessorAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9ACB22457A3D1004EDC9C /* BetterProfessorAppUITests.swift */; };
@@ -94,6 +93,7 @@
 		5E7FF5A6245B676400731F03 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		C3BEC36396EB9226D1606040 /* Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-BetterProfessorApp-BetterProfessorAppUITests/Pods-BetterProfessorApp-BetterProfessorAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB917A45DEDCF4AA677308C4 /* Pods-BetterProfessorAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetterProfessorAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BetterProfessorAppTests/Pods-BetterProfessorAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E3845BF0245BCE6100BBB0C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3C76E7D2457D35D00CF3944 /* LogInSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInSignUpViewController.swift; sourceTree = "<group>"; };
 		E3C76E82245883F100CF3944 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E3C76E842458843300CF3944 /* Professor+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Professor+Convenience.swift"; sourceTree = "<group>"; };
@@ -127,7 +127,6 @@
 		E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E3E9AC942457A3CA004EDC9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3E9AC972457A3CA004EDC9C /* BetterProfessorApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BetterProfessorApp.xcdatamodel; sourceTree = "<group>"; };
-		E3E9AC992457A3D0004EDC9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3E9AC9C2457A3D0004EDC9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3E9AC9E2457A3D0004EDC9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3E9ACA32457A3D1004EDC9C /* BetterProfessorAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterProfessorAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,7 +426,7 @@
 				E3E9AC8D2457A3CA004EDC9C /* AppDelegate.swift */,
 				E3E9AC8F2457A3CA004EDC9C /* SceneDelegate.swift */,
 				E3E9AC932457A3CA004EDC9C /* Main.storyboard */,
-				E3E9AC992457A3D0004EDC9C /* Assets.xcassets */,
+				E3845BF0245BCE6100BBB0C1 /* Assets.xcassets */,
 				E3E9AC9B2457A3D0004EDC9C /* LaunchScreen.storyboard */,
 				E3E9AC9E2457A3D0004EDC9C /* Info.plist */,
 				5E7FF59F24593E5C00731F03 /* Model */,
@@ -563,7 +562,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3E9AC9D2457A3D0004EDC9C /* LaunchScreen.storyboard in Resources */,
-				E3E9AC9A2457A3D0004EDC9C /* Assets.xcassets in Resources */,
 				E3E9AC952457A3CA004EDC9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
