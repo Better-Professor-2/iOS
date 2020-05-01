@@ -15,8 +15,6 @@ class MyRemindersNavigationController: UINavigationController {
 
         // Do any additional setup after loading the view.
     }
-    
-   
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

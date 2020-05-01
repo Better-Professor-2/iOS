@@ -24,13 +24,10 @@ class CoreDataStack {
     var mainContext: NSManagedObjectContext {
         return container.viewContext
     }
-
-    //MARK: - Functions -
+    // MARK: - Functions
     /// cross-object save function for saving MSManagedObjectContext to NSPersistentStore
-    
     func saveToCoreData(context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         let currentObjectContext = context
-        
         do {
             try currentObjectContext.save()
         } catch {
@@ -39,4 +36,3 @@ class CoreDataStack {
     }
 
 }
-

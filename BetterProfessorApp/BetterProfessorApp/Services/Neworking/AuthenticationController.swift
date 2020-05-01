@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 
 class AuthenticationController {
-    //MARK: - Enums & Type Aliases -
+    // MARK: - Enums & Type Aliases 
     enum HTTPMethod: String {
         case get = "GET"
         case post = "POST"
         case put = "PUT"
         case delete = "DELETE"
     }
-    
     enum NetworkError: Error {
         case failedRegister
         case failedLogIn
@@ -25,51 +24,39 @@ class AuthenticationController {
         case noEncode
         case noDecode
         case badResponse
-        
     }
-    
     typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
-    
-    
-    //MARK: - Properties -
+    // MARK: - Properties
     private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")!
-    
     private lazy var registerURL = baseURL.appendingPathComponent("/register/")
     private lazy var loginURL = baseURL.appendingPathComponent("/login/")
-    
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
-    
     var id: Int?
     var authToken: Token?
     static let shared = AuthenticationController()
-    
-    //MARK: - Network Functions -
+    // MARK: - Network Functions
     func register(with credentials: UserCredentials, completion: @escaping CompletionHandler) {
         var request = postRequest(for: registerURL)
-        
         do {
             let jsonData = try jsonEncoder.encode(credentials)
             request.httpBody = jsonData
-            
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     NSLog("Error - failed to register new user: \(error) \(error.localizedDescription)")
                     completion(.failure(.failedRegister))
                     return
                 }
-                
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 201 else {
-                        NSLog("Error - Bad Response. Registration Unsucessful: \(error) \(error?.localizedDescription)")
+                        NSLog("Error - Bad Response. Registration Unsucessful: " +
+                            "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                         return completion(.failure(.badResponse))
                 }
-                
                 guard let data = data else {
                     NSLog("Error - No data recieved")
                     return completion(.failure(.noData))
                 }
-                
                 do {
                     self.id = try self.jsonDecoder.decode(ProfessorID.self, from: data).id
                     completion(.success(true))
@@ -83,34 +70,27 @@ class AuthenticationController {
             NSLog("Error - Error encoding user credentials. \(error) \(error.localizedDescription)")
             return completion(.failure(.noEncode))
         }
-        
     }
-    
     func login(login: Login, completion: @escaping CompletionHandler) {
         var request = postRequest(for: loginURL)
-        
         do {
             let jsonData = try jsonEncoder.encode(login)
             request.httpBody = jsonData
-            
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     NSLog("Error - Not logged in: \(error) \(error.localizedDescription)")
                     return completion(.failure(.failedLogIn))
                 }
-                
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 200
                     else {
-                        NSLog("Error - Sign in was unsuccessful, bad response. \(error)")
+                        NSLog("Error - Sign in was unsuccessful, bad response. \(String(describing: error))")
                         return completion(.failure(.failedLogIn))
                 }
-                
                 guard let data = data else {
-                    NSLog("Error - Sign in unsuccessful, no data recieved. \(error)")
+                    NSLog("Error - Sign in unsuccessful, no data recieved. \(String(describing: error))")
                     return completion(.failure(.noData))
                 }
-                
                 do {
                     self.authToken = try self.jsonDecoder.decode(Token.self, from: data)
                     completion(.success(true))
@@ -124,21 +104,12 @@ class AuthenticationController {
             NSLog("Error - Sign in unsuccessful. Error encoding user info to database. \(error)")
             return completion(.failure(.noEncode))
         }
-        
-        
-        
     }
-    
-    
-    //MARK: - Helper Functions -
+    // MARK: - Helper Functions
     private func postRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }
-    
-    
 }
-
-

@@ -9,36 +9,30 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-   
     // MARK: - Professor Controller
     let professorController = ProfessorController()
 
-    
     // MARK: - IBOutlets
-    
     @IBOutlet weak var fullNameTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
-    
     // MARK: - IBActions
-    
+        // MARK: - The Big Heckim Function
     @IBAction func createProfessorAccountButtonPressed(_ sender: Any) {
-        
         let firstName: String
         let lastName: String
         let professor: Professor
-        
-        
         guard (fullNameTextField.text != nil),
             (passwordTextField.text != nil),
             (emailTextField.text != nil),
             confirmPasswordTextField.text != nil else {
-                let alert = UIAlertController(title: "Submission Error!", message: "You left something blank", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                let alert = UIAlertController(title: "Submission Error!",
+                                              message: "You left something blank",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay",
+                                              style: .default,
+                                              handler: nil))
                 self.present(alert, animated: true)
                 NSLog("Field left blank")
                 return
@@ -55,7 +49,6 @@ class SignUpViewController: UIViewController {
             return
         }
         let names: [String]! = fullNameTextField.text?.components(separatedBy: " ")
-        
         if names.count == 1 {
             firstName = names.first!
             lastName = ""
@@ -86,27 +79,24 @@ class SignUpViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
             return
         }
-        self.professorController.updateProfessor(professor: professor, representation: professor.professorRepresentation!)
+        self.professorController.updateProfessor(professor: professor,
+                                                 representation: professor.professorRepresentation!)
         let newUserCredentials = UserCredentials(firstName: professor.firstName!,
                                                  lastName: professor.lastName!,
                                                  email: professor.email!,
                                                  password: professor.password!)
         AuthenticationController.shared.register(with: newUserCredentials) { (_) in
         }
-        AuthenticationController.shared.login(login: Login(email: newUserCredentials.email, password: newUserCredentials.password)) { (_) in
+        AuthenticationController.shared.login(login: Login(email: newUserCredentials.email,
+                                                           password: newUserCredentials.password)) { (_) in
         }
         self.dismiss(animated: true, completion: nil)
-        
-        
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
     /*
     // MARK: - Navigation
 
@@ -118,4 +108,3 @@ class SignUpViewController: UIViewController {
     */
 
 }
-

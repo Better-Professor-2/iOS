@@ -9,6 +9,8 @@
 import UIKit
 
 class LogInSignUpNavigationController: UINavigationController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
