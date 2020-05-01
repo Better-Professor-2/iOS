@@ -9,6 +9,10 @@
 import UIKit
 
 class RemindersTableViewController: UITableViewController {
+    
+    @IBOutlet weak var remindersSearchBar: UISearchBar!
+    
+    let notificatioController = NotificationController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,3 +92,5 @@ class RemindersTableViewController: UITableViewController {
     */
 
 }
+
+

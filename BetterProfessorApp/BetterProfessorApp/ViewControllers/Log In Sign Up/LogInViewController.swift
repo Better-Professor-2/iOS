@@ -15,6 +15,7 @@ class LogInViewController: UIViewController {
     
     
     
+    
     @IBOutlet weak var enterEmailTextField: UITextField!
     
     @IBOutlet weak var enterPasswordTextField: UITextField!
@@ -31,10 +32,16 @@ class LogInViewController: UIViewController {
         let password = enterPasswordTextField.text!
         let login: Login = Login(email: email,
                                  password: password)
-        authController.login(login: <#T##Login#>, completion: <#T##AuthenticationController.CompletionHandler##AuthenticationController.CompletionHandler##(Result<Bool, AuthenticationController.NetworkError>) -> Void#>)
-        
-        
+        authController.login(login: login) { ( _ ) in
+        }
+        self.dismiss(animated: true, completion: nil)
     }
+<<<<<<< HEAD
+       
+=======
+    
+    
+>>>>>>> fixed some styling and re-edited the login to state it was in an hour ago :-\ still wasn't sure about a segue there.
     override func viewDidLoad() {
         super.viewDidLoad()
 
