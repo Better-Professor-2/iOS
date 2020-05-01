@@ -24,7 +24,7 @@ struct StudentRepresentation: Codable {
     }
 
     //MARK: - Properties -
-    let id: Int64
+    var id: Int64
     let firstName: String
     let lastName: String
     let email: String

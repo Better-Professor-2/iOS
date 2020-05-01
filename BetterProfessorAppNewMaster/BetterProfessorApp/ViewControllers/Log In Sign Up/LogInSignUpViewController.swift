@@ -18,7 +18,9 @@ class LogInSignUpViewController: UIViewController {
     
     
     @IBAction func signUpButton(_ sender: Any) {
+        
     }
+    
     @IBAction func logInButton(_ sender: Any) {
     }
     

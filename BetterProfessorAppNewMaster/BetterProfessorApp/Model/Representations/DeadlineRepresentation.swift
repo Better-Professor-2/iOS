@@ -17,7 +17,7 @@ struct DeadlineRepresentation: Codable {
     }
     
     //MARK: - Properties -
-    let id: Int64
+    var id: Int64
     let name: String
     var dueDate: Date
     var notes: String?

@@ -19,10 +19,10 @@ struct ProfessorRepresentation: Codable {
     }
 
     //MARK: - Properties -
-    let id: Int64
-    let email: String
-    let password: String
-    let firstName: String
-    let lastName: String
+    var id: Int64
+    var email: String
+    var password: String
+    var firstName: String
+    var lastName: String
     var students: [StudentRepresentation]
 }

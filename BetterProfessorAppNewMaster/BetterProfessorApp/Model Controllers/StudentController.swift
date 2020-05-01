@@ -58,7 +58,8 @@ class StudentController {
     
     
     func updateStudent(student: Student, representation: StudentRepresentation) {
-        if student.id == representation.id  {
+        if student.email == representation.email  {
+            student.id = representation.id
             student.email = representation.email
             student.phoneNumber = representation.phoneNumber
             student.deadlines = NSSet(array: representation.deadlines)

@@ -52,10 +52,10 @@ class NotificationController {
     
     
     func updateNotification(notification: Notification, representation: NotificationRepresentation) {
-        if notification.id == representation.id {
-            notification.message = representation.message
-            notification.notifyTime = representation.notifyTime
-        }
+        notification.id = representation.id
+        notification.message = representation.message
+        notification.notifyTime = representation.notifyTime
+        
         CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
     }
     
