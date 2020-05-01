@@ -9,9 +9,10 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    
+   
     // MARK: - Professor Controller
     let professorController = ProfessorController()
+
     
     // MARK: - IBOutlets
     
@@ -86,7 +87,16 @@ class SignUpViewController: UIViewController {
             return
         }
         self.professorController.updateProfessor(professor: professor, representation: professor.professorRepresentation!)
+        let newUserCredentials = UserCredentials(firstName: professor.firstName!,
+                                                 lastName: professor.lastName!,
+                                                 email: professor.email!,
+                                                 password: professor.password!)
+        AuthenticationController.shared.register(with: newUserCredentials) { (_) in
+        }
+        AuthenticationController.shared.login(login: Login(email: newUserCredentials.email, password: newUserCredentials.password)) { (_) in
+        }
         self.dismiss(animated: true, completion: nil)
+        
         
     }
     

@@ -58,12 +58,12 @@ class DeadlineController {
     
     
     func updateDeadline(deadline: Deadline, representation: DeadlineRepresentation) {
-        if deadline.id == representation.id {
-            deadline.name = representation.name
-            deadline.dueDate = representation.dueDate
-            deadline.notes = representation.notes
-            deadline.notifications = NSSet(array: representation.notifications)
-        }
+        deadline.id = representation.id
+        deadline.name = representation.name
+        deadline.dueDate = representation.dueDate
+        deadline.notes = representation.notes
+        deadline.notifications = NSSet(array: representation.notifications)
+        
         CoreDataStack.shared.saveToCoreData(context: CoreDataStack.shared.container.newBackgroundContext())
     }
     
