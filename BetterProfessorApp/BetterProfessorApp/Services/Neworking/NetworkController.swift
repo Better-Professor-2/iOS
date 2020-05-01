@@ -235,6 +235,7 @@ class NetworkController {
         }.resume()
     }
     
+    
     func postStudent(token: Token?, representation: StudentRepresentation, completion: @escaping CompletionHandler) {
         guard let tokenString = token?.token else {
                    NSLog("Error - No token")
@@ -297,11 +298,61 @@ class NetworkController {
     }
     
     func postNotification(token: Token?, representation: NotificationRepresentation, studentID: Int, deadlineID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+                   NSLog("Error - No token")
+                   return completion(.failure(.notLoggedIn))
+        }
         
+        var request = postRequest(for: makeNotificationURL(studentID: studentID, deadlineID: deadlineID))
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        do {
+            request.httpBody = try self.jsonEncoder.encode(representation)
+        } catch {
+            NSLog("Error - Error encoding notification representation " + String(describing: error) + " " + String(describing: error.localizedDescription))
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error posting notification: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 201 else {
+                    NSLog("Error - Bad response when posting notification")
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
     }
     
-    func deleteStudent() {
+    
+    func deleteStudent(token: Token?, studentID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+                   NSLog("Error - No token")
+                   return completion(.failure(.notLoggedIn))
+        }
         
+        let idString = String(describing: studentID)
+        let deleteStudentURL = studentsURL.appendingPathComponent("/\(idString)/")
+        var request = deleteRequest(for: deleteStudentURL)
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        URL.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error deleting student from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error - Bad response when deleting from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    return completion(.failure(.badResponse))
+            }
+            
+            return completion(.success(true))
+        }.resume()
     }
     
     func deleteDeadline() {
@@ -330,6 +381,13 @@ class NetworkController {
         return request
     }
     
+    private func deleteRequest(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+    
     private func makeDeadlineURL(studentID: Int) -> URL {
         let studentsURL = self.studentsURL
         let stringID = String(describing: studentID)
@@ -340,7 +398,7 @@ class NetworkController {
     private func makeNotificationURL(studentID: Int, deadlineID: Int) -> URL {
         let deadlineURL = makeDeadlineURL(studentID: studentID)
         let stringDeadlineID = String(describing: deadlineID)
-        let notificationURL = deadlineURL.appendingPathComponent("/\(deadlineID)/notifications")
+        let notificationURL = deadlineURL.appendingPathComponent("/\(stringDeadlineID)/notifications")
         return notificationURL
     }
     
