@@ -61,7 +61,7 @@ class AuthenticationController {
                 
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 201 else {
-                        NSLog("Error - Bad Response. Registration Unsucessful: \(error) \(error?.localizedDescription)")
+                        NSLog("Error - Bad Response. Registration Unsucessful: \(String(describing: error)) \(error?.localizedDescription)")
                         return completion(.failure(.badResponse))
                 }
                 
@@ -102,12 +102,12 @@ class AuthenticationController {
                 guard let response = response as? HTTPURLResponse,
                     response.statusCode == 200
                     else {
-                        NSLog("Error - Sign in was unsuccessful, bad response. \(error)")
+                        NSLog("Error - Sign in was unsuccessful, bad response. \(String(describing: error))")
                         return completion(.failure(.failedLogIn))
                 }
                 
                 guard let data = data else {
-                    NSLog("Error - Sign in unsuccessful, no data recieved. \(error)")
+                    NSLog("Error - Sign in unsuccessful, no data recieved. \(String(describing: error))")
                     return completion(.failure(.noData))
                 }
                 
