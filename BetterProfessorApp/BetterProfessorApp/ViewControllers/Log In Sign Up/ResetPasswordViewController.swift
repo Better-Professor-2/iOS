@@ -65,6 +65,7 @@ class ResetPasswordViewController: UIViewController, MFMailComposeViewController
             mail.present(emailFailureAlert, animated: true)
             mailComposeController(mail, didFinishWith: .failed, error: nil)
             NSLog("Error sending email")
+            self.dismiss(animated: true, completion: nil)
         }
         let emailSentAlert = UIAlertController(title: "Email sent", message: nil, preferredStyle: .alert)
         emailSentAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))

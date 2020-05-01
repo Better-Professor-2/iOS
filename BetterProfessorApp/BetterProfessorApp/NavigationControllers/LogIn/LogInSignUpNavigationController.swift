@@ -10,9 +10,13 @@ import UIKit
 
 class LogInSignUpNavigationController: UINavigationController {
     
-    let netController = NetworkController()
-    let authControlller = AuthenticationController()
+    public let netController = NetworkController()
+    public let authControlller = AuthenticationController()
     
+    public let profController = ProfessorController()
+    public let deadlineController = DeadlineController()
+    public let notificationController = NotificationController()
+    public let studentController = StudentController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +24,6 @@ class LogInSignUpNavigationController: UINavigationController {
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 

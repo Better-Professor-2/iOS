@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-//MARK: - NOTES
+// MARK: - NOTES
 /// Keep in mind: The prefix 'get' is used for server tasks while 'fetch'
 /// is used for core data tasks to avoid overlap in syntax.
 
@@ -22,7 +22,6 @@ class NetworkController {
         case put = "PUT"
         case delete = "DELETE"
     }
-    
     enum NetworkError: Error {
         case notLoggedIn
         case otherError

@@ -11,17 +11,21 @@ import XCTest
 
 class BetterProfessorAppTests: XCTestCase {
     
+    
     let authContoller = BetterProfessorApp.AuthenticationController()
     let netcontroller = BetterProfessorApp.NetworkController()
     let profController = BetterProfessorApp.ProfessorController()
-
-    
-    
+    let studentCon = BetterProfessorApp.StudentController()
     func testAuthRegister() {
-        var profID: ProfessorID? = nil
+        let credentials = UserCredentials(firstName: "Dick",
+                                          lastName: "Head",
+                                          email: "asshole@wildblue.net",
+                                          password: "aAB134&353afneeg359&5f5")
         
-  
+        XCTAssertTrue(credentials.firstName == "Dick")
+        
+        authContoller.register(with: credentials) { (_) in
+        }
         
     }
-
 }
