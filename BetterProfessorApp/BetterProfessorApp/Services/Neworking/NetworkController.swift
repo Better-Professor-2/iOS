@@ -235,8 +235,56 @@ class NetworkController {
         }.resume()
     }
     
+    func postStudent(token: Token?, representation: StudentRepresentation, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+                   NSLog("Error - No token")
+                   return completion(.failure(.notLoggedIn))
+        }
+        
+        var request = postRequest(for: studentsURL)
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        do {
+            request.httpBody = try self.jsonEncoder.encode(representation)
+        } catch {
+            NSLog("Error - Error encoding student representation " + String(describing: error) + " " + String(describing: error?.localizedDescription))
+            return completion (.failure(.noEncode))
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error posting student: \(error) \(error.localizedDescription)")
+                return (.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 201 else {
+                    NSLog("Error - Bad response when posting student: " + String(decribing: error) + " " + String(describing: error.localizedDescription))
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
+    }
     
+    func postDeadline() {
+        
+    }
     
+    func postNotification() {
+        
+    }
+    
+    func deleteStudent() {
+        
+    }
+    
+    func deleteDeadline() {
+        
+    }
+    
+    func deleteNotification() {
+        
+    }
     
     
     
