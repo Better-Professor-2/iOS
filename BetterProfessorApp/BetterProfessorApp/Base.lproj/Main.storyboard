@@ -192,7 +192,7 @@
             <objects>
                 <tableViewController id="gpH-H0-8dc" customClass="RemindersTableViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5ah-B6-PQr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search reminders" id="3p1-6G-zje">
@@ -201,7 +201,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="XKq-vl-BYu" customClass="AllRemindersTableViewCell" customModule="BetterProfessorApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="allRemindersCell" rowHeight="100" id="XKq-vl-BYu" customClass="AllRemindersTableViewCell" customModule="BetterProfessorApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XKq-vl-BYu" id="pmN-VZ-ODx">
@@ -261,6 +261,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="remindersSearchBar" destination="3p1-6G-zje" id="Txm-f9-POT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7H7-qr-ZJj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -271,11 +274,11 @@
             <objects>
                 <viewController id="Dgj-pl-Bhc" customClass="AddReminderViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9TA-94-hLa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="75" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VmZ-2t-dMQ" userLabel="Stack Stack">
-                                <rect key="frame" x="20" y="76" width="374" height="712"/>
+                                <rect key="frame" x="20" y="108" width="374" height="685"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="mNL-10-u6f" userLabel="Student Name Stack">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="81.666666666666671"/>
@@ -287,7 +290,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter student's name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qPq-oo-j2b">
-                                                <rect key="frame" x="0.0" y="47.666666666666671" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="47.666666666666657" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -303,7 +306,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/DD/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DXl-hC-0KF">
-                                                <rect key="frame" x="0.0" y="51.666666666666686" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="51.666666666666657" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -326,7 +329,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CoH-FD-Ey8" userLabel="Reminder Text Stack">
-                                        <rect key="frame" x="0.0" y="337" width="374" height="375"/>
+                                        <rect key="frame" x="0.0" y="337" width="374" height="348"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNc-SU-28b">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40.666666666666664"/>
@@ -335,7 +338,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0SE-Yx-ouJ">
-                                                <rect key="frame" x="0.0" y="50.666666666666686" width="374" height="324.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="50.666666666666686" width="374" height="297.33333333333331"/>
                                                 <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -825,7 +828,7 @@
             <objects>
                 <tableViewController id="hYx-tS-bwk" customClass="StudentRemindersTableViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e2E-0n-nau">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="KvB-T2-a0N">
@@ -915,11 +918,11 @@
             <objects>
                 <viewController id="Igk-bw-Lsj" customClass="AddReminderViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lfh-Z3-DIE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="75" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eKu-1G-BBQ" userLabel="Stack Stack">
-                                <rect key="frame" x="20" y="76" width="374" height="712"/>
+                                <rect key="frame" x="20" y="108" width="374" height="685"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="YFt-g4-6Oc" userLabel="Student Name Stack">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="81.666666666666671"/>
@@ -931,7 +934,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter student's name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qRK-Gw-QV1">
-                                                <rect key="frame" x="0.0" y="47.666666666666671" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="47.666666666666657" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -947,7 +950,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/DD/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sHA-Ok-M1R">
-                                                <rect key="frame" x="0.0" y="51.666666666666686" width="374" height="34"/>
+                                                <rect key="frame" x="0.0" y="51.666666666666657" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -970,7 +973,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pur-EC-1s2" userLabel="Reminder Text Stack">
-                                        <rect key="frame" x="0.0" y="337" width="374" height="375"/>
+                                        <rect key="frame" x="0.0" y="337" width="374" height="348"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0Z-So-hGM">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40.666666666666664"/>
@@ -979,7 +982,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TPx-FI-E0W">
-                                                <rect key="frame" x="0.0" y="50.666666666666686" width="374" height="324.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="50.666666666666686" width="374" height="297.33333333333331"/>
                                                 <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -1012,11 +1015,11 @@
             <objects>
                 <viewController id="H77-sn-hu8" customClass="ProjectDetailViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LCS-LE-r5Z">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zVX-G2-caa" userLabel="Project Due Date Stack">
-                                <rect key="frame" x="20" y="66" width="374" height="732"/>
+                                <rect key="frame" x="20" y="98" width="374" height="705"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKl-2G-fSb">
                                         <rect key="frame" x="100.00000000000001" y="0.0" width="174.33333333333337" height="28.666666666666668"/>
@@ -1025,10 +1028,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="XAa-qo-FUZ">
-                                        <rect key="frame" x="27" y="28.666666666666686" width="320" height="382"/>
+                                        <rect key="frame" x="27" y="28.666666666666686" width="320" height="355"/>
                                     </datePicker>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="1aU-Wc-bCE" userLabel="Reminder Text Stack">
-                                        <rect key="frame" x="74.666666666666686" y="410.66666666666669" width="225" height="107.66666666666669"/>
+                                        <rect key="frame" x="74.666666666666686" y="383.66666666666669" width="225" height="107.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0q-dc-JeM">
                                                 <rect key="frame" x="12.666666666666657" y="0.0" width="199.33333333333334" height="28.666666666666668"/>
@@ -1044,7 +1047,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="tyv-Kx-gti" userLabel="Project Name Stack">
-                                        <rect key="frame" x="111.66666666666666" y="518.33333333333337" width="150.99999999999997" height="71"/>
+                                        <rect key="frame" x="111.66666666666666" y="491.33333333333337" width="150.99999999999997" height="71"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zi5-oG-ykI">
                                                 <rect key="frame" x="3" y="0.0" width="145" height="30"/>
@@ -1060,7 +1063,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="zcO-Xe-bO0" userLabel="Student Name Stack">
-                                        <rect key="frame" x="109.66666666666666" y="589.33333333333337" width="154.99999999999997" height="75"/>
+                                        <rect key="frame" x="109.66666666666666" y="562.33333333333337" width="154.99999999999997" height="75"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kX6-zT-hiS">
                                                 <rect key="frame" x="0.0" y="0.0" width="155" height="30"/>
@@ -1076,7 +1079,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Hmc-le-Maf" userLabel="Project Type Stack">
-                                        <rect key="frame" x="123.33333333333334" y="664.33333333333337" width="127.33333333333334" height="67.666666666666629"/>
+                                        <rect key="frame" x="123.33333333333334" y="637.33333333333337" width="127.33333333333334" height="67.666666666666629"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEs-w7-NRQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="127.33333333333333" height="28.666666666666668"/>
@@ -1522,7 +1525,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwy-2h-Oa5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarItem title="Item" id="2LU-te-1nr"/>
             </objects>
-            <point key="canvasLocation" x="222" y="1499"/>
+            <point key="canvasLocation" x="222" y="1506"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="bGn-Sn-Ebk">
@@ -1731,12 +1734,13 @@
         <!--My Reminders-->
         <scene sceneID="vru-Xz-cnV">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0E-9S-cZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sCV-4z-X1V" customClass="MyRemindersNavigationController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Reminders" image="calendar" catalog="system" id="D4I-6w-RIV"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="TUH-81-YOo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VFl-ah-IE2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1744,13 +1748,13 @@
                         <segue destination="gpH-H0-8dc" kind="relationship" relationship="rootViewController" id="eOR-4t-R22"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L0E-9S-cZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="222" y="2671"/>
+            <point key="canvasLocation" x="222" y="2539"/>
         </scene>
         <!--My Students-->
         <scene sceneID="ukw-uG-2zw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6YA-Ms-ybm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3JZ-Dd-p4p" customClass="MyStudentsNavigationController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Students" image="person.3.fill" catalog="system" id="OF2-LW-xjx"/>
                     <toolbarItems/>
@@ -1763,13 +1767,13 @@
                         <segue destination="2SO-oo-Zey" kind="relationship" relationship="rootViewController" id="Hlj-hb-9tW"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6YA-Ms-ybm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1393" y="2705"/>
         </scene>
         <!--My Projects-->
         <scene sceneID="VPP-77-CtX">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnm-sT-ZAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HEV-co-a7Y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Projects" image="bolt.horizontal.fill" catalog="system" id="FS4-R7-JIk"/>
                     <toolbarItems/>
@@ -1782,13 +1786,12 @@
                         <segue destination="rpI-yR-wzu" kind="relationship" relationship="rootViewController" id="S0S-A0-kd9"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnm-sT-ZAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2033" y="2705"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9MV-nc-PzA"/>
+        <segue reference="goM-cx-dN4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.horizontal.fill" catalog="system" width="128" height="65"/>
