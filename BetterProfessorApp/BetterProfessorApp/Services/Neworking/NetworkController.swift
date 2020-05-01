@@ -334,12 +334,12 @@ class NetworkController {
                    return completion(.failure(.notLoggedIn))
         }
         
-        let idString = String(describing: studentID)
+        let idString = String(studentID)
         let deleteStudentURL = studentsURL.appendingPathComponent("/\(idString)/")
         var request = deleteRequest(for: deleteStudentURL)
         request.addValue(tokenString, forHTTPHeaderField: "Authorization")
         
-        URL.shared.dataTask(with: request) { _, response, error in
+        URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
                 NSLog("Error - Error deleting student from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
                 return completion(.failure(.otherError))
@@ -347,7 +347,7 @@ class NetworkController {
             
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 200 else {
-                    NSLog("Error - Bad response when deleting from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    NSLog("Error - Bad response when deleting student from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
                     return completion(.failure(.badResponse))
             }
             
@@ -355,12 +355,59 @@ class NetworkController {
         }.resume()
     }
     
-    func deleteDeadline() {
+    func deleteDeadline(token: Token?, studentID: Int, deadlineID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+            NSLog("Error - No token")
+            return completion(.failure(.notLoggedIn))
+        }
         
+        let studentString = String(studentID)
+        let deadlineString = String(deadlineID)
+        let deleteDeadlineURL = studentsURL.appendingPathComponent("/\(studentString)/deadlines/\(deadlineString)/")
+        var request = deleteRequest(for: deleteDeadlineURL)
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error deleting deadline from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error - Bad response when deleting deadline from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
     }
-    
-    func deleteNotification() {
         
+    func deleteNotification(token: Token?, studentID: Int, deadlineID: Int, notificationID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+            NSLog("Error - No token")
+            return completion(.failure(.notLoggedIn))
+        }
+        
+        let studentString = String(studentID)
+        let deadlineString = String(deadlineID)
+        let notificationString = String(notificationID)
+        let deleteNotificationURL = studentsURL.appendingPathComponent("/\(studentString)/deadlines/\(deadlineString)/notifications/\(notificationString)/")
+        var request = deleteRequest(for: deleteNotificationURL)
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error deleting notification from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error - Bad response when deleting notification from remote host: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
     }
     
     
