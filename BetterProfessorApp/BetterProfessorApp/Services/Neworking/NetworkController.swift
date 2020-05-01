@@ -259,18 +259,44 @@ class NetworkController {
             
             guard let response = response as? HTTPURLResponse,
                 response.statusCode == 201 else {
-                    NSLog("Error - Bad response when posting student: " + String(decribing: error) + " " + String(describing: error.localizedDescription))
+                    NSLog("Error - Bad response when posting student: " + String(describing: error) + " " + String(describing: error.localizedDescription))
                     return completion(.failure(.badResponse))
             }
             return completion(.success(true))
         }.resume()
     }
     
-    func postDeadline() {
+    func postDeadline(token: Token?, representation: DeadlineRepresentation, studentID: Int, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+                   NSLog("Error - No token")
+                   return completion(.failure(.notLoggedIn))
+        }
         
+        var request = postRequest(for: makeDeadlineURL(studentID: studentID))
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        do {
+            request.httpBody = try self.jsonEncoder.encode(representation)
+        } catch {
+            NSLog("Error - Error encoding deadline representation " + String(describing: error) + " " + String(describing: error.localizedDescription))
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                NSLog("Error - Error posting deadline: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 201 else {
+                    NSLog("Error - Bad response when posting deadline")
+                    return completion(.failure(.badResponse))
+            }
+            return completion(.success(true))
+        }.resume()
     }
     
-    func postNotification() {
+    func postNotification(token: Token?, representation: NotificationRepresentation, studentID: Int, deadlineID: Int, completion: @escaping CompletionHandler) {
         
     }
     
