@@ -140,9 +140,6 @@
                                         <rect key="frame" x="79.666666666666686" y="487" width="215" height="46"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="Forgot Password?"/>
-                                        <connections>
-                                            <segue destination="TX0-bT-pGb" kind="show" id="eLM-mD-ZKF"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qdm-7c-Eds">
                                         <rect key="frame" x="0.0" y="569" width="374" height="61"/>
@@ -180,7 +177,7 @@
                     <connections>
                         <outlet property="enterEmailTextField" destination="C8K-y3-PEM" id="bKE-Z8-cs2"/>
                         <outlet property="enterPasswordTextField" destination="2Mr-nK-BKj" id="AZb-yJ-LZP"/>
-                        <segue destination="sCV-4z-X1V" kind="show" identifier="loginSegue" id="9MV-nc-PzA"/>
+                        <segue destination="bgO-IL-P8y" kind="show" id="f4J-Aw-FtT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAB-gU-sJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1525,18 +1522,18 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwy-2h-Oa5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarItem title="Item" id="2LU-te-1nr"/>
             </objects>
-            <point key="canvasLocation" x="222" y="1506"/>
+            <point key="canvasLocation" x="222" y="1566"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="bGn-Sn-Ebk">
             <objects>
                 <viewController id="TX0-bT-pGb" customClass="ResetPasswordViewController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2gx-gO-ipL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2DL-Mo-31Q" userLabel="Reset Password Stack">
-                                <rect key="frame" x="20" y="20" width="374" height="553.66666666666663"/>
+                                <rect key="frame" x="20" y="64" width="374" height="563.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="Dzn-49-bCr" userLabel="Label and Instructions Stack">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="359.33333333333331"/>
@@ -1558,16 +1555,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8nx-CI-gcs" userLabel="Email and Submit Stack">
-                                        <rect key="frame" x="0.0" y="399.33333333333331" width="374" height="154.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="399.33333333333331" width="374" height="164.33333333333331"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nUR-j9-Sf9">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="84.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="94.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eep-H6-yEL">
-                                                <rect key="frame" x="0.0" y="94.333333333333314" width="374" height="60"/>
+                                                <rect key="frame" x="0.0" y="104.33333333333331" width="374" height="60"/>
                                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Submit">
@@ -1791,7 +1788,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="goM-cx-dN4"/>
+        <segue reference="VWT-0y-nI3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bolt.horizontal.fill" catalog="system" width="128" height="65"/>

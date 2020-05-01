@@ -15,6 +15,7 @@ class LogInViewController: UIViewController {
     
     
     
+    
     @IBOutlet weak var enterEmailTextField: UITextField!
     
     @IBOutlet weak var enterPasswordTextField: UITextField!
@@ -35,6 +36,7 @@ class LogInViewController: UIViewController {
         }
         self.dismiss(animated: true, completion: nil)
     }
+       
     override func viewDidLoad() {
         super.viewDidLoad()
 
