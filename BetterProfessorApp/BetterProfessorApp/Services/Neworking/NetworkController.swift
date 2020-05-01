@@ -143,7 +143,6 @@ class NetworkController {
     }
     
     func getDeadlines(token: Token?, studentID: Int, completion: @escaping CompletionHandler) {
-        
         guard let tokenString = token?.token else {
             NSLog("Error - No Token.")
             return completion(.failure(.notLoggedIn))
@@ -190,6 +189,53 @@ class NetworkController {
         }.resume()
     }
     
+    func getNotifications(token: Token?, studentID: Int, deadlineID: Int, completion: @escaping CompletionHandler) {
+        
+        guard let tokenString = token?.token else {
+            NSLog("Error - No Token.")
+            return completion(.failure(.notLoggedIn))
+        }
+        
+        var request = getRequest(for: makeNotificationURL(studentID: studentID, deadlineID: deadlineID))
+        request.addValue(tokenString, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error - Error fetching notifications: \(error) \(error.localizedDescription)")
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    NSLog("Error - Bad Response fetching notifications: \(error) \(error?.localizedDescription)")
+                    return completion(.failure(.badResponse))
+            }
+            
+            guard let data = data else {
+                NSLog("Error - No data returnedfrom notification fetch. \(error) \(error.localizedDescription)")
+                return completion(.failure(.noData))
+            }
+            
+            do {
+                let notificationReps = try jsonDecoder.decode([NotificationRepresentation].self, from: data)
+                for notification in notificationReps {
+                    Notification(representation: notification)
+                }
+                
+                do {
+                    try CoreDataStack.shared.mainContext.save()
+                    return completion(.success(true))
+                } catch {
+                    NSLog("Error - Error saving notifications to core data: \(error) \(error.localizedDescription)")
+                }
+                
+            } catch {
+                NSLog("Error - Error decoding notifications: \(error) \(error.localizedDescription)")
+            }
+        }.resume()
+    }
+    
+    
     
     
     
@@ -215,6 +261,13 @@ class NetworkController {
         let stringID = String(describing: studentID)
         let deadlineURL = studentsURL.appendingPathComponent("/\(stringID)/deadlines")
         return deadlineURL
+    }
+    
+    private func makeNotificationURL(studentID: Int, deadlineID: Int) -> URL {
+        let deadlineURL = makeDeadlineURL(studentID: studentID)
+        let stringDeadlineID = String(describing: deadlineID)
+        let notificationURL = deadlineURL.appendingPathComponent("/\(deadlineID)/notifications")
+        return notificationURL
     }
     
 }
