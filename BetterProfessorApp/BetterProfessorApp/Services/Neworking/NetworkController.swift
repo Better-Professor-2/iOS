@@ -40,7 +40,6 @@ class NetworkController {
     private let token: Token? = AuthenticationController.shared.authToken
     private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")!
     
-    //TODO 3 URL combinations for server fetches
     private lazy var studentsURL = baseURL.appendingPathComponent("/students/")
     private lazy var professorURL = baseURL.appendingPathComponent("/profile")
     
