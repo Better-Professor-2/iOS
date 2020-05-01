@@ -39,6 +39,7 @@ class NetworkController {
     
     //TODO 3 URL combinations for server fetches
     private lazy var studentsURL = baseURL.appendingPathComponent("/students/")
+    private lazy var professorURL = baseURL.appendingPathComponent("/profile")
     
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
@@ -93,7 +94,50 @@ class NetworkController {
         }.resume()
     }
     
-   func getUserData()
+    func getUserData(token: Token?, completion: @escaping CompletionHandler) {
+        guard let tokenString = token?.token else {
+            NSLog("Error - No token")
+            return completion(.failure(.notLoggedIn))
+        }
+        
+        var request = getRequest(for: professorURL)
+        request.addValue(tokenString, forHTTPHeaderField: "Authoriztation")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error - Something went wrong fetching your profile information. \(error) \(error.localizedDescription)")
+                return completion(.failure(.otherError))
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+            response.statusCode == 200 else {
+                    NSLog("Error - Bad Response while fetching profile information. \(error) \(error?.localizedDescription)")
+                    return completion(.failure(.badResponse))
+            }
+            
+            guard let data = data else {
+                NSLog("Error - No professor object returned. \(error) \(error?.localizedDescription)")
+                return completion(.failure(.noData))
+            }
+            
+            do {
+                let professorRep = try self.jsonDecoder.decode(ProfessorRepresentation.self, from: data)
+                Professor(representation: professorRep)
+                
+                do {
+                    try CoreDataStack.shared.mainContext.save()
+                    return completion(.success(true))
+                } catch {
+                    NSLog("Error - Error saving professor to core data. \(error)")
+                    return completion(.failure(.coreDataFail))
+                }
+                
+            } catch {
+                NSLog("Error - Error decoding professor representation. \(error)")
+                return completion(.failure(.noDecode))
+            }
+        }.resume()
+    }
     
     
     
@@ -106,6 +150,13 @@ class NetworkController {
     private func getRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+    
+    private func postRequest(for url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }
