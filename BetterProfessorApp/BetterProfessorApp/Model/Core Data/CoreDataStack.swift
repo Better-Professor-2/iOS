@@ -12,7 +12,7 @@ import CoreData
 class CoreDataStack {
     static let shared = CoreDataStack()
     lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "BetterProfessor")
+        let container = NSPersistentContainer(name: "BetterProfessorApp")
         container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Failed to load persistent stores: \(error)")

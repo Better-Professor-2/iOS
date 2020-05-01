@@ -301,6 +301,9 @@
                                                 <rect key="frame" x="0.0" y="51.666666666666657" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="dateTextField:" destination="Dgj-pl-Bhc" eventType="editingDidEnd" id="WEd-gD-iaN"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -317,6 +320,9 @@
                                                 <rect key="frame" x="0.0" y="45.666666666666686" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="reminderMessageTF:" destination="Dgj-pl-Bhc" eventType="editingDidEnd" id="L6c-OF-RGV"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -353,10 +359,15 @@
                     <navigationItem key="navigationItem" title="Add Reminder" id="ZnT-to-Yz3">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="iAG-qh-FB3">
                             <connections>
+                                <action selector="saveButtonPressed:" destination="Dgj-pl-Bhc" id="U9q-Be-Agr"/>
                                 <segue destination="sDa-Qo-asq" kind="unwind" unwindAction="myRemindersUnwindSeque:" id="JK8-FS-hNs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="reminderMessageTextView" destination="0SE-Yx-ouJ" id="ZWj-gT-zzo"/>
+                        <outlet property="studentNameTextFeield" destination="qPq-oo-j2b" id="VqT-Pq-4dZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWz-OC-ugB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="sDa-Qo-asq" userLabel="Exit" sceneMemberID="exit"/>
@@ -995,7 +1006,11 @@
                         <viewLayoutGuide key="safeArea" id="Azp-mj-jtD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Reminder" id="1bt-dl-4Pc">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="JM8-Rd-6PE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="JM8-Rd-6PE">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="Igk-bw-Lsj" id="8ER-ji-Fnh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5J-49-fBR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1437,7 +1452,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/DD/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nr9-Rj-EJj">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nr9-Rj-EJj">
                                                 <rect key="frame" x="0.0" y="51.666666666666657" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1493,6 +1508,9 @@
                     <navigationItem key="navigationItem" title="Add Project" id="Vfv-Mv-QnY">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1yv-jx-sv1"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="projectNameTF" destination="Age-1b-6JL" id="tkN-ab-wx5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQo-xQ-4zu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1741,7 +1759,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="222" y="2539"/>
+            <point key="canvasLocation" x="222" y="2705"/>
         </scene>
         <!--My Students-->
         <scene sceneID="ukw-uG-2zw">

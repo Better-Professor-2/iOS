@@ -10,8 +10,6 @@ import XCTest
 @testable import BetterProfessorApp
 
 class BetterProfessorAppTests: XCTestCase {
-    
-    
     let authContoller = BetterProfessorApp.AuthenticationController()
     let netcontroller = BetterProfessorApp.NetworkController()
     let profController = BetterProfessorApp.ProfessorController()
