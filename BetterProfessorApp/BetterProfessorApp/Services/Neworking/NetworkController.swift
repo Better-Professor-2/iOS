@@ -36,7 +36,7 @@ class NetworkController {
     // MARK: - Properties
     static let shared = NetworkController()
     private let token: Token? = AuthenticationController.shared.authToken
-    private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")
+    private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")!
     private lazy var studentsURL = baseURL.appendingPathComponent("/students/")
     private lazy var professorURL = baseURL.appendingPathComponent("/profile")
     private lazy var jsonEncoder = JSONEncoder()
@@ -206,7 +206,7 @@ class NetworkController {
         var request = postRequest(for: studentsURL)
         request.addValue(tokenString, forHTTPHeaderField: "Authorization")
         do {
-            request.httpBody = try self.jsonEncoder.encode(representation) throws -> .
+            request.httpBody = try self.jsonEncoder.encode(representation) 
         } catch {
             NSLog("Error - Error encoding student representation " + String(describing: error) + " " + String(describing: error.localizedDescription))
             return completion(.failure(.noEncode))
@@ -222,6 +222,7 @@ class NetworkController {
                     NSLog("Error - Bad response when posting student: " + errorDescriberString + " " + String(describing: error?.localizedDescription))
                     return completion(.failure(.badResponse))
             }
+            
             return completion(.success(true))
         }.resume()
     }
@@ -251,7 +252,7 @@ class NetworkController {
     private func makeDeadlineURL(studentID: Int) -> URL {
         let studentsURL = self.studentsURL
         let stringID = String(describing: studentID)
-        let deadlineURL = studentsURL?.appendingPathComponent("/\(stringID)/deadlines")
+        let deadlineURL = studentsURL.appendingPathComponent("/\(stringID)/deadlines")
         return deadlineURL
     }
     private func makeNotificationURL(studentID: Int, deadlineID: Int) -> URL {
