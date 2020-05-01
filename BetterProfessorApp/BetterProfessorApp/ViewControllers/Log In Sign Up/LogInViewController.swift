@@ -31,6 +31,7 @@ class LogInViewController: UIViewController {
         let password = enterPasswordTextField.text!
         let login: Login = Login(email: email,
                                  password: password)
+        authController.login(login: <#T##Login#>, completion: <#T##AuthenticationController.CompletionHandler##AuthenticationController.CompletionHandler##(Result<Bool, AuthenticationController.NetworkError>) -> Void#>)
         
         
     }
@@ -49,6 +50,7 @@ class LogInViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
+ 
 
 
 }
