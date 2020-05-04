@@ -10,8 +10,7 @@ import Foundation
 import CoreData
 
 extension Deadline {
-    
-    //MARK: - Extended Properties -
+    // MARK: - Extended Properties -
     /// Use dot syntax to call a codable representation of a model object
     var deadlineRepresentation: DeadlineRepresentation? {
         guard let name = name,

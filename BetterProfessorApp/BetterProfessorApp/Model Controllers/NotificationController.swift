@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class NotificationController {
-    // Mark: - Singleton Accessor
+    // MARK: - Singleton Accessor
     static let shared = NotificationController()
     // MARK: - Core Data Functions
     /// Use these functions in the app to handle background logic on the Notification model object
@@ -31,7 +31,7 @@ class NotificationController {
     /// This function will fetch a Deadlinemodel object from core data using it's id
     func fetchNotification(context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                            id: Int64) -> Notification? {
-        var returnedNotification: Notification? = nil
+        var returnedNotification: Notification?
         let currentContext = context
         let notificationFetch: NSFetchRequest<NSFetchRequestResult> = Notification.fetchRequest()
         notificationFetch.predicate = NSPredicate(format: "id == %d",

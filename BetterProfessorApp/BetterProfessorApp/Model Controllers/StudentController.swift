@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class StudentController {
-    //Mark: Singleton Accessor
+    // MARK: Singleton Accessor
     static let shared = StudentController()
     // MARK: - Core Data Functions
     // Use these functions in the app to handle background logic on the Student model object
@@ -36,12 +36,12 @@ class StudentController {
     }
     func fetchStudent(context: NSManagedObjectContext = CoreDataStack.shared.mainContext, id: Int64) -> Student? {
         /// this function will fetch a Student model object from core data using it's id
-        var returnedStudent: Student? = nil
+        /// var returnedStudent: Student
         let currentContext = context
         let studentFetch: NSFetchRequest<NSFetchRequestResult> = Student.fetchRequest()
         studentFetch.predicate = NSPredicate(format: "id == %d", id)
         let fetchedStudents = try? currentContext.fetch(studentFetch) as? [Student]
-        returnedStudent = fetchedStudents?.first
+        let returnedStudent = fetchedStudents?.first
         if returnedStudent == nil {
             NSLog("Error - Failed to fetch student objects from core data.")
         }

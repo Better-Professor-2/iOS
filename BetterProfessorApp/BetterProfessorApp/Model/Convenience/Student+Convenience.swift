@@ -11,7 +11,7 @@ import CoreData
 
 extension Student {
 
-    //MARK: - Extended Properties 
+    // MARK: - Extended Properties 
     /// Use dot syntax to call a codable representation of a model object
     var studentRepresentation: StudentRepresentation? {
         guard let firstName = firstName,

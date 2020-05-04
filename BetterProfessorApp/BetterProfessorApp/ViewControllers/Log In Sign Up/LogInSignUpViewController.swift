@@ -15,12 +15,10 @@ class LogInSignUpViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
     @IBAction func signUpButton(_ sender: Any) {
     }
     @IBAction func logInButton(_ sender: Any) {
     }
-    
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
     }
     /*

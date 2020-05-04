@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class DeadlineController {
-    //Mark: - Singleton Accessor
+    // MARK: - Singleton Accessor
     static let shared = DeadlineController()
     // MARK: - Core Data Functions
     // Use these functions in the app to handle background logic on the Deadline model object
@@ -37,7 +37,7 @@ class DeadlineController {
     func fetchDeadline(context: NSManagedObjectContext = CoreDataStack.shared.mainContext,
                        id: Int64) -> Deadline? {
         /// this function will fetch a Deadlinemodel object from core data using it's id
-        var returnedDeadline: Deadline? = nil
+        var returnedDeadline: Deadline?
         let currentContext = context
         let deadlineFetch: NSFetchRequest<NSFetchRequestResult> = Deadline.fetchRequest()
         deadlineFetch.predicate = NSPredicate(format: "id == %d", id)
@@ -67,6 +67,5 @@ class DeadlineController {
                 String(describing: deadlineToDelete.name) +
                 " \(error) \(error.localizedDescription)")
         }
-        
     }
 }

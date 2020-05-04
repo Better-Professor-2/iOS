@@ -15,20 +15,13 @@ class AddReminderViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
     @IBOutlet weak var studentNameTextFeield: UITextField!
-    
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var reminderTimeTF: UITextField!
-    
     @IBOutlet weak var reminderMessageTextView: UITextView!
-    
     @IBAction func saveButtonPressed(_ sender: Any) {
         let studentName = studentNameTextFeield.text
-       
     }
-    
-    
     /*
      // MARK: - Navigation
 

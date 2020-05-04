@@ -17,7 +17,6 @@ class AuthenticationController {
         case put = "PUT"
         case delete = "DELETE"
     }
-    
     enum NetworkError: Error {
         case failedRegister
         case failedLogIn
@@ -26,10 +25,6 @@ class AuthenticationController {
         case noDecode
         case badResponse
     }
-    
-   
-    
-    
     // MARK: - Properties
     private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")!
     private lazy var registerURL = baseURL.appendingPathComponent("/register/")
@@ -40,12 +35,9 @@ class AuthenticationController {
     static var authToken: Token?
     static let shared = AuthenticationController()
     var auth: Token? = AuthenticationController.authToken
-    
-    
     // MARK: - Network Functions
     func register(with credentials: UserCredentials, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         var request = postRequest(for: registerURL)
-        
         do {
             let jsonData = try jsonEncoder.encode(credentials)
             request.httpBody = jsonData
@@ -55,25 +47,21 @@ class AuthenticationController {
                     completion(.failure(.failedRegister))
                     return
                 }
-                
                 guard let response = response as? HTTPURLResponse else {
                         NSLog("Error - Bad Response. Registration Unsucessful: " +
                             "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                         return completion(.failure(.badResponse))
                 }
-                
                 guard let data = data else {
                     NSLog("Error - No data recieved")
                     return completion(.failure(.noData))
                 }
-                print(String(data: data, encoding: .utf8))
+                print(String(data: data, encoding: .utf8) as Any)
                 do {
-                    let id = try? self.jsonDecoder.decode(ProfessorID.self, from: data)
+                    let id = try? self.jsonDecoder.decode(ProfessorID.self,
+                                                          from: data)
                     completion(.success(true))
                     print(data)
-                } catch {
-                    NSLog("Error - Error decoding data from source: \(error) \(error.localizedDescription)")
-                    return completion(.failure(.noDecode))
                 }
             }.resume()
         } catch {
@@ -81,7 +69,6 @@ class AuthenticationController {
             return completion(.failure(.noEncode))
         }
     }
-    
     func login(login: Login, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         var request = postRequest(for: loginURL)
         do {
@@ -93,7 +80,7 @@ class AuthenticationController {
                     completion(.failure(.failedLogIn))
                     return
                 }
-                guard let response = response as? HTTPURLResponse
+                guard (response as? HTTPURLResponse) != nil
                     else {
                         NSLog("Error - Sign in was unsuccessful, bad response. \(String(describing: error))")
                         completion(.failure(.failedLogIn))
@@ -104,11 +91,10 @@ class AuthenticationController {
                     completion(.failure(.badResponse))
                     return
                 }
-                
                 do {
                     AuthenticationController.authToken = try self.jsonDecoder.decode(Token.self, from: data)
                     print("\(String(describing: AuthenticationController.authToken))" + "In URLSession")
-                    print(AuthenticationController.authToken)
+                    print(AuthenticationController.authToken as Any)
                     completion(.success(true))
                 } catch {
                     NSLog("Error - Sign in unsuccessful. Error Decoding token. \(error)")
@@ -120,8 +106,6 @@ class AuthenticationController {
             completion(.failure(.noEncode))
         }
     }
-    
-    
     // MARK: - Helper Functions
     private func postRequest(for url: URL) -> URLRequest {
         var request = URLRequest(url: url)

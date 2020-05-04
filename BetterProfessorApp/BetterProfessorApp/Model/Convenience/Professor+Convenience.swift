@@ -18,9 +18,7 @@ extension Professor {
             let lastName = lastName,
             let email = email,
             let students = students else { return nil }
-        
         var studentRepsArray: [StudentRepresentation] = []
-        
         for case let student as Student in students {
             guard let studentRep = student.studentRepresentation else { return nil }
             studentRepsArray.append(studentRep)
