@@ -54,9 +54,12 @@ class BetterProfessorAppTests: XCTestCase {
                                  lastName: "String",
                                  email: "silliestString@gmail.com",
                                  phoneNumber: "7409926748")
-        let student = studentCon.fetchStudent(id: 44)
-        XCTAssertNotNil(student)
-        
+        XCTAssertNotNil(prof.students)
         
 }
+    func testMakeDeadline() {
+        let student = studentCon.fetchStudent(context: CoreDataStack.shared.mainContext, id: 1)
+        XCTAssertNotNil(student)
+    }
+    
 }
