@@ -96,8 +96,7 @@ class AuthenticationController {
                     return completion(.failure(.failedLogIn))
                 }
                 
-                guard let response = response as? HTTPURLResponse,
-                    response.statusCode == 200
+                guard let response = response as? HTTPURLResponse
                     else {
                         NSLog("Error - Sign in was unsuccessful, bad response. \(String(describing: error))")
                         return completion(.failure(.failedLogIn))
@@ -110,6 +109,7 @@ class AuthenticationController {
                 
                 do {
                     self.authToken = try self.jsonDecoder.decode(Token.self, from: data)
+                    print(self.authToken)
                     completion(.success(true))
                 } catch {
                     NSLog("Error - Sign in unsuccessful. Error Decoding token. \(error)")

@@ -20,7 +20,7 @@ class LogInViewController: UIViewController {
     
     @IBOutlet weak var enterPasswordTextField: UITextField!
     @IBAction func loginButtonPressed(_ sender: Any) {
-        guard enterEmailTextField.text != nil, enterEmailTextField.text != nil else {
+        guard enterEmailTextField.text != nil, enterPasswordTextField.text != nil else {
             NSLog("Nil Authentication")
             let alert = UIAlertController(title: "Error!", message: "Enter your email and password!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
@@ -28,10 +28,11 @@ class LogInViewController: UIViewController {
             return
             
         }
-        let email = enterPasswordTextField.text!
+        let email = enterEmailTextField.text!
         let password = enterPasswordTextField.text!
         let login: Login = Login(email: email,
                                  password: password)
+        print(login)
         authController.login(login: login) { ( _ ) in
         }
         self.navigationController?.popToRootViewController(animated: true)

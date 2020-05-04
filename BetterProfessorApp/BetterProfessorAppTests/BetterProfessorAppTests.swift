@@ -14,16 +14,11 @@ class BetterProfessorAppTests: XCTestCase {
     let netcontroller = BetterProfessorApp.NetworkController()
     let profController = BetterProfessorApp.ProfessorController()
     let studentCon = BetterProfessorApp.StudentController()
-    func testAuthRegister() {
-        let credentials = UserCredentials(firstName: "Dick",
-                                          lastName: "Head",
-                                          email: "asshole@wildblue.net",
-                                          password: "aAB134&353afneeg359&5f5")
-        
-        XCTAssertTrue(credentials.firstName == "Dick")
-        
-        authContoller.register(with: credentials) { (_) in
-        }
+    let notCont = BetterProfessorApp.NotificationController()
+    let deadCon = BetterProfessorApp.DeadlineController()
+    func testLogOn() {
+        var token = authContoller.authToken
+        XCTAssertNil(token)
         
     }
 }
