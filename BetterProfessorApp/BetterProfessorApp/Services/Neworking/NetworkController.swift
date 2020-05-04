@@ -263,7 +263,10 @@ class NetworkController {
         }
         URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
-                NSLog("Error - Error posting deadline: " + String(describing: error) + " " + String(describing: error.localizedDescription))
+                NSLog("Error - Error posting deadline: " +
+                    String(describing: error) +
+                    " " +
+                    String(describing: error.localizedDescription))
                 return completion(.failure(.otherError))
             }
             guard let response = response as? HTTPURLResponse,
