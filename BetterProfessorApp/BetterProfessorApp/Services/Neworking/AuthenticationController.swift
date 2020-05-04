@@ -39,6 +39,7 @@ class AuthenticationController {
     static var id: Int?
     static var authToken: Token?
     static let shared = AuthenticationController()
+    var auth: Token? = AuthenticationController.authToken
     
     
     // MARK: - Network Functions
