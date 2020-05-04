@@ -29,5 +29,8 @@ struct Login: Codable {
     var password: String
 }
 struct Token: Codable {
+    enum CodingKeys: String, CodingKey {
+        case token
+    }
     var token: String
 }

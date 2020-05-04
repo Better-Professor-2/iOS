@@ -173,6 +173,7 @@
                     <connections>
                         <outlet property="enterEmailTextField" destination="C8K-y3-PEM" id="bKE-Z8-cs2"/>
                         <outlet property="enterPasswordTextField" destination="2Mr-nK-BKj" id="AZb-yJ-LZP"/>
+                        <segue destination="Q0Z-Qg-ah0" kind="show" identifier="logInSegue" id="KUY-pI-J5e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAB-gU-sJ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1516,6 +1517,23 @@
             </objects>
             <point key="canvasLocation" x="2032" y="4160"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="etG-8g-f1k">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W83-bC-ZPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="Q0Z-Qg-ah0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0Ka-wg-U1Q"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wUN-Un-02k">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bgO-IL-P8y" kind="relationship" relationship="rootViewController" id="EDC-Sk-men"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-420" y="1785"/>
+        </scene>
         <!--Main App Tab Bar Controller-->
         <scene sceneID="SyP-0N-bXO">
             <objects>
@@ -1535,7 +1553,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwy-2h-Oa5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarItem title="Item" id="2LU-te-1nr"/>
             </objects>
-            <point key="canvasLocation" x="222" y="1566"/>
+            <point key="canvasLocation" x="454" y="1785"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="bGn-Sn-Ebk">
@@ -1571,13 +1589,13 @@
                                         <rect key="frame" x="0.0" y="399.33333333333331" width="374" height="120.33333333333331"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nUR-j9-Sf9">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50.333333333333336"/>
                                                 <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eep-H6-yEL">
-                                                <rect key="frame" x="0.0" y="60.666666666666686" width="374" height="59.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="60.333333333333314" width="374" height="60"/>
                                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="Submit">
@@ -1611,7 +1629,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPB-bE-O3R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Kmc-hp-ezZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-559" y="789"/>
+            <point key="canvasLocation" x="-1228" y="789"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="S38-bZ-Wm6">
@@ -1744,7 +1762,6 @@
         <!--My Reminders-->
         <scene sceneID="vru-Xz-cnV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L0E-9S-cZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sCV-4z-X1V" customClass="MyRemindersNavigationController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Reminders" image="calendar" catalog="system" id="D4I-6w-RIV"/>
                     <toolbarItems/>
@@ -1758,13 +1775,13 @@
                         <segue destination="gpH-H0-8dc" kind="relationship" relationship="rootViewController" id="eOR-4t-R22"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0E-9S-cZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="222" y="2705"/>
         </scene>
         <!--My Students-->
         <scene sceneID="ukw-uG-2zw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6YA-Ms-ybm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3JZ-Dd-p4p" customClass="MyStudentsNavigationController" customModule="BetterProfessorApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Students" image="person.3.fill" catalog="system" id="OF2-LW-xjx"/>
                     <toolbarItems/>
@@ -1777,13 +1794,13 @@
                         <segue destination="2SO-oo-Zey" kind="relationship" relationship="rootViewController" id="Hlj-hb-9tW"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6YA-Ms-ybm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1393" y="2705"/>
         </scene>
         <!--My Projects-->
         <scene sceneID="VPP-77-CtX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnm-sT-ZAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HEV-co-a7Y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Projects" image="bolt.horizontal.fill" catalog="system" id="FS4-R7-JIk"/>
                     <toolbarItems/>
@@ -1796,6 +1813,7 @@
                         <segue destination="rpI-yR-wzu" kind="relationship" relationship="rootViewController" id="S0S-A0-kd9"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnm-sT-ZAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2033" y="2705"/>
         </scene>

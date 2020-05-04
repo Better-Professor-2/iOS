@@ -37,7 +37,7 @@ class AuthenticationController {
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
     var id: Int?
-    var authToken: Token?
+    static var authToken: Token?
     static let shared = AuthenticationController()
     
     
@@ -82,43 +82,43 @@ class AuthenticationController {
         }
     }
     
-    
-    func login(login: Login, completion: @escaping CompletionHandler) {
+    func login(login: Login, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         var request = postRequest(for: loginURL)
-        
         do {
             let jsonData = try jsonEncoder.encode(login)
             request.httpBody = jsonData
-            
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     NSLog("Error - Not logged in: \(error) \(error.localizedDescription)")
-                    return completion(.failure(.failedLogIn))
+                    completion(.failure(.failedLogIn))
+                    return
                 }
-                
                 guard let response = response as? HTTPURLResponse
                     else {
                         NSLog("Error - Sign in was unsuccessful, bad response. \(String(describing: error))")
-                        return completion(.failure(.failedLogIn))
+                        completion(.failure(.failedLogIn))
+                        return
                 }
-                
                 guard let data = data else {
                     NSLog("Error - Sign in unsuccessful, no data recieved. \(String(describing: error))")
-                    return completion(.failure(.noData))
+                    completion(.failure(.badResponse))
+                    return
                 }
                 
                 do {
-                    self.authToken = try self.jsonDecoder.decode(Token.self, from: data)
-                    print(self.authToken)
+                    AuthenticationController.authToken = try self.jsonDecoder.decode(Token.self, from: data)
+                    print("\(String(describing: AuthenticationController.authToken))" + "In URLSession")
+                    
+                    print(AuthenticationController.authToken)
                     completion(.success(true))
                 } catch {
                     NSLog("Error - Sign in unsuccessful. Error Decoding token. \(error)")
-                    return completion(.failure(.noDecode))
+                    completion(.failure(.noDecode))
                 }
             }.resume()
         } catch {
             NSLog("Error - Sign in unsuccessful. Error encoding user info to database. \(error)")
-            return completion(.failure(.noEncode))
+            completion(.failure(.noEncode))
         }
     }
     

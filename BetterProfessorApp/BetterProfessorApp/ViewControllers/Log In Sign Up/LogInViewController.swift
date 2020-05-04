@@ -33,13 +33,14 @@ class LogInViewController: UIViewController {
         let login: Login = Login(email: email,
                                  password: password)
         print(login)
-        authController.login(login: login) { ( _ ) in
+        authController.login(login: login) { (_) in
         }
-        self.navigationController?.popToRootViewController(animated: true)
-        let vC = self.storyboard!.instantiateViewController(identifier: "TabBarController")
-        self.navigationController?.present(vC, animated: true, completion: nil)
-        return
-        
+        if AuthenticationController.authToken != nil {
+            self.navigationController?.popToRootViewController(animated: true)
+            self.dismiss(animated: true) {
+            }
+            self.performSegue(withIdentifier: "logInSegue", sender: nil)
+    }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,6 @@ class LogInViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
+}
  
 
-
-}

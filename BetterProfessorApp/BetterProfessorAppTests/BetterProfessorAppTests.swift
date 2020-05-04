@@ -17,8 +17,11 @@ class BetterProfessorAppTests: XCTestCase {
     let notCont = BetterProfessorApp.NotificationController()
     let deadCon = BetterProfessorApp.DeadlineController()
     func testLogOn() {
-        var token = authContoller.authToken
-        XCTAssertNil(token)
+        var log = Login(email: "jonbash@gmail.com", password: "aA12345!")
+        var token: Token? = self.authContoller.login(login: log) { (_) in
+            
+        }
+        print(token)
         
-    }
+}
 }

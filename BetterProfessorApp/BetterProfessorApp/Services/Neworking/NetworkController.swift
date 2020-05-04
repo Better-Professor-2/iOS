@@ -37,7 +37,7 @@ class NetworkController {
     
     // MARK: - Properties
     static let shared = NetworkController()
-    private let token: Token? = AuthenticationController.shared.authToken
+    private let token: Token? = AuthenticationController.authToken
     private var baseURL = URL(string: "https://better-professor-karavil.herokuapp.com/auth")!
     private lazy var studentsURL = baseURL.appendingPathComponent("/students/")
     private lazy var professorURL = baseURL.appendingPathComponent("/profile")
