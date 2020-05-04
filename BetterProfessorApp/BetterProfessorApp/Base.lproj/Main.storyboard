@@ -1731,7 +1731,7 @@
                     <navigationItem key="navigationItem" title="Sign Up" id="1cZ-Cz-0Uv"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="nBU-tc-VBe" id="MPv-py-tGz"/>
-                        <outlet property="emailTextField" destination="VF1-K4-b8E" id="KHx-9g-X0v"/>
+                        <outlet property="emailTextField" destination="aTR-dv-m3n" id="qNt-68-GLw"/>
                         <outlet property="fullNameTextField" destination="v4E-0o-45L" id="ZVj-md-yPY"/>
                         <outlet property="passwordTextField" destination="VF1-K4-b8E" id="lvY-Er-6NM"/>
                     </connections>

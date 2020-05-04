@@ -22,6 +22,9 @@ struct UserCredentials: Codable {
     let password: String
 }
 struct ProfessorID: Codable {
+    enum CodingKeys: String, CodingKey {
+        case id
+    }
     var id: Int
 }
 struct Login: Codable {

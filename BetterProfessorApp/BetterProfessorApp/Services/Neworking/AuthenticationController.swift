@@ -27,7 +27,7 @@ class AuthenticationController {
         case badResponse
     }
     
-    typealias CompletionHandler = (Result<Bool, NetworkError>) -> Void
+   
     
     
     // MARK: - Properties
@@ -36,13 +36,13 @@ class AuthenticationController {
     private lazy var loginURL = baseURL.appendingPathComponent("/login/")
     private lazy var jsonEncoder = JSONEncoder()
     private lazy var jsonDecoder = JSONDecoder()
-    var id: Int?
+    static var id: Int?
     static var authToken: Token?
     static let shared = AuthenticationController()
     
     
     // MARK: - Network Functions
-    func register(with credentials: UserCredentials, completion: @escaping CompletionHandler) {
+    func register(with credentials: UserCredentials, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         var request = postRequest(for: registerURL)
         
         do {
@@ -55,8 +55,7 @@ class AuthenticationController {
                     return
                 }
                 
-                guard let response = response as? HTTPURLResponse,
-                    response.statusCode == 201 else {
+                guard let response = response as? HTTPURLResponse else {
                         NSLog("Error - Bad Response. Registration Unsucessful: " +
                             "\(String(describing: error)) \(String(describing: error?.localizedDescription))")
                         return completion(.failure(.badResponse))
@@ -66,9 +65,9 @@ class AuthenticationController {
                     NSLog("Error - No data recieved")
                     return completion(.failure(.noData))
                 }
-                
+                print(String(data: data, encoding: .utf8))
                 do {
-                    self.id = try self.jsonDecoder.decode(ProfessorID.self, from: data).id
+                    let id = try? self.jsonDecoder.decode(ProfessorID.self, from: data)
                     completion(.success(true))
                     print(data)
                 } catch {
@@ -108,7 +107,6 @@ class AuthenticationController {
                 do {
                     AuthenticationController.authToken = try self.jsonDecoder.decode(Token.self, from: data)
                     print("\(String(describing: AuthenticationController.authToken))" + "In URLSession")
-                    
                     print(AuthenticationController.authToken)
                     completion(.success(true))
                 } catch {
