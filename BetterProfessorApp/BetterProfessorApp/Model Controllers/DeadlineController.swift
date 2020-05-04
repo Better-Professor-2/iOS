@@ -67,5 +67,6 @@ class DeadlineController {
                 String(describing: deadlineToDelete.name) +
                 " \(error) \(error.localizedDescription)")
         }
+        
     }
 }

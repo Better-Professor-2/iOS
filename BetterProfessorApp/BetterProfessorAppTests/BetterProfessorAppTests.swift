@@ -57,9 +57,44 @@ class BetterProfessorAppTests: XCTestCase {
         XCTAssertNotNil(prof.students)
         
 }
-    func testMakeDeadline() {
-        let student = studentCon.fetchStudent(context: CoreDataStack.shared.mainContext, id: 1)
-        XCTAssertNotNil(student)
+    func testAccessProfStudents() {
+        let prof = Professor(id: 99, email: "bigEmail@gmail.com", password: "aA12345!", firstName: "Big", lastName: "Email", students: [])
+        let student = Student(id: 80,
+                              firstName: "Dan",
+                              lastName: "Harmon", email: "RickAndMorty@gmail.com",
+                              phoneNumber: "8009990000",
+                              professor: prof, deadlines: [],
+                              context: CoreDataStack.shared.mainContext)
+        prof.addToStudents(student)
+        
+        XCTAssertNotNil(prof.students)
+        
     }
+    
+    func testMakeDeadline() {
+        let prof = Professor(id: 44,
+                                    email: "emailgmail@gmail.com", password: "aA12345!",
+                                    firstName: "John",
+                                    lastName: "Rambo",
+                                    students: [])
+        let student = studentCon.createStudent(for: prof, firstName: "Kenny", lastName: "Dykstra", email: "spiritsquad@gmail.com", phoneNumber: "8008675309")
+        XCTAssertNotNil(student)
+        
+    }
+    
+    func testDelProf() {
+        
+        let prof = Professor(id: 99, email: "bigdaddy@gmail.com", password: "aA12345!", firstName: "Big", lastName: "Daddy", students: [], context: CoreDataStack.shared.mainContext)
+        XCTAssertNotNil(profController.fetchProfessor(context: CoreDataStack.shared.mainContext, id: 99))
+        profController.deleteProfessor(professor: prof)
+        XCTAssertNil(profController.fetchProfessor(context: CoreDataStack.shared.mainContext, id: 99))
+    }
+    
+    func testFetchprod() {
+        let prof = Professor(id: 100, email: "lalilulelo", password: "aA12345!", firstName: "Richard", lastName: "Ames", students: [], context: CoreDataStack.shared.mainContext)
+        XCTAssertNotNil(profController.fetchProfessor(context: CoreDataStack.shared.mainContext, id: 100))
+    }
+    
+    
     
 }
